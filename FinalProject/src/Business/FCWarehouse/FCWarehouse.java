@@ -13,7 +13,7 @@ import Business.UserAccount.UserAccount;
 public class FCWarehouse {
     private String fcwId;
     private String fcwName;
-    private long fcwPhno;
+    private String fcwPhno;
     private String fcwAddres;
     private String fcwCity;
     private String fcwState;
@@ -39,11 +39,11 @@ public class FCWarehouse {
         this.fcwName = fcwName;
     }
 
-    public long getFcwPhno() {
+    public String getFcwPhno() {
         return fcwPhno;
     }
 
-    public void setFcwPhno(long fcwPhno) {
+    public void setFcwPhno(String fcwPhno) {
         this.fcwPhno = fcwPhno;
     }
 
