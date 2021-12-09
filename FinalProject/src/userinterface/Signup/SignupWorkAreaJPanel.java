@@ -345,11 +345,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-<<<<<<< Updated upstream
->>>>>>> main
-=======
-
->>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
