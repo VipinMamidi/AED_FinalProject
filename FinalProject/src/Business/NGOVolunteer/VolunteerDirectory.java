@@ -4,10 +4,23 @@
  */
 package Business.NGOVolunteer;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sowmyachinimilli
  */
 public class VolunteerDirectory {
+
+    
+    private ArrayList<Volunteer> volunteerList;
+    
+    public ArrayList<Volunteer> getVolunteerList() {
+        return volunteerList;
+    }
+
+    public void setVolunteerList(ArrayList<Volunteer> volunteerList) {
+        this.volunteerList = volunteerList;
+    }
     
 }
