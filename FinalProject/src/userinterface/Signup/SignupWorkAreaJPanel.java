@@ -847,8 +847,16 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmailFocusLost
 =======
     }//GEN-LAST:event_btnSaveActionPerformed
+<<<<<<< HEAD
 
 >>>>>>> origin
+=======
+<<<<<<< Updated upstream
+>>>>>>> main
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> fde3f5b (conflict resolving)
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
