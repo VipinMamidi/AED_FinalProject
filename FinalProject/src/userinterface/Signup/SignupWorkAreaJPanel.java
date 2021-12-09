@@ -38,6 +38,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecosystem;
     JPanel userProcessContainer;
+<<<<<<< HEAD
     UserAccount ua;
     RequestorDirectory rd;
     Requestor req;
@@ -47,6 +48,11 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     public boolean isNotValid = false;
 
     public SignupWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) throws IOException {
+=======
+    public boolean isNotValid = false;
+    
+    public SignupWorkAreaJPanel( JPanel userProcessContainer, EcoSystem ecosystem ) throws IOException {
+>>>>>>> origin
         initComponents();
 
         Image img = ImageIO.read(getClass().getResource("/Images/unnamed.png"));
@@ -72,16 +78,26 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         btnHome = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         txtAge = new javax.swing.JTextField();
+=======
+        jTextField1 = new javax.swing.JTextField();
+>>>>>>> origin
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtuserAddrss1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtUserCity = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+<<<<<<< HEAD
         txtZipCode = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtUserPhn = new javax.swing.JTextField();
+=======
+        btnZipCode = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btnTxtUserPhn = new javax.swing.JTextField();
+>>>>>>> origin
         jLabel8 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -97,6 +113,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         txtState = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+<<<<<<< HEAD
         rdPanel = new javax.swing.JPanel();
         rdRes = new javax.swing.JRadioButton();
         rdInd = new javax.swing.JRadioButton();
@@ -104,6 +121,108 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Name :");
+=======
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setText("Name :");
+
+        txtName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setText("Age :");
+
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setText("Gender :");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setText("Address :");
+
+        txtuserAddrss1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setText("City :");
+
+        txtUserCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtUserCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserCityActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setText("Zip Code :");
+
+        btnZipCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setText("Phone No. :");
+
+        btnTxtUserPhn.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setText("User Name :");
+
+        txtUserName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setText("Password :");
+
+        txtPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setText("Confirm Password :");
+
+        txtCnfPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setText(" Email : ");
+
+        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setText("I am a :");
+
+        cmbLoginType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cmbLoginType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Food Donor", "Food Requestor" }));
+
+        cmbGender.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Others" }));
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setText("State :");
+
+        btnSave.setBackground(new java.awt.Color(102, 255, 102));
+        btnSave.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnSave.setText("Create");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnClear.setBackground(new java.awt.Color(255, 51, 51));
+        btnClear.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jRadioButton1.setText("Restaurant");
+
+        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jRadioButton2.setText("Organisation");
+
+        jRadioButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jRadioButton3.setText("Individual");
+>>>>>>> origin
 
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,7 +446,11 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                     .addGap(41, 41, 41)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtName)
+<<<<<<< HEAD
                                         .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+=======
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+>>>>>>> origin
                                         .addComponent(txtuserAddrss1)
                                         .addComponent(txtUserCity)
                                         .addComponent(cmbGender, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -345,11 +468,19 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(41, 41, 41)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+<<<<<<< HEAD
                                         .addComponent(txtUserPhn)
                                         .addComponent(txtUserName)
                                         .addComponent(txtPwd)
                                         .addComponent(txtCnfPwd)
                                         .addComponent(txtZipCode)
+=======
+                                        .addComponent(btnTxtUserPhn)
+                                        .addComponent(txtUserName)
+                                        .addComponent(txtPwd)
+                                        .addComponent(txtCnfPwd)
+                                        .addComponent(btnZipCode)
+>>>>>>> origin
                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(117, 117, 117)
@@ -364,8 +495,17 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
+<<<<<<< HEAD
                         .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(229, Short.MAX_VALUE))
+=======
+                        .addComponent(jRadioButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton3)))
+                .addContainerGap(241, Short.MAX_VALUE))
+>>>>>>> origin
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSave});
@@ -379,8 +519,16 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3))
+>>>>>>> origin
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -388,6 +536,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
+<<<<<<< HEAD
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,6 +580,51 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel11)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+=======
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtuserAddrss1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtUserCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(btnZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(btnTxtUserPhn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8))
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCnfPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+>>>>>>> origin
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnClear))
@@ -460,6 +654,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         if (isNotValid) {
             return;
         }
+<<<<<<< HEAD
 
         if (nameValidation()) {
             return;
@@ -650,12 +845,21 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         emailValidation();
     }//GEN-LAST:event_txtEmailFocusLost
+=======
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+>>>>>>> origin
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSave;
+<<<<<<< HEAD
+=======
+    private javax.swing.JTextField btnTxtUserPhn;
+    private javax.swing.JTextField btnZipCode;
+>>>>>>> origin
     private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JComboBox<String> cmbLoginType;
     private javax.swing.JLabel jLabel1;
@@ -671,11 +875,18 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+<<<<<<< HEAD
     private javax.swing.JRadioButton rdInd;
     private javax.swing.JRadioButton rdOr;
     private javax.swing.JPanel rdPanel;
     private javax.swing.JRadioButton rdRes;
     private javax.swing.JTextField txtAge;
+=======
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JTextField jTextField1;
+>>>>>>> origin
     private javax.swing.JTextField txtCnfPwd;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
@@ -683,12 +894,16 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtUserCity;
     private javax.swing.JTextField txtUserName;
+<<<<<<< HEAD
     private javax.swing.JTextField txtUserPhn;
     private javax.swing.JTextField txtZipCode;
+=======
+>>>>>>> origin
     private javax.swing.JTextField txtuserAddrss1;
     // End of variables declaration//GEN-END:variables
 
     private boolean mandatoryValidations() {
+<<<<<<< HEAD
         if (txtName.getText().isEmpty() || txtName.getText() == "") {
             JOptionPane.showMessageDialog(this, "Please Provide Name!!");
             return true;
@@ -865,4 +1080,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         return reqType;
     }
 
+=======
+        return isNotValid;
+    }
+>>>>>>> origin
 }

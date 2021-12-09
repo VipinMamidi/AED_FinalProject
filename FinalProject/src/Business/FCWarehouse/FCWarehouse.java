@@ -94,5 +94,5 @@ public class FCWarehouse {
     public void setFcwAccount(UserAccount fcwAccount) {
         this.fcwAccount = fcwAccount;
     }
-    
+   
 }

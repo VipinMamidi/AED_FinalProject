@@ -99,15 +99,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnMgPT)
                 .addGap(121, 121, 121)
                 .addComponent(btnMgNGO)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(btnMgUsers)
                 .addGap(55, 55, 55))
             .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblWelcomemsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblwelusername)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(382, 382, 382))
         );
         MenubarPanelLayout.setVerticalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +116,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblwelusername)
                     .addComponent(lblWelcomemsg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMgUsers)
                     .addComponent(btnMgWH)
@@ -127,15 +127,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(MenubarPanel);
 
+        WorkAreaPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
+
         javax.swing.GroupLayout WorkAreaPanelLayout = new javax.swing.GroupLayout(WorkAreaPanel);
         WorkAreaPanel.setLayout(WorkAreaPanelLayout);
         WorkAreaPanelLayout.setHorizontalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGap(0, 998, Short.MAX_VALUE)
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(WorkAreaPanel);
@@ -144,18 +146,22 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMgWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHActionPerformed
         // TODO add your handling code here:
+        ManageWarehousePanel objWH = new ManageWarehousePanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("Manage Warehouse",objWH);
+        CardLayout crdlyt = (CardLayout) userProcessContainer.getLayout();
+        crdlyt.next(userProcessContainer);
     }//GEN-LAST:event_btnMgWHActionPerformed
 
     private void btnMgPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTActionPerformed
