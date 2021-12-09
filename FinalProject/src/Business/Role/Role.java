@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * @author raunak
  */
 public abstract class Role {
-    
+          
     public enum RoleType{
         FCAdmin("FCAdmin"),
         FCPManager("FCPManager"),
