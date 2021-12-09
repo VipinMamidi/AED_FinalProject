@@ -325,11 +325,10 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
-=======
+
     private void txtUserCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserCityActionPerformed
@@ -346,7 +345,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_btnSaveActionPerformed
->>>>>>> 351d4c8 (signup changes)
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
