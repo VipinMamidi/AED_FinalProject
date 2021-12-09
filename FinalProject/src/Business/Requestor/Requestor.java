@@ -20,7 +20,36 @@ public class Requestor {
     private String reqState;
     private String reqZipcode;
     private String reqEmail;
-    private UserAccount reqAccount;
+    private UserAccount userAccount;
+    private String reqUserName;
+
+    public String getReqUserName() {
+        return reqUserName;
+    }
+
+    public void setReqUserName(String reqUserName) {
+        this.reqUserName = reqUserName;
+    }
+
+    public String getReqPwd() {
+        return reqPwd;
+    }
+
+    public void setReqPwd(String reqPwd) {
+        this.reqPwd = reqPwd;
+    }
+    private String reqPwd;
+    
+    
+    
+    public Requestor(UserAccount ua)
+    {
+        this.userAccount = ua;
+        this.reqUserName = ua.getUsername();
+        this.reqPwd = ua.getPassword();
+                
+    }
+    
 
     public int getReqId() {
         return reqId;
@@ -95,11 +124,11 @@ public class Requestor {
     }
 
     public UserAccount getReqAccount() {
-        return reqAccount;
+        return userAccount;
     }
 
     public void setReqAccount(UserAccount reqAccount) {
-        this.reqAccount = reqAccount;
+        this.userAccount = reqAccount;
     }
     
 }

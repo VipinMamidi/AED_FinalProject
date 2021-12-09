@@ -8,6 +8,8 @@ package Business;
 
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donor.DonorDirectory;
+import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
@@ -20,15 +22,34 @@ import java.util.ArrayList;
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
-    private RestaurantDirectory restaurantDirectory;
-    private CustomerDirectory customerDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
+    //private RestaurantDirectory restaurantDirectory;
+    //private CustomerDirectory customerDirectory;
+    //private DeliveryManDirectory deliveryManDirectory;
+    
+    private RequestorDirectory reqDir;
+    private DonorDirectory donDir;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir) {
 
-        this.restaurantDirectory = restaurantDirectory;
-        this.customerDirectory = customerDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
+        this.reqDir = reqDir;
+        this.donDir = donDir;
+       
+    }
+
+    public RequestorDirectory getReqDir() {
+        return reqDir;
+    }
+
+    public void setReqDir(RequestorDirectory reqDir) {
+        this.reqDir = reqDir;
+    }
+
+    public DonorDirectory getDonDir() {
+        return donDir;
+    }
+
+    public void setDonDir(DonorDirectory donDir) {
+        this.donDir = donDir;
     }
     
     public static EcoSystem getInstance(){
@@ -45,7 +66,9 @@ public class EcoSystem extends Organization{
         return roleList;
     }
     private EcoSystem(){
-        super(null);
+        super("Food Cloud");
+         this.reqDir =  new RequestorDirectory();
+        this.donDir = new DonorDirectory();
        // networkList=new ArrayList<Network>();
     }
 
