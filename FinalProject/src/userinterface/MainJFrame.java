@@ -8,8 +8,10 @@ import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donor.DonorDirectory;
 
 import Business.Organization;
+import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -42,7 +44,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RestaurantDirectory(), new CustomerDirectory(), new DeliveryManDirectory());
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory());
         }
        
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));

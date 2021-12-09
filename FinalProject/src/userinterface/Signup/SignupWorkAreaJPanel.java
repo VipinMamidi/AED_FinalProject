@@ -533,16 +533,16 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
                     case "Food Requestor":
                         usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new CustomerRole());
-                        ua = usersList.getUserAccount(txtUName.getText());
-                        customer = new Customer(ua);
-                        customer.setName(txtName.getText());
-                        customer.setUserName(txtUName.getText());
-                        customer.setUserPassword(txtPasswd.getText());
-                        customer.setAddress(txtAddress.getText());
-                        customer.setPhoneNumber(txtPhoneNo.getText());
-
-                        cd = ecosystem.getCustomerDirectory();
-                        cd.addCustomer(customer);
+                        //ua = usersList.getUserAccount(txtUName.getText());
+//                        customer = new Customer(ua);
+//                        customer.setName(txtName.getText());
+//                        customer.setUserName(txtUName.getText());
+//                        customer.setUserPassword(txtPasswd.getText());
+//                        customer.setAddress(txtAddress.getText());
+//                        customer.setPhoneNumber(txtPhoneNo.getText());
+//
+//                        cd = ecosystem.getCustomerDirectory();
+//                        cd.addCustomer(customer);
                         break;
                 }
             }
