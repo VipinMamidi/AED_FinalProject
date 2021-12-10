@@ -22,6 +22,7 @@ public class Requestor {
     private String reqEmail;
     private UserAccount userAccount;
     private String reqUserName;
+     private String reqPwd;
 
     public String getReqUserName() {
         return reqUserName;
@@ -38,7 +39,7 @@ public class Requestor {
     public void setReqPwd(String reqPwd) {
         this.reqPwd = reqPwd;
     }
-    private String reqPwd;
+   
     
     
     

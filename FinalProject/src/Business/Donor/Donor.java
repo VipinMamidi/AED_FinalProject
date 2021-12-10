@@ -21,6 +21,35 @@ public class Donor {
     private String donorZipcode;
     private String donorEmail;
     private UserAccount donorAccount;
+    private String donUserName;
+     private String donPwd;
+
+    public String getDonUserName() {
+        return donUserName;
+    }
+
+    public void setDonUserName(String donUserName) {
+        this.donUserName = donUserName;
+    }
+
+    public String getDonPwd() {
+        return donPwd;
+    }
+
+    public void setDonPwd(String donPwd) {
+        this.donPwd = donPwd;
+    }
+
+   
+    
+    
+    public Donor(UserAccount ua)
+    {
+        this.donorAccount = ua;
+        this.donUserName = ua.getUsername();
+        this.donPwd = ua.getPassword();
+                
+    }
 
     public int getDonorId() {
         return donorId;

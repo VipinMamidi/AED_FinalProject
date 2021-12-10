@@ -11,8 +11,12 @@ import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
+import Business.Role.DonorRole;
+import Business.Role.RequestorRole;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 
 /**
@@ -28,6 +32,16 @@ public class EcoSystem extends Organization{
     
     private RequestorDirectory reqDir;
     private DonorDirectory donDir;
+    
+
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem business) {
+        EcoSystem.business = business;
+    }
+    
 
     public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir) {
 
@@ -63,6 +77,9 @@ public class EcoSystem extends Organization{
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roleList=new ArrayList<Role>();
         roleList.add(new SystemAdminRole());
+        roleList.add(new RequestorRole());
+        roleList.add(new DonorRole());
+        
         return roleList;
     }
     private EcoSystem(){
@@ -74,7 +91,15 @@ public class EcoSystem extends Organization{
 
     
     public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
+      UserAccountDirectory usersList = business.getUserAccountDirectory();
+        ArrayList<UserAccount> userAccounts = usersList.getUserAccountList();
+        
+        for(UserAccount ua : userAccounts)
+        {
+            if(ua.getUsername().equals(userName))
+                return false;
+        }
+        
+       return true;
     }
 }

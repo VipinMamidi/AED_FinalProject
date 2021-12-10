@@ -16,6 +16,9 @@ import Business.Restaurant.Restaurant;
 import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 
+import Business.Role.DonorRole;
+import Business.Role.RequestorRole;
+
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.Image;
@@ -38,7 +41,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecosystem;
     JPanel userProcessContainer;
-<<<<<<< HEAD
     UserAccount ua;
     RequestorDirectory rd;
     Requestor req;
@@ -48,11 +50,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     public boolean isNotValid = false;
 
     public SignupWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) throws IOException {
-=======
-    public boolean isNotValid = false;
-    
-    public SignupWorkAreaJPanel( JPanel userProcessContainer, EcoSystem ecosystem ) throws IOException {
->>>>>>> origin
         initComponents();
 
         Image img = ImageIO.read(getClass().getResource("/Images/unnamed.png"));
@@ -77,27 +74,17 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-<<<<<<< HEAD
+        lblAge = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-=======
-        jTextField1 = new javax.swing.JTextField();
->>>>>>> origin
-        jLabel3 = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtuserAddrss1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtUserCity = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-<<<<<<< HEAD
         txtZipCode = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtUserPhn = new javax.swing.JTextField();
-=======
-        btnZipCode = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        btnTxtUserPhn = new javax.swing.JTextField();
->>>>>>> origin
         jLabel8 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -113,7 +100,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         txtState = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-<<<<<<< HEAD
         rdPanel = new javax.swing.JPanel();
         rdRes = new javax.swing.JRadioButton();
         rdInd = new javax.swing.JRadioButton();
@@ -121,108 +107,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Name :");
-=======
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Name :");
-
-        txtName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setText("Age :");
-
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("Gender :");
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("Address :");
-
-        txtuserAddrss1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setText("City :");
-
-        txtUserCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtUserCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserCityActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setText("Zip Code :");
-
-        btnZipCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setText("Phone No. :");
-
-        btnTxtUserPhn.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setText("User Name :");
-
-        txtUserName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel9.setText("Password :");
-
-        txtPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setText("Confirm Password :");
-
-        txtCnfPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel11.setText(" Email : ");
-
-        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel12.setText("I am a :");
-
-        cmbLoginType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cmbLoginType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Food Donor", "Food Requestor" }));
-
-        cmbGender.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Others" }));
-
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel13.setText("State :");
-
-        btnSave.setBackground(new java.awt.Color(102, 255, 102));
-        btnSave.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnSave.setText("Create");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnClear.setBackground(new java.awt.Color(255, 51, 51));
-        btnClear.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
-        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton1.setText("Restaurant");
-
-        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton2.setText("Organisation");
-
-        jRadioButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton3.setText("Individual");
->>>>>>> origin
 
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,8 +121,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setText("Age :");
+        lblAge.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblAge.setText("Age :");
 
         txtAge.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtAge.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -247,8 +131,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("Gender :");
+        lblGender.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblGender.setText("Gender :");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Address :");
@@ -437,20 +321,16 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(65, 65, 65)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
+                                        .addComponent(lblAge)
                                         .addComponent(jLabel1)
-                                        .addComponent(jLabel3)
+                                        .addComponent(lblGender)
                                         .addComponent(jLabel4)
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel13))
                                     .addGap(41, 41, 41)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtName)
-<<<<<<< HEAD
                                         .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-=======
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
->>>>>>> origin
                                         .addComponent(txtuserAddrss1)
                                         .addComponent(txtUserCity)
                                         .addComponent(cmbGender, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -468,19 +348,11 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(41, 41, 41)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-<<<<<<< HEAD
                                         .addComponent(txtUserPhn)
                                         .addComponent(txtUserName)
                                         .addComponent(txtPwd)
                                         .addComponent(txtCnfPwd)
                                         .addComponent(txtZipCode)
-=======
-                                        .addComponent(btnTxtUserPhn)
-                                        .addComponent(txtUserName)
-                                        .addComponent(txtPwd)
-                                        .addComponent(txtCnfPwd)
-                                        .addComponent(btnZipCode)
->>>>>>> origin
                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(117, 117, 117)
@@ -495,20 +367,13 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-<<<<<<< HEAD
                         .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(229, Short.MAX_VALUE))
-=======
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)))
-                .addContainerGap(241, Short.MAX_VALUE))
->>>>>>> origin
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSave});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbGender, txtAge, txtName, txtuserAddrss1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,28 +384,19 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
->>>>>>> origin
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-<<<<<<< HEAD
+                    .addComponent(lblAge)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(lblGender)
                     .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -580,51 +436,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel11)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-=======
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtuserAddrss1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtUserCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(btnZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(btnTxtUserPhn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8))
-                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtCnfPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
->>>>>>> origin
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnClear))
@@ -645,6 +456,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        clearFields();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -654,7 +466,6 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         if (isNotValid) {
             return;
         }
-<<<<<<< HEAD
 
         if (nameValidation()) {
             return;
@@ -701,13 +512,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                 userDoNotExists = false;
             }
         }
-        
 
         if (userDoNotExists) {
             if (txtPwd.getText().equals(txtCnfPwd.getText())) {
                 switch (role) {
-                    case "Food Donor":
-                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new AdminRole());
+                    case "Food Requestor":
+                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new RequestorRole());
                         ua = usersList.getUserAccount(txtUserName.getText());
                         req = new Requestor(ua);
                         req.setReqType(getReqType());
@@ -716,31 +526,49 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                         req.setReqCity(txtUserCity.getText());
                         req.setReqState(txtState.getText());
                         req.setReqEmail(txtEmail.getText());
-                        req.setReqPhno( Long.parseLong(txtUserPhn.getText()));
+                        req.setReqPhno(Long.parseLong(txtUserPhn.getText()));
                         req.setReqZipcode(txtZipCode.getText());
                         req.setReqUserName(txtUserName.getText());
                         req.setReqPwd(txtPwd.getText());
-                        
+
                         rd = ecosystem.getReqDir();
                         rd.addReqDir(req);
                         ecosystem.setReqDir(rd);
                         break;
 
-                    case "Food Requestor":
-                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new CustomerRole());
-                        //ua = usersList.getUserAccount(txtUName.getText());
-//                        customer = new Customer(ua);
-//                        customer.setName(txtName.getText());
-//                        customer.setUserName(txtUName.getText());
-//                        customer.setUserPassword(txtPasswd.getText());
-//                        customer.setAddress(txtAddress.getText());
-//                        customer.setPhoneNumber(txtPhoneNo.getText());
-//
-//                        cd = ecosystem.getCustomerDirectory();
-//                        cd.addCustomer(customer);
+                    case "Food Donor":
+                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new DonorRole());
+                        ua = usersList.getUserAccount(txtUserName.getText());
+                        don = new Donor(ua);
+                        don.setDonorType(role);
+
+                        don.setDonorName(txtName.getText());
+                        don.setDonorAddres(txtuserAddrss1.getText());
+                        don.setDonorCity(txtUserCity.getText());
+                        don.setDonorState(txtState.getText());
+                        don.setDonorEmail(txtEmail.getText());
+                        don.setDonorPhno(txtUserPhn.getText());
+                        don.setDonorZipcode(txtZipCode.getText());
+                        don.setDonPwd(txtUserName.getText());
+                        don.setDonPwd(txtPwd.getText());
+
+                        dd = ecosystem.getDonDir();
+                        dd.addDonDir(don);
+                        ecosystem.setDonDir(dd);
                         break;
+                    default:
+                        break;
+
                 }
+                
+                JOptionPane.showMessageDialog(this, "User created");
+
+                clearFields();
+            } else {
+                JOptionPane.showMessageDialog(this, "Password and confirm password does not match");
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "UserName already exist");
         }
 
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -751,8 +579,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             rdOr.setSelected(false);
             rdInd.setSelected(false);
 
-            txtAge.setVisible(false);
-            cmbGender.setVisible(false);
+            txtAge.setEditable(false);
+            txtAge.setEnabled(false);
+            cmbGender.setEditable(false);
+            cmbGender.setEnabled(false);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
         }
 
 
@@ -764,8 +596,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             rdRes.setSelected(false);
             rdInd.setSelected(false);
 
-            txtAge.setVisible(false);
-            cmbGender.setVisible(false);
+            txtAge.setEditable(false);
+            txtAge.setEnabled(false);
+            cmbGender.setEditable(false);
+            cmbGender.setEnabled(false);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
         }
     }//GEN-LAST:event_rdOrActionPerformed
 
@@ -775,8 +611,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             rdOr.setSelected(false);
             rdRes.setSelected(false);
 
-            txtAge.setVisible(true);
-            cmbGender.setVisible(true);
+            txtAge.setEditable(true);
+            txtAge.setEnabled(true);
+            cmbGender.setEditable(true);
+            cmbGender.setEnabled(true);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
         }
     }//GEN-LAST:event_rdIndActionPerformed
 
@@ -784,9 +624,15 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         if (cmbLoginType.getSelectedIndex() == 0) {
-            rdPanel.setVisible(true);
+            // rdPanel.setVisible(true);
+            rdRes.setVisible(true);
+            rdOr.setText("Organization");
+
         } else {
-            rdPanel.setVisible(false);
+            // rdPanel.setVisible(false);
+            rdRes.setVisible(false);
+            rdOr.setText("Orphanage/Old Age Home");
+
         }
 
     }//GEN-LAST:event_cmbLoginTypeActionPerformed
@@ -845,29 +691,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         emailValidation();
     }//GEN-LAST:event_txtEmailFocusLost
-=======
-    }//GEN-LAST:event_btnSaveActionPerformed
-<<<<<<< HEAD
-
->>>>>>> origin
-=======
-<<<<<<< Updated upstream
->>>>>>> main
-=======
-
->>>>>>> Stashed changes
->>>>>>> fde3f5b (conflict resolving)
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSave;
-<<<<<<< HEAD
-=======
-    private javax.swing.JTextField btnTxtUserPhn;
-    private javax.swing.JTextField btnZipCode;
->>>>>>> origin
     private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JComboBox<String> cmbLoginType;
     private javax.swing.JLabel jLabel1;
@@ -875,26 +704,19 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-<<<<<<< HEAD
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblGender;
     private javax.swing.JRadioButton rdInd;
     private javax.swing.JRadioButton rdOr;
     private javax.swing.JPanel rdPanel;
     private javax.swing.JRadioButton rdRes;
     private javax.swing.JTextField txtAge;
-=======
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
->>>>>>> origin
     private javax.swing.JTextField txtCnfPwd;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
@@ -902,16 +724,12 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtUserCity;
     private javax.swing.JTextField txtUserName;
-<<<<<<< HEAD
     private javax.swing.JTextField txtUserPhn;
     private javax.swing.JTextField txtZipCode;
-=======
->>>>>>> origin
     private javax.swing.JTextField txtuserAddrss1;
     // End of variables declaration//GEN-END:variables
 
     private boolean mandatoryValidations() {
-<<<<<<< HEAD
         if (txtName.getText().isEmpty() || txtName.getText() == "") {
             JOptionPane.showMessageDialog(this, "Please Provide Name!!");
             return true;
@@ -1076,20 +894,35 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
     private String getReqType() {
         String reqType = "";
-        if(rdOr.isSelected()){
+        if (rdOr.isSelected()) {
             reqType = "Organization";
-        }
-        else if(rdInd.isSelected()){
+        } else if (rdInd.isSelected()) {
             reqType = "Individual";
-        }
-        else if(rdRes.isSelected()){
+        } else if (rdRes.isSelected()) {
             reqType = "Restaurant";
         }
         return reqType;
     }
 
-=======
-        return isNotValid;
+    private void clearFields() {
+        
+                txtName.setText("");
+                txtuserAddrss1.setText("");
+                txtUserCity.setText("");
+                txtAge.setText("");
+                cmbGender.setSelectedIndex(0);
+                txtState.setText("");
+                txtEmail.setText("");
+                txtUserPhn.setText("");
+                txtZipCode.setText("");
+                txtPwd.setText("");
+                txtUserName.setText("");
+                txtCnfPwd.setText("");
+                cmbLoginType.setSelectedIndex(0);
+                rdInd.setSelected(true);
+                rdOr.setSelected(false);
+                rdRes.setSelected(false);
+                
     }
->>>>>>> origin
+
 }
