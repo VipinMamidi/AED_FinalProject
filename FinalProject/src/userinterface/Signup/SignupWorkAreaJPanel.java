@@ -25,6 +25,7 @@ import Business.Role.RequestorRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Insets;
 import java.io.IOException;
@@ -71,14 +72,28 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
        
         
         initComponents();
+        
+        bgImgLbl.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+        bgImgLbl.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+        bgImgLbl.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
 
         Image img = ImageIO.read(getClass().getResource("/Images/unnamed.png"));
         Image newimg = img.getScaledInstance(39, 41, java.awt.Image.SCALE_SMOOTH);
 
         btnHome.setIcon(new ImageIcon(newimg));
+        
+        
+        Image img1 = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+        Image newimg1 = img1.getScaledInstance(userProcessContainer.getWidth(), userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+
+        bgImgLbl.setIcon(new ImageIcon(newimg1));
 
         rdInd.setSelected(true);
         rdPanel.setVisible(true);
+        
+        
+        System.out.println("container width :" +userProcessContainer.getWidth());
+        System.out.println("width : " + bgImgLbl.getWidth());
 
     }
 
@@ -125,6 +140,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         rdInd = new javax.swing.JRadioButton();
         rdOr = new javax.swing.JRadioButton();
         bgImgLbl = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(1100, 1000));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Name :");
@@ -330,6 +347,8 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
         );
 
         bgImgLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blurbg.jpeg"))); // NOI18N
+        bgImgLbl.setMaximumSize(new java.awt.Dimension(1100, 1000));
+        bgImgLbl.setPreferredSize(new java.awt.Dimension(1100, 1000));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -428,7 +447,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(245, 245, 245)
                         .addComponent(btnSave)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(bgImgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(bgImgLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,7 +541,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(629, 629, 629)
                         .addComponent(btnSave)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
             .addComponent(bgImgLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
