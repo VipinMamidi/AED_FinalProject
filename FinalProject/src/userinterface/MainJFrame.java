@@ -8,10 +8,13 @@ import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donor.DonorDirectory;
 
 import Business.Organization;
+import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.IOException;
@@ -21,8 +24,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
 import userinterface.SystemAdminWorkArea.AddWarehousePanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -33,8 +38,11 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    public EcoSystem ecosystem;
+     private EcoSystem ecosystem;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    UserAccount ua;
+    RequestorDirectory rd;
+    DonorDirectory dd;
     
 
     public MainJFrame() throws IOException {
@@ -43,7 +51,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RestaurantDirectory(), new CustomerDirectory(), new DeliveryManDirectory());
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory());
         }
        
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
@@ -187,6 +195,30 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
+        
+        String username = userNameJTextField.getText();
+        String password = passwordField.getText();
+        UserAccountDirectory userDirectory = ecosystem.getUserAccountDirectory();
+
+        this.ua = userDirectory.authenticateUser(username, password);
+        if (ua == null) {
+            JOptionPane.showMessageDialog(this, "Invalid credentials!!");
+        }
+        else {
+            if (ua.getRole().toString().equals("Business.Role.SystemAdminRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(container, ecosystem);
+                container.add("Sysadmin", sa);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            } 
+        }
+        
 
     }//GEN-LAST:event_loginJButtonActionPerformed
 

@@ -4,6 +4,7 @@
  */
 package Business.Requestor;
 
+import Business.Restaurant.Restaurant;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,29 @@ public class RequestorDirectory {
 
     public void setReqAccList(ArrayList<Requestor> reqAccList) {
         this.reqAccList = reqAccList;
+    }
+    
+    public void addReqDir(Requestor ro) {
+        reqAccList.add(ro);
+    }
+    
+    public void removeRequestor(Requestor r) {
+        this.reqAccList.remove(r);
+    }
+
+    public void removeReqByIndex(int index) {
+        reqAccList.remove(index);
+    }
+
+    public Requestor getRestDetailsByIndex(int index) {
+        return reqAccList.get(index);
+    }
+    
+    int reqIdGeneration = 1000;
+
+    public int generateOrderId() {
+        reqIdGeneration++;
+        return reqIdGeneration;
     }
     
 }

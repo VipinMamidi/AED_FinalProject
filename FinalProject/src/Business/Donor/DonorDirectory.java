@@ -4,6 +4,7 @@
  */
 package Business.Donor;
 
+import Business.Requestor.Requestor;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,29 @@ public class DonorDirectory {
 
     public void setDonorList(ArrayList<Donor> donorList) {
         this.donorList = donorList;
+    }
+    
+    public void addDonDir(Donor dd) {
+        donorList.add(dd);
+    }
+    
+    public void removeDonor(Donor d) {
+        this.donorList.remove(d);
+    }
+
+    public void removeDonByIndex(int index) {
+        donorList.remove(index);
+    }
+
+    public Donor getDonorDetailsByIndex(int index) {
+        return donorList.get(index);
+    }
+    
+    int donIdGeneration = 1000;
+
+    public int generateDonOrderId() {
+        donIdGeneration++;
+        return donIdGeneration;
     }
     
 }
