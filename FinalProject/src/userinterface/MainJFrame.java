@@ -25,6 +25,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorAreaJPanel;
+import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.RequestorRole.RequestorAreaJPanel;
 import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
 import userinterface.SystemAdminWorkArea.AddWarehousePanel;
@@ -218,6 +221,42 @@ public class MainJFrame extends javax.swing.JFrame {
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
             } 
+            else if (ua.getRole().toString().equals("Business.Role.FCAdminRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                FCAdminWorkAreaPanel fca = new FCAdminWorkAreaPanel(container, ecosystem,ua);
+                container.add("FCAdmin", fca);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+             else if (ua.getRole().toString().equals("Business.Role.DonorRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                DonorAreaJPanel don = new DonorAreaJPanel(container, ecosystem, ua);
+                container.add("Donor", don);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.RequestorRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                RequestorAreaJPanel req = new RequestorAreaJPanel(container, ecosystem, ua);
+                container.add("Requestor", req);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
         }
         
 

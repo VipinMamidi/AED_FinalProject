@@ -4,6 +4,7 @@
  */
 package userinterface.DonorRole;
 
+import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -19,14 +20,16 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
      private JPanel userProcessContainer;
 
     private UserAccount userAccount;
+    EcoSystem ecosystem;
     
-     public DonorAreaJPanel(JPanel userProcessContainer, UserAccount account) {
+     public DonorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
       
         this.userAccount = account;
         //valueLabel.setText(enterprise.getName());
+        this.ecosystem = ecosystem;
        
     }
 
@@ -39,19 +42,30 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText("donaar pyanell!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jLabel1)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jLabel1)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
