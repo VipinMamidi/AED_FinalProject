@@ -46,10 +46,11 @@ public class EcoSystem extends Organization{
     }
     
 
-    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir) {
+    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir) {
 
         this.reqDir = reqDir;
         this.donDir = donDir;
+        this.fcwDir = fcwDir;
        
     }
 
@@ -89,6 +90,7 @@ public class EcoSystem extends Organization{
         super("Food Cloud");
          this.reqDir =  new RequestorDirectory();
         this.donDir = new DonorDirectory();
+        this.fcwDir = new FCWarehouseDirectory();
        // networkList=new ArrayList<Network>();
     }
 
@@ -108,7 +110,7 @@ public class EcoSystem extends Organization{
     public FCWarehouseDirectory getFCWDirectory(){
         return fcwDir;
     }
-    public void setFCWDirectory(ArrayList<FCWarehouse> fcwList){
-        fcwDir.setFcwList(fcwList);
+    public void setFCWDirectory(FCWarehouseDirectory fcd){
+        this.fcwDir = fcd;
     }
 }

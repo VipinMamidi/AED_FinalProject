@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author sowmyachinimilli
  */
 public class FCWarehouseDirectory {
-    private ArrayList<FCWarehouse> fcwList;
+     ArrayList<FCWarehouse> fcwList = new ArrayList<FCWarehouse>();
 
     public ArrayList<FCWarehouse> getFcwList() {
         return fcwList;
@@ -24,6 +24,6 @@ public class FCWarehouseDirectory {
         fcwList.add(fcw);
     }
     public void deleteFCWarehouse(FCWarehouse selectedfcw){
-        fcwList.remove(fcwList);
+        fcwList.remove(selectedfcw);
     }
 }

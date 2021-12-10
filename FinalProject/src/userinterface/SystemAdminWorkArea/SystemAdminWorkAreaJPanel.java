@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 
 import Business.Organization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -25,11 +26,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    UserAccount userAcc;
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
-       
+      //  this.userAcc = userAcc;
     }
     
   
@@ -54,7 +56,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         SplitPaneSysAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnMgWH.setBackground(new java.awt.Color(225, 144, 108));
         btnMgWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgWH.setText("Manage Warehouse");
         btnMgWH.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         btnMgUsers.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgUsers.setText("Manage Users");
+        btnMgUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMgUsersActionPerformed(evt);
+            }
+        });
 
         lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblwelusername.setText("System Admin !");
@@ -178,6 +184,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void btnMgNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgNGOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMgNGOActionPerformed
+
+    private void btnMgUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgUsersActionPerformed
+        // TODO add your handling code here:
+        ManageUsersPanel objUSER = new ManageUsersPanel(userProcessContainer,ecosystem);
+         SplitPaneSysAdmin.setRightComponent(objUSER);
+    }//GEN-LAST:event_btnMgUsersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
