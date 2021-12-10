@@ -4,6 +4,11 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import Business.FCWarehouse.FCWarehouse;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sowmyachinimilli
@@ -13,8 +18,13 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewModifyWarehousePanel
      */
-    public ViewModifyWarehousePanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public ViewModifyWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        populateWHtable();
     }
 
     /**
@@ -253,4 +263,20 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtWHZip;
     private javax.swing.JTextField txtWHname;
     // End of variables declaration//GEN-END:variables
+
+    private void populateWHtable() {
+        DefaultTableModel model = (DefaultTableModel) tblWarehouse.getModel();
+        model.setRowCount(0);
+      /*  for(FCWarehouse fcwh: ecosystem.getFCWDirectory().getFcwList()){
+           Object[] row = new Object[8];
+           row[0] =fcwh;
+           row[1] =fcwh.getFcwName();
+           row[2] =fcwh.getFcwPhno();
+           row[3] =fcwh.getFcwAddres();
+           row[4] =fcwh.getFcwCity();
+           row[5] =fcwh.getFcwState();
+           row[6] =fcwh.getFcwZipcode();
+           row[7] =fcwh.getFcwAdmin();
+        } */
+    }
 }
