@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -23,9 +24,14 @@ public class HomeJPanel extends javax.swing.JPanel {
     public HomeJPanel(JPanel userProcessContainer) throws IOException {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        
+        imageLbl.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+        imageLbl.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+        imageLbl.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+        
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
         
-        Image newimg = img.getScaledInstance( 1100,900,  java.awt.Image.SCALE_SMOOTH ) ; 
+        Image newimg = img.getScaledInstance( userProcessContainer.getWidth(), userProcessContainer.getHeight(),  java.awt.Image.SCALE_SMOOTH ) ; 
         imageLbl.setIcon(new ImageIcon(newimg));
         
     }

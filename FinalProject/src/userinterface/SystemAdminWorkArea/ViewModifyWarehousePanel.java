@@ -6,6 +6,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.FCWarehouse.FCWarehouse;
+import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    FCWarehouseDirectory fcd;
     public ViewModifyWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -439,8 +441,9 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                         get(selectedRowIndex).getUserAcc()
         );
         // finally delete the user from customer directory*/
-        ecosystem.getFCWDirectory().deleteFCWarehouse(selectedFCW);
-        
+        fcd= ecosystem.getFCWDirectory();
+        fcd.deleteFCWarehouse(selectedFCW);
+        ecosystem.setFCWDirectory(fcd);
         JOptionPane.showMessageDialog(this, "Food Cloud Warehouse deleted Successfully");
         populateWHtable();
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -475,9 +478,12 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
             }
             
         }
-        ecosystem.setFCWDirectory(fcwList);
+       // ecosystem.setFCWDirectory(fcwList);
+        fcd = ecosystem.getFCWDirectory();
+        ecosystem.setFCWDirectory(fcd);
         JOptionPane.showMessageDialog(this, "Food CLoud Warehouse details updated successfully");
         clearfields();
+        populateWHtable();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
@@ -526,12 +532,13 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
            Object[] row = new Object[8];
            row[0] =fcwh;
            row[1] =fcwh.getFcwName();
-           row[2] =fcwh.getFcwPhno();
-           row[3] =fcwh.getFcwAddres();
-           row[4] =fcwh.getFcwCity();
-           row[5] =fcwh.getFcwState();
-           row[6] =fcwh.getFcwZipcode();
-           row[7] =fcwh.getFcwAdmin();
+           row[2] =fcwh.getFcwAdmin();
+           row[3] =fcwh.getFcwPhno();
+           row[4] =fcwh.getFcwAddres();
+           row[5] =fcwh.getFcwCity();
+           row[6] =fcwh.getFcwState();
+           row[7] =fcwh.getFcwZipcode();
+           model.addRow(row);
         } 
     }
     private void clearfields() {

@@ -5,9 +5,13 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.FCWarehouse.FCWarehouse;
+import Business.FCWarehouse.FCWarehouseDirectory;
+import Business.Role.FCAdminRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -26,6 +30,7 @@ public class AddWarehousePanel extends javax.swing.JPanel {
     private Image img;
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    FCWarehouseDirectory fcd;
     public AddWarehousePanel(String img) {
     this(new ImageIcon(img).getImage());
   }
@@ -33,6 +38,9 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        if(ecosystem.getFCWDirectory() == null){
+         ecosystem.setFCWDirectory( new FCWarehouseDirectory());
+        }
         
     }
     
@@ -79,7 +87,6 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblWHid = new javax.swing.JLabel();
         txtWHid = new javax.swing.JTextField();
-        lblWHid1 = new javax.swing.JLabel();
         lblWHid2 = new javax.swing.JLabel();
         lblWHname1 = new javax.swing.JLabel();
         lblWHPhno1 = new javax.swing.JLabel();
@@ -144,7 +151,7 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         });
 
         lblWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHFCAdmin.setText("FoodCloudAdmin*");
+        lblWHFCAdmin.setText("Food Cloud Admin*");
 
         txtWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHFCAdmin.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -200,9 +207,6 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                 txtWHidKeyReleased(evt);
             }
         });
-
-        lblWHid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHid1.setText("fcw");
 
         lblWHid2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
@@ -269,9 +273,7 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblFCApwd2))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblWHid1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtWHid, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtWHid, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblWHid2))))
                             .addGroup(layout.createSequentialGroup()
@@ -288,7 +290,6 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHid)
                     .addComponent(txtWHid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWHid1)
                     .addComponent(lblWHid2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -337,16 +338,19 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                     .addComponent(lblFCApwd2))
                 .addGap(27, 27, 27)
                 .addComponent(btnSubmit)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         if(!nullCheck()){
+        UserAccountDirectory uaList = ecosystem.getUserAccountDirectory();
+        Employee employee = new Employee();
+        employee.setName(txtWHFCAdmin.getText());
         String role = "FCAdmin";
         FCWarehouse fcw=new FCWarehouse();
-       // fcw.setFcwId("fcw"+);
+        fcw.setFcwId("fcw"+txtWHid.getText());
         fcw.setFcwName(txtWHname.getText());
         fcw.setFcwPhno(txtWHPhno.getText());
         fcw.setFcwAddres(txtWHAdd.getText());
@@ -357,9 +361,12 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         UserAccount fcwAccount=new UserAccount();
         fcwAccount.setUsername(txtFCAuname.getText());
         fcwAccount.setPassword(txtFCApwd.getText());
-      //  fcwAccount.setRole(new FCAdminRole());
+       // uaList.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
+        //                ua = usersList.getUserAccount(txtUserName.getText());
         fcw.setFcwAccount(fcwAccount);
-        ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
+       fcd = ecosystem.getFCWDirectory();
+       fcd.addNewFCWarehouse(fcw);
+       ecosystem.setFCWDirectory(fcd);
        JOptionPane.showMessageDialog(this, "Food Cloud Warehouse added successfully!");
        clearfields(); 
         }
@@ -452,7 +459,6 @@ public class AddWarehousePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblWHZip;
     private javax.swing.JLabel lblWHZip1;
     private javax.swing.JLabel lblWHid;
-    private javax.swing.JLabel lblWHid1;
     private javax.swing.JLabel lblWHid2;
     private javax.swing.JLabel lblWHname;
     private javax.swing.JLabel lblWHname1;
