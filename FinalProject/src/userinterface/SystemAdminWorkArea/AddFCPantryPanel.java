@@ -5,6 +5,9 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.FCPantry.FCPantry;
+import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -427,23 +430,23 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         if(!nullCheck()){
-            String role = "FCAdmin";
-            FCPManager fcp=new FCPManager();
+            String role = "FCPManager";
+            FCPantry fcp=new FCPantry();
             // fcw.setFcwId("fcw"+);
-            fcw.setFcwName(txtFCPname.getText());
-            fcw.setFcwPhno(txtFCPPhno.getText());
-            fcw.setFcwAddres(txtFCPAdd.getText());
-            fcw.setFcwCity(txtFCPCity.getText());
-            fcw.setFcwState(txtFCPState.getText());
-            fcw.setFcwZipcode(txtFCPZip.getText());
-            fcw.setFcwAdmin(txtFCPManager.getText());
-            UserAccount fcwAccount=new UserAccount();
-            fcwAccount.setUsername(txtFCPuname.getText());
-            fcwAccount.setPassword(txtFCPpwd.getText());
+            fcp.setFcpName(txtFCPname.getText());
+            fcp.setFcpPhno(txtFCPPhno.getText());
+            fcp.setFcpAddres(txtFCPAdd.getText());
+            fcp.setFcpCity(txtFCPCity.getText());
+            fcp.setFcpState(txtFCPState.getText());
+            fcp.setFcpZipcode(txtFCPZip.getText());
+            fcp.setFcpManager(txtFCPManager.getText());
+            UserAccount fcpAccount=new UserAccount();
+            fcpAccount.setUsername(txtFCPuname.getText());
+            fcpAccount.setPassword(txtFCPpwd.getText());
             //  fcwAccount.setRole(new FCAdminRole());
-            fcw.setFcwAccount(fcwAccount);
+            fcp.setFcpAccount(fcpAccount);
             // ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
-            JOptionPane.showMessageDialog(this, "Food Cloud Warehouse added successfully!");
+            JOptionPane.showMessageDialog(this, "Food Cloud Pantry added successfully!");
             clearfields();
         }
         else{
@@ -489,6 +492,7 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtFCPunameFocusLost
 
+    
     private void txtFCPpwd1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCPpwd1FocusLost
         // TODO add your handling code here:
         if(!(txtFCPpwd.getText().equals(txtFCPpwd1.getText()))){
@@ -551,4 +555,8 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             }
             else return true;
         }
+
+    private void clearfields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
