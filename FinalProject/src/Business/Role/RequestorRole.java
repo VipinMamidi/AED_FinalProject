@@ -17,7 +17,7 @@ import userinterface.RequestorRole.RequestorAreaJPanel;
 public class RequestorRole extends Role{
     
      public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new RequestorAreaJPanel(userProcessContainer, account);
+        return new RequestorAreaJPanel(userProcessContainer,business, account);
     }
     
 }
