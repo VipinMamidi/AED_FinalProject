@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
+import userinterface.SystemAdminWorkArea.AddWarehousePanel;
 
 /**
  *
@@ -246,7 +247,8 @@ public class MainJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        AddWarehousePanel panel = new AddWarehousePanel(
+        new ImageIcon("images/blurbg.png").getImage());
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -258,6 +260,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNewUser;
     private javax.swing.JPanel container;

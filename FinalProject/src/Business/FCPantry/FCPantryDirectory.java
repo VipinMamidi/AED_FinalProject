@@ -24,5 +24,10 @@ public class FCPantryDirectory {
     public void setFcpList(ArrayList<FCPantry> fcpList) {
         this.fcpList = fcpList;
     }
-    
+     public void addNewFCPantry(FCPantry fcp){
+        fcpList.add(fcp);
+    }
+    public void deleteFCPantry(FCPantry selectedfcp){
+        fcpList.remove(fcpList);
+    }
 }

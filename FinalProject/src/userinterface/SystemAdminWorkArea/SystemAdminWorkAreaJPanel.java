@@ -166,6 +166,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnMgPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTActionPerformed
         // TODO add your handling code here:
+        ManagePantryPanel objFCP = new ManagePantryPanel(userProcessContainer,ecosystem);
+        userProcessContainer.add("Manage Pantry",objFCP);
+        CardLayout crdlyt = (CardLayout) userProcessContainer.getLayout();
+        crdlyt.next(userProcessContainer);
     }//GEN-LAST:event_btnMgPTActionPerformed
 
     private void btnMgNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgNGOActionPerformed

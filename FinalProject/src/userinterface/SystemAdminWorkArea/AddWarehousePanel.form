@@ -28,7 +28,7 @@
                       <Component id="lblAddWHTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -46,21 +46,43 @@
                               </Group>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblWHid1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtWHname" min="-2" pref="137" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtWHid" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="lblWHname1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="txtWHname" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="txtWHPhno" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtWHPhno" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblWHPhno1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="txtWHAdd" min="-2" pref="137" max="-2" attributes="0"/>
                                   <Component id="txtWHCity" min="-2" pref="137" max="-2" attributes="0"/>
                                   <Component id="txtWHState" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="txtWHZip" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="txtWHFCAdmin" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtWHZip" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblWHZip1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtWHFCAdmin" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblWHFCAdmin1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="txtFCAuname" min="-2" pref="137" max="-2" attributes="0"/>
                                   <Component id="txtFCApwd" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="txtFCApwd1" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtFCApwd1" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblFCApwd2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblWHid1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtWHid" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblWHid2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -70,7 +92,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="294" max="32767" attributes="0"/>
+              <EmptySpace pref="337" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,21 +101,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="lblAddWHTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblWHid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtWHid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblWHid1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWHid2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblWHname" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtWHname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWHname1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblWHPhno" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtWHPhno" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWHPhno1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -114,11 +139,13 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblWHZip" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtWHZip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWHZip1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblWHFCAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtWHFCAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWHFCAdmin1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -134,10 +161,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtFCApwd1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblFCApwd1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFCApwd2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,6 +196,9 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtWHnameFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWHPhno">
       <Properties>
@@ -186,6 +217,9 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtWHPhnoFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWHAdd">
       <Properties>
@@ -258,6 +292,9 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtWHZipFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWHFCAdmin">
       <Properties>
@@ -276,6 +313,9 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtWHFCAdminFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFCAuname">
       <Properties>
@@ -330,6 +370,9 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFCApwd1FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSubmit">
       <Properties>
@@ -359,6 +402,10 @@
           <Dimension value="[150, 25]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtWHidFocusLost"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtWHidKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWHid1">
       <Properties>
@@ -366,6 +413,48 @@
           <Font name="Times New Roman" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="fcw"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWHid2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWHname1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWHPhno1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWHZip1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWHFCAdmin1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFCApwd2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="14" style="0"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

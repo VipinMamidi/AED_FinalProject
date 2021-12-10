@@ -11,17 +11,17 @@ import javax.swing.JPanel;
  *
  * @author sowmyachinimilli
  */
-public class ManageWarehousePanel extends javax.swing.JPanel {
+public class ManagePantryPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddWarehousePanel
+     * Creates new form ManagePantryPanel
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public ManageWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    public ManagePantryPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
-        this.ecosystem = ecosystem;
         this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -33,27 +33,27 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SplitPaneWH = new javax.swing.JSplitPane();
+        SplitPaneFCP = new javax.swing.JSplitPane();
         SysAdminControlPanel = new javax.swing.JPanel();
-        btnAddWH = new javax.swing.JButton();
-        btnViewWH = new javax.swing.JButton();
+        btnAddFCP = new javax.swing.JButton();
+        btnViewFCP = new javax.swing.JButton();
         SysAdminWorkareaPanel = new javax.swing.JPanel();
 
         SysAdminControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
 
-        btnAddWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnAddWH.setText("Add Warehouse");
-        btnAddWH.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFCP.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnAddFCP.setText("Add FC Pantry");
+        btnAddFCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddWHActionPerformed(evt);
+                btnAddFCPActionPerformed(evt);
             }
         });
 
-        btnViewWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnViewWH.setText("View/Modify");
-        btnViewWH.addActionListener(new java.awt.event.ActionListener() {
+        btnViewFCP.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewFCP.setText("View/Modify");
+        btnViewFCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewWHActionPerformed(evt);
+                btnViewFCPActionPerformed(evt);
             }
         });
 
@@ -64,21 +64,21 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
             .addGroup(SysAdminControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SysAdminControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAddWH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnViewWH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAddFCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewFCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SysAdminControlPanelLayout.setVerticalGroup(
             SysAdminControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SysAdminControlPanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(btnAddWH)
+                .addComponent(btnAddFCP)
                 .addGap(26, 26, 26)
-                .addComponent(btnViewWH)
+                .addComponent(btnViewFCP)
                 .addContainerGap(449, Short.MAX_VALUE))
         );
 
-        SplitPaneWH.setLeftComponent(SysAdminControlPanel);
+        SplitPaneFCP.setLeftComponent(SysAdminControlPanel);
 
         SysAdminWorkareaPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
@@ -93,38 +93,38 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
             .addGap(0, 596, Short.MAX_VALUE)
         );
 
-        SplitPaneWH.setRightComponent(SysAdminWorkareaPanel);
+        SplitPaneFCP.setRightComponent(SysAdminWorkareaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneWH, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneWH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWHActionPerformed
+    private void btnAddFCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFCPActionPerformed
         // TODO add your handling code here:
-        AddWarehousePanel objAddWH = new AddWarehousePanel(userProcessContainer,ecosystem);
-        SplitPaneWH.setRightComponent(objAddWH);
-    }//GEN-LAST:event_btnAddWHActionPerformed
+        AddFCPantryPanel objAddFCP = new AddFCPantryPanel(userProcessContainer,ecosystem);
+        SplitPaneFCP.setRightComponent(objAddFCP);
+    }//GEN-LAST:event_btnAddFCPActionPerformed
 
-    private void btnViewWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWHActionPerformed
+    private void btnViewFCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewFCPActionPerformed
         // TODO add your handling code here:
-        ViewModifyWarehousePanel objViewModWH = new ViewModifyWarehousePanel(userProcessContainer,ecosystem);
-        SplitPaneWH.setRightComponent(objViewModWH);
-    }//GEN-LAST:event_btnViewWHActionPerformed
+        ViewModifyPantryPanel objViewFCP = new ViewModifyPantryPanel(userProcessContainer,ecosystem);
+        SplitPaneFCP.setRightComponent(objViewFCP);
+    }//GEN-LAST:event_btnViewFCPActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSplitPane SplitPaneWH;
+    private javax.swing.JSplitPane SplitPaneFCP;
     private javax.swing.JPanel SysAdminControlPanel;
     private javax.swing.JPanel SysAdminWorkareaPanel;
-    private javax.swing.JButton btnAddWH;
-    private javax.swing.JButton btnViewWH;
+    private javax.swing.JButton btnAddFCP;
+    private javax.swing.JButton btnViewFCP;
     // End of variables declaration//GEN-END:variables
 }
