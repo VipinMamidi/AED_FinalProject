@@ -5,6 +5,7 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.UserAccount.UserAccount;
@@ -182,6 +183,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         lblFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFCAuname.setText("FCAdmin Username");
 
+        txtFCAuname.setEditable(false);
         txtFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCAuname.setPreferredSize(new java.awt.Dimension(150, 25));
 
@@ -470,10 +472,16 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 f.setFcwState(txtWHState.getText());
                 f.setFcwZipcode(txtWHZip.getText());
                 f.setFcwAdmin(txtWHFCAdmin.getText());
-                UserAccount WHua=new UserAccount();
-                WHua.setUsername(txtFCAuname.getText());
-                WHua.setPassword(txtFCApwd.getText());
-                f.setFcwAccount(WHua);
+                //UserAccount WHua=new UserAccount();
+                //WHua.setUsername(txtFCAuname.getText());
+                //WHua.setPassword(txtFCApwd.getText());
+                if(f.getFcwAccount().getUsername().equals(txtFCAuname.getText())){
+                    Employee emp=new Employee();
+                    emp.setName(txtWHFCAdmin.getText());
+                    f.getFcwAccount().setPassword(txtFCApwd.getText());
+                    f.getFcwAccount().setEmployee(emp);
+                }
+                //f.setFcwAccount(WHua);
                break;
             }
             

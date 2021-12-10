@@ -9,6 +9,7 @@ package Business;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
+import Business.FCPantry.FCPantryDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.Requestor.RequestorDirectory;
@@ -35,7 +36,8 @@ public class EcoSystem extends Organization{
     private RequestorDirectory reqDir;
     private DonorDirectory donDir;
     private FCWarehouseDirectory fcwDir;
-    
+    private FCPantryDirectory fcpDir;
+    private UserAccountDirectory uaDir;
 
     public static EcoSystem getBusiness() {
         return business;
@@ -46,12 +48,14 @@ public class EcoSystem extends Organization{
     }
     
 
-    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir) {
+    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir)/*, FCPantryDirectory fcpDir,
+            UserAccountDirectory uaDir)*/ {
 
         this.reqDir = reqDir;
         this.donDir = donDir;
         this.fcwDir = fcwDir;
-       
+       // this.fcpDir = fcpDir;
+       // this.uaDir = uaDir;
     }
 
     public RequestorDirectory getReqDir() {
@@ -91,6 +95,8 @@ public class EcoSystem extends Organization{
          this.reqDir =  new RequestorDirectory();
         this.donDir = new DonorDirectory();
         this.fcwDir = new FCWarehouseDirectory();
+        this.fcpDir = new FCPantryDirectory();
+        this.uaDir = new UserAccountDirectory();
        // networkList=new ArrayList<Network>();
     }
 
@@ -112,5 +118,14 @@ public class EcoSystem extends Organization{
     }
     public void setFCWDirectory(FCWarehouseDirectory fcd){
         this.fcwDir = fcd;
+    }
+    public FCPantryDirectory getFCPDirectory(){
+        return fcpDir;
+    }
+    public void setFCPDirectory(FCPantryDirectory fcp){
+        this.fcpDir = fcp;
+    }
+    public void setUserAccountDirectory(UserAccountDirectory uad){
+        this.uaDir=uad;
     }
 }

@@ -361,8 +361,9 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         UserAccount fcwAccount=new UserAccount();
         fcwAccount.setUsername(txtFCAuname.getText());
         fcwAccount.setPassword(txtFCApwd.getText());
-       // uaList.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
-        //                ua = usersList.getUserAccount(txtUserName.getText());
+        fcwAccount.setRole(new FCAdminRole());
+        fcwAccount.setEmployee(employee);
+        uaList.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
         fcw.setFcwAccount(fcwAccount);
        fcd = ecosystem.getFCWDirectory();
        fcd.addNewFCWarehouse(fcw);

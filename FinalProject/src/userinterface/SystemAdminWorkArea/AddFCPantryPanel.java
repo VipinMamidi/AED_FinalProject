@@ -5,8 +5,12 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.FCPantry.FCPantry;
+import Business.FCPantry.FCPantryDirectory;
+import Business.Role.FCPManagerRole;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,10 +25,14 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    FCPantryDirectory fcpd;
     public AddFCPantryPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        if(ecosystem.getFCPDirectory() == null){
+         ecosystem.setFCPDirectory( new FCPantryDirectory());
+        }
     }
 
     /**
@@ -430,9 +438,13 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         if(!nullCheck()){
+            UserAccountDirectory uaList = ecosystem.getUserAccountDirectory();
+            Employee employee = new Employee();
+            employee.setName(txtFCPname.getText());
             String role = "FCPManager";
             FCPantry fcp=new FCPantry();
-            // fcw.setFcwId("fcw"+);
+            fcp.setFcpId("fcp"+txtFCPid.getText());
+            fcp.setFcpWHname(txtWHfcpname.getText());
             fcp.setFcpName(txtFCPname.getText());
             fcp.setFcpPhno(txtFCPPhno.getText());
             fcp.setFcpAddres(txtFCPAdd.getText());
@@ -443,8 +455,16 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             UserAccount fcpAccount=new UserAccount();
             fcpAccount.setUsername(txtFCPuname.getText());
             fcpAccount.setPassword(txtFCPpwd.getText());
-            //  fcpAccount.setRole(new FCAdminRole());
+            fcpAccount.setRole(new FCPManagerRole());
+            fcpAccount.setEmployee(employee);
+            uaList.createUserAccount(txtFCPuname.getText(), txtFCPpwd.getText(), employee, new FCPManagerRole());
             fcp.setFcpAccount(fcpAccount);
+            fcpd = ecosystem.getFCPDirectory();
+            fcpd.addNewFCPantry(fcp);
+            ecosystem.setFCPDirectory(fcpd);
+            
+            //  fcpAccount.setRole(new FCAdminRole());
+            //fcp.setFcpAccount(fcpAccount);
            // ecosystem.getFCPDirectory().addNewFCPantry(fcp);
             JOptionPane.showMessageDialog(this, "Food Cloud Pantry added successfully!");
             clearfields();
@@ -557,7 +577,9 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
         }
 
     private void clearfields() {
+        txtFCPid.setText("");
         txtFCPname.setText("");
+        txtWHfcpname.setText("");
         txtFCPPhno.setText("");
         txtFCPAdd.setText("");
         txtFCPCity.setText("");

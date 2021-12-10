@@ -28,6 +28,6 @@ public class FCPantryDirectory {
         fcpList.add(fcp);
     }
     public void deleteFCPantry(FCPantry selectedfcp){
-        fcpList.remove(fcpList);
+        fcpList.remove(selectedfcp);
     }
 }
