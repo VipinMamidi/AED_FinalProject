@@ -5,7 +5,9 @@
 package userinterface.Signup;
 
 import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
 import Business.DB4OUtil.DB4OUtil;
+import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.Donor;
 import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
@@ -13,6 +15,7 @@ import Business.Employee.Employee;
 import Business.Requestor.Requestor;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.Restaurant;
+import Business.Restaurant.RestaurantDirectory;
 import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 
@@ -50,6 +53,18 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
     public boolean isNotValid = false;
 
     public SignupWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) throws IOException {
+        
+        this.ecosystem = ecosystem;
+        this.userProcessContainer = userProcessContainer;
+
+        if (ecosystem.getReqDir()== null) {
+            ecosystem.setReqDir(new RequestorDirectory());
+        }
+        if (ecosystem.getDonDir()== null) {
+            ecosystem.setDonDir(new DonorDirectory());
+        }
+       
+        
         initComponents();
 
         Image img = ImageIO.read(getClass().getResource("/Images/unnamed.png"));
