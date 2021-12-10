@@ -4,6 +4,16 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import Business.FCWarehouse.FCWarehouse;
+import Business.Role.Role;
+import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author sowmyachinimilli
@@ -13,10 +23,29 @@ public class AddWarehousePanel extends javax.swing.JPanel {
     /**
      * Creates new form AddWarehousePanel
      */
-    public AddWarehousePanel() {
+    private Image img;
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public AddWarehousePanel(String img) {
+    this(new ImageIcon(img).getImage());
+  }
+    public AddWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        
     }
-
+    
+    public AddWarehousePanel(Image img) {
+    this.img = img;
+    Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+    setPreferredSize(size);
+    setMinimumSize(size);
+    setMaximumSize(size);
+    setSize(size);
+    setLayout(null);
+  }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,73 +76,145 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         txtFCApwd = new javax.swing.JTextField();
         lblFCApwd1 = new javax.swing.JLabel();
         txtFCApwd1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
+        lblWHid = new javax.swing.JLabel();
+        txtWHid = new javax.swing.JTextField();
+        lblWHid1 = new javax.swing.JLabel();
+        lblWHid2 = new javax.swing.JLabel();
+        lblWHname1 = new javax.swing.JLabel();
+        lblWHPhno1 = new javax.swing.JLabel();
+        lblWHZip1 = new javax.swing.JLabel();
+        lblWHFCAdmin1 = new javax.swing.JLabel();
+        lblFCApwd2 = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(840, 600));
 
         lblAddWHTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblAddWHTitle.setText("Add Warehouse");
 
         lblWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHname.setText("Name");
+        lblWHname.setText("Warehouse Name*");
 
         txtWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHname.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHnameFocusLost(evt);
+            }
+        });
 
         lblWHPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHPhno.setText("Phone Number");
+        lblWHPhno.setText("Phone Number*");
 
         txtWHPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHPhno.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHPhno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHPhnoFocusLost(evt);
+            }
+        });
 
         lblWHAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHAdd.setText("Address");
+        lblWHAdd.setText("Address*");
 
         txtWHAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHAdd.setPreferredSize(new java.awt.Dimension(150, 25));
 
         lblWHCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHCity.setText("City");
+        lblWHCity.setText("City*");
 
         txtWHCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHCity.setPreferredSize(new java.awt.Dimension(150, 25));
 
         lblWHState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHState.setText("State");
+        lblWHState.setText("State*");
 
         txtWHState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHState.setPreferredSize(new java.awt.Dimension(150, 25));
 
         lblWHZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHZip.setText("Zipcode");
+        lblWHZip.setText("Zipcode*");
 
         txtWHZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHZip.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHZip.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHZipFocusLost(evt);
+            }
+        });
 
         lblWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblWHFCAdmin.setText("FoodCloudAdmin");
+        lblWHFCAdmin.setText("FoodCloudAdmin*");
 
         txtWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHFCAdmin.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHFCAdmin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHFCAdminFocusLost(evt);
+            }
+        });
 
         lblFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFCAuname.setText("FCAdmin Username");
+        lblFCAuname.setText("FCAdmin Username*");
 
         txtFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCAuname.setPreferredSize(new java.awt.Dimension(150, 25));
 
         lblFCApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFCApwd.setText("Password");
+        lblFCApwd.setText("Password*");
 
         txtFCApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCApwd.setPreferredSize(new java.awt.Dimension(150, 25));
 
         lblFCApwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFCApwd1.setText("Confirm Password");
+        lblFCApwd1.setText("Confirm Password*");
 
         txtFCApwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCApwd1.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtFCApwd1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFCApwd1FocusLost(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton1.setText("Submit");
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        lblWHid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblWHid.setText("Warehouse Id*");
+
+        txtWHid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtWHid.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtWHid.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtWHidFocusLost(evt);
+            }
+        });
+        txtWHid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtWHidKeyReleased(evt);
+            }
+        });
+
+        lblWHid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblWHid1.setText("fcw");
+
+        lblWHid2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblWHname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblWHPhno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblWHZip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblWHFCAdmin1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblFCApwd2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,51 +223,83 @@ public class AddWarehousePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
+                        .addGap(355, 355, 355)
                         .addComponent(lblAddWHTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblWHPhno)
-                            .addComponent(lblWHname)
-                            .addComponent(lblWHAdd)
-                            .addComponent(lblWHCity)
-                            .addComponent(lblWHState)
-                            .addComponent(lblWHZip)
-                            .addComponent(lblFCAuname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblWHFCAdmin)
-                            .addComponent(lblFCApwd)
-                            .addComponent(lblFCApwd1))
-                        .addGap(40, 40, 40)
+                        .addGap(197, 197, 197)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHCity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHState, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFCAuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFCApwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFCApwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jButton1)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblWHPhno)
+                                    .addComponent(lblWHAdd)
+                                    .addComponent(lblWHCity)
+                                    .addComponent(lblWHState)
+                                    .addComponent(lblWHZip)
+                                    .addComponent(lblFCAuname, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFCApwd)
+                                    .addComponent(lblFCApwd1)
+                                    .addComponent(lblWHFCAdmin)
+                                    .addComponent(lblWHname)
+                                    .addComponent(lblWHid))
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWHname1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWHPhno1))
+                                    .addComponent(txtWHAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtWHCity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtWHState, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWHZip1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWHFCAdmin1))
+                                    .addComponent(txtFCAuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFCApwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtFCApwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblFCApwd2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblWHid1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtWHid, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWHid2))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(btnSubmit)))))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(lblAddWHTitle)
-                .addGap(21, 21, 21)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWHid)
+                    .addComponent(txtWHid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWHid1)
+                    .addComponent(lblWHid2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHname)
-                    .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWHname1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHPhno)
-                    .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWHPhno1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHAdd)
@@ -182,11 +315,13 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHZip)
-                    .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWHZip1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWHFCAdmin)
-                    .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWHFCAdmin1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFCAuname)
@@ -198,27 +333,129 @@ public class AddWarehousePanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFCApwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFCApwd1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(lblFCApwd1)
+                    .addComponent(lblFCApwd2))
+                .addGap(27, 27, 27)
+                .addComponent(btnSubmit)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        if(!nullCheck()){
+        String role = "FCAdmin";
+        FCWarehouse fcw=new FCWarehouse();
+       // fcw.setFcwId("fcw"+);
+        fcw.setFcwName(txtWHname.getText());
+        fcw.setFcwPhno(txtWHPhno.getText());
+        fcw.setFcwAddres(txtWHAdd.getText());
+        fcw.setFcwCity(txtWHCity.getText());
+        fcw.setFcwState(txtWHState.getText());
+        fcw.setFcwZipcode(txtWHZip.getText());
+        fcw.setFcwAdmin(txtWHFCAdmin.getText());
+        UserAccount fcwAccount=new UserAccount();
+        fcwAccount.setUsername(txtFCAuname.getText());
+        fcwAccount.setPassword(txtFCApwd.getText());
+      //  fcwAccount.setRole(new FCAdminRole());
+        fcw.setFcwAccount(fcwAccount);
+        ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
+       JOptionPane.showMessageDialog(this, "Food Cloud Warehouse added successfully!");
+       clearfields(); 
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please make sure that you have filled all mandatory fields");
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtWHidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWHidKeyReleased
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_txtWHidKeyReleased
+
+    private void txtWHidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHidFocusLost
+        // TODO add your handling code here:
+        if((txtWHid.getText().matches("^[a-zA-Z]*$"))){
+            lblWHid2.setText("Invalid input. Please enter only numbers");
+        }
+        else{
+            lblWHid2.setText("");
+        }
+    }//GEN-LAST:event_txtWHidFocusLost
+
+    private void txtWHnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHnameFocusLost
+        // TODO add your handling code here:
+        if(!(txtWHname.getText().matches("^[a-zA-Z]*$"))){
+            lblWHname1.setText("Invalid input. Please enter only alphabets");
+        }
+        else{
+            lblWHname1.setText("");
+        }
+    }//GEN-LAST:event_txtWHnameFocusLost
+
+    private void txtWHPhnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHPhnoFocusLost
+        // TODO add your handling code here:
+        if(!(txtWHPhno.getText().matches("^[0-9]*$")) || !(txtWHPhno.getText().length()==10)) {
+                lblWHPhno1.setText("Please enter a valid phone number");
+        }
+        else{
+             lblWHPhno1.setText("");
+            
+        }
+    }//GEN-LAST:event_txtWHPhnoFocusLost
+
+    private void txtWHZipFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHZipFocusLost
+        // TODO add your handling code here:
+        if((txtWHZip.getText().matches("^[a-zA-Z]*$"))){
+            lblWHZip1.setText("Invalid input. Please enter only numbers");
+        }
+        else{
+            lblWHZip1.setText("");
+        }
+    }//GEN-LAST:event_txtWHZipFocusLost
+
+    private void txtWHFCAdminFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWHFCAdminFocusLost
+        // TODO add your handling code here:
+        if(!(txtWHFCAdmin.getText().matches("^[a-zA-Z]*$"))){
+            lblWHFCAdmin1.setText("Invalid input. Please enter only alphabets.");
+        }
+        else{
+            lblWHFCAdmin1.setText("");
+        }
+    }//GEN-LAST:event_txtWHFCAdminFocusLost
+
+    private void txtFCApwd1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCApwd1FocusLost
+        // TODO add your handling code here:
+        if(!(txtFCApwd.getText().equals(txtFCApwd1.getText()))){
+            lblFCApwd2.setText("Password Mismatch. Please verify the password entered.");
+        }
+        else{
+            lblFCApwd2.setText("");
+        }
+    }//GEN-LAST:event_txtFCApwd1FocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblAddWHTitle;
     private javax.swing.JLabel lblFCApwd;
     private javax.swing.JLabel lblFCApwd1;
+    private javax.swing.JLabel lblFCApwd2;
     private javax.swing.JLabel lblFCAuname;
     private javax.swing.JLabel lblWHAdd;
     private javax.swing.JLabel lblWHCity;
     private javax.swing.JLabel lblWHFCAdmin;
+    private javax.swing.JLabel lblWHFCAdmin1;
     private javax.swing.JLabel lblWHPhno;
+    private javax.swing.JLabel lblWHPhno1;
     private javax.swing.JLabel lblWHState;
     private javax.swing.JLabel lblWHZip;
+    private javax.swing.JLabel lblWHZip1;
+    private javax.swing.JLabel lblWHid;
+    private javax.swing.JLabel lblWHid1;
+    private javax.swing.JLabel lblWHid2;
     private javax.swing.JLabel lblWHname;
+    private javax.swing.JLabel lblWHname1;
     private javax.swing.JTextField txtFCApwd;
     private javax.swing.JTextField txtFCApwd1;
     private javax.swing.JTextField txtFCAuname;
@@ -228,6 +465,33 @@ public class AddWarehousePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtWHPhno;
     private javax.swing.JTextField txtWHState;
     private javax.swing.JTextField txtWHZip;
+    private javax.swing.JTextField txtWHid;
     private javax.swing.JTextField txtWHname;
     // End of variables declaration//GEN-END:variables
+
+    private void clearfields() {
+        txtWHid.setText("");
+        txtWHname.setText("");
+        txtWHPhno.setText("");
+        txtWHAdd.setText("");
+        txtWHCity.setText("");
+        txtWHState.setText("");
+        txtWHZip.setText("");
+        txtWHFCAdmin.setText("");
+        txtFCAuname.setText("");
+        txtFCApwd.setText("");
+        txtFCApwd1.setText("");
+    }
+
+    private boolean nullCheck() {
+        if(txtWHid.getText().length()!=0 && txtWHname.getText().length()!=0 && txtWHPhno.getText().length()!=0 
+                && txtWHAdd.getText().length()!=0 && txtWHCity.getText().length()!=0 && txtWHState.getText().length()!=0
+                && txtWHZip.getText().length()!=0 && txtWHFCAdmin.getText().length()!=0 && txtFCAuname.getText().length()!=0
+                && txtFCApwd.getText().length()!=0 && txtFCApwd1.getText().length()!=0)
+        {
+            return false;
+        }
+        else return true;
+    }
+   
 }

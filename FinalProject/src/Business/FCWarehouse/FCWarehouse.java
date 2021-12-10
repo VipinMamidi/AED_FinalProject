@@ -94,5 +94,8 @@ public class FCWarehouse {
     public void setFcwAccount(UserAccount fcwAccount) {
         this.fcwAccount = fcwAccount;
     }
-    
+   @Override
+    public String toString(){
+        return fcwId;
+    }
 }

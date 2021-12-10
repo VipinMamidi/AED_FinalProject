@@ -20,5 +20,10 @@ public class FCWarehouseDirectory {
     public void setFcwList(ArrayList<FCWarehouse> fcwList) {
         this.fcwList = fcwList;
     }
-    
+    public void addNewFCWarehouse(FCWarehouse fcw){
+        fcwList.add(fcw);
+    }
+    public void deleteFCWarehouse(FCWarehouse selectedfcw){
+        fcwList.remove(fcwList);
+    }
 }

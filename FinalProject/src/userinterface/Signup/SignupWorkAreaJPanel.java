@@ -4,12 +4,33 @@
  */
 package userinterface.Signup;
 
+import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
+import Business.DB4OUtil.DB4OUtil;
+import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donor.Donor;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Requestor.Requestor;
+import Business.Requestor.RequestorDirectory;
+import Business.Restaurant.Restaurant;
+import Business.Restaurant.RestaurantDirectory;
+import Business.Role.AdminRole;
+import Business.Role.CustomerRole;
+
+import Business.Role.DonorRole;
+import Business.Role.RequestorRole;
+
+import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.Image;
 import java.awt.Insets;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -23,17 +44,37 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecosystem;
     JPanel userProcessContainer;
-    
-    public SignupWorkAreaJPanel( JPanel userProcessContainer, EcoSystem ecosystem ) throws IOException {
+    UserAccount ua;
+    RequestorDirectory rd;
+    Requestor req;
+    Donor don;
+    DonorDirectory dd;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    public boolean isNotValid = false;
+
+    public SignupWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) throws IOException {
+        
+        this.ecosystem = ecosystem;
+        this.userProcessContainer = userProcessContainer;
+
+        if (ecosystem.getReqDir()== null) {
+            ecosystem.setReqDir(new RequestorDirectory());
+        }
+        if (ecosystem.getDonDir()== null) {
+            ecosystem.setDonDir(new DonorDirectory());
+        }
+       
+        
         initComponents();
 
         Image img = ImageIO.read(getClass().getResource("/Images/unnamed.png"));
-        Image newimg = img.getScaledInstance( 39,41,  java.awt.Image.SCALE_SMOOTH ) ;  
-       // icon = new ImageIcon( newimg );
+        Image newimg = img.getScaledInstance(39, 41, java.awt.Image.SCALE_SMOOTH);
+
         btnHome.setIcon(new ImageIcon(newimg));
-        // to remote the spacing between the image and button's borders
-        //btnHome.setMargin(new Insets(0, 0, 0, 0));
-        //btnHome.setBorder(null);
+
+        rdInd.setSelected(true);
+        rdPanel.setVisible(true);
+
     }
 
     /**
@@ -47,14 +88,240 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        lblAge = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        lblGender = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtuserAddrss1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtUserCity = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtZipCode = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtUserPhn = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtPwd = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtCnfPwd = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        cmbLoginType = new javax.swing.JComboBox<>();
+        cmbGender = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        txtState = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        rdPanel = new javax.swing.JPanel();
+        rdRes = new javax.swing.JRadioButton();
+        rdInd = new javax.swing.JRadioButton();
+        rdOr = new javax.swing.JRadioButton();
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setText("Name :");
 
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
             }
         });
+
+        txtName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
+            }
+        });
+
+        lblAge.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblAge.setText("Age :");
+
+        txtAge.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtAge.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAgeFocusLost(evt);
+            }
+        });
+
+        lblGender.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblGender.setText("Gender :");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setText("Address :");
+
+        txtuserAddrss1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtuserAddrss1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtuserAddrss1FocusLost(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setText("City :");
+
+        txtUserCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtUserCity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserCityFocusLost(evt);
+            }
+        });
+        txtUserCity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserCityActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setText("Zip Code :");
+
+        txtZipCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtZipCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtZipCodeFocusLost(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setText("Phone No. :");
+
+        txtUserPhn.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtUserPhn.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserPhnFocusLost(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setText("User Name :");
+
+        txtUserName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setText("Password :");
+
+        txtPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtPwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPwdFocusLost(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setText("Confirm Password :");
+
+        txtCnfPwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtCnfPwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCnfPwdFocusLost(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setText(" Email : ");
+
+        txtEmail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setText("I am a :");
+
+        cmbLoginType.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cmbLoginType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Food Donor", "Food Requestor" }));
+        cmbLoginType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLoginTypeActionPerformed(evt);
+            }
+        });
+
+        cmbGender.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Others" }));
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setText("State :");
+
+        txtState.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtStateFocusLost(evt);
+            }
+        });
+
+        btnSave.setBackground(new java.awt.Color(102, 255, 102));
+        btnSave.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnSave.setText("Create");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnClear.setBackground(new java.awt.Color(255, 51, 51));
+        btnClear.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        rdRes.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rdRes.setText("Restaurant");
+        rdRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdResActionPerformed(evt);
+            }
+        });
+
+        rdInd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rdInd.setText("Individual");
+        rdInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdIndActionPerformed(evt);
+            }
+        });
+
+        rdOr.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        rdOr.setText("Organisation");
+        rdOr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdOrActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout rdPanelLayout = new javax.swing.GroupLayout(rdPanel);
+        rdPanel.setLayout(rdPanelLayout);
+        rdPanelLayout.setHorizontalGroup(
+            rdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rdPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rdRes)
+                .addGap(18, 18, 18)
+                .addComponent(rdOr)
+                .addGap(18, 18, 18)
+                .addComponent(rdInd)
+                .addContainerGap())
+        );
+        rdPanelLayout.setVerticalGroup(
+            rdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rdPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(rdPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdRes)
+                    .addComponent(rdOr)
+                    .addComponent(rdInd))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,31 +330,614 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(416, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(65, 65, 65)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblAge)
+                                        .addComponent(jLabel1)
+                                        .addComponent(lblGender)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel13))
+                                    .addGap(41, 41, 41)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtName)
+                                        .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                        .addComponent(txtuserAddrss1)
+                                        .addComponent(txtUserCity)
+                                        .addComponent(cmbGender, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtState)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(69, 69, 69)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(41, 41, 41)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtUserPhn)
+                                        .addComponent(txtUserName)
+                                        .addComponent(txtPwd)
+                                        .addComponent(txtCnfPwd)
+                                        .addComponent(txtZipCode)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(117, 117, 117)
+                                    .addComponent(btnSave)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnClear)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(148, 148, 148)
+                                .addComponent(jLabel12)
+                                .addGap(41, 41, 41)
+                                .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSave});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbGender, txtAge, txtName, txtuserAddrss1});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(cmbLoginType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rdPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAge)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGender)
+                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtuserAddrss1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtUserCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtUserPhn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8))
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCnfPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnClear))
+                .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClear, btnSave});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void txtUserCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserCityActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        clearFields();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        isNotValid = false;
+        isNotValid = mandatoryValidations();
+        if (isNotValid) {
+            return;
+        }
+
+        if (nameValidation()) {
+            return;
+        }
+        if (ageValidation()) {
+            return;
+        }
+        if (addressValidation()) {
+            return;
+        }
+        if (cityValidation()) {
+            return;
+        }
+        if (stateValidation()) {
+            return;
+        }
+        if (zipValidation()) {
+            return;
+        }
+        if (phnValidation()) {
+            return;
+        }
+        if (userNameValidation()) {
+            return;
+        }
+        if (pwdValidation()) {
+            return;
+        }
+        if (cnfPwdValidation()) {
+            return;
+        }
+        if (emailValidation()) {
+            return;
+        }
+
+        UserAccountDirectory usersList = ecosystem.getUserAccountDirectory();
+        String role = (String) cmbLoginType.getSelectedItem();
+        Employee employee = new Employee();
+        employee.setName(txtName.getText());
+        boolean userDoNotExists = true;
+        ArrayList<UserAccount> users = usersList.getUserAccountList();
+        for (UserAccount ua : users) {
+            if (ua.getUsername().equals(txtUserName.getText())) {
+                userDoNotExists = false;
+            }
+        }
+
+        if (userDoNotExists) {
+            if (txtPwd.getText().equals(txtCnfPwd.getText())) {
+                switch (role) {
+                    case "Food Requestor":
+                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new RequestorRole());
+                        ua = usersList.getUserAccount(txtUserName.getText());
+                        req = new Requestor(ua);
+                        req.setReqType(getReqType());
+                        req.setReqName(txtName.getText());
+                        req.setReqAddres(txtuserAddrss1.getText());
+                        req.setReqCity(txtUserCity.getText());
+                        req.setReqState(txtState.getText());
+                        req.setReqEmail(txtEmail.getText());
+                        req.setReqPhno(Long.parseLong(txtUserPhn.getText()));
+                        req.setReqZipcode(txtZipCode.getText());
+                        req.setReqUserName(txtUserName.getText());
+                        req.setReqPwd(txtPwd.getText());
+
+                        rd = ecosystem.getReqDir();
+                        rd.addReqDir(req);
+                        ecosystem.setReqDir(rd);
+                        break;
+
+                    case "Food Donor":
+                        usersList.createUserAccount(txtUserName.getText(), txtPwd.getText(), employee, new DonorRole());
+                        ua = usersList.getUserAccount(txtUserName.getText());
+                        don = new Donor(ua);
+                        don.setDonorType(role);
+
+                        don.setDonorName(txtName.getText());
+                        don.setDonorAddres(txtuserAddrss1.getText());
+                        don.setDonorCity(txtUserCity.getText());
+                        don.setDonorState(txtState.getText());
+                        don.setDonorEmail(txtEmail.getText());
+                        don.setDonorPhno(txtUserPhn.getText());
+                        don.setDonorZipcode(txtZipCode.getText());
+                        don.setDonPwd(txtUserName.getText());
+                        don.setDonPwd(txtPwd.getText());
+
+                        dd = ecosystem.getDonDir();
+                        dd.addDonDir(don);
+                        ecosystem.setDonDir(dd);
+                        break;
+                    default:
+                        break;
+
+                }
+                
+                JOptionPane.showMessageDialog(this, "User created");
+
+                clearFields();
+            } else {
+                JOptionPane.showMessageDialog(this, "Password and confirm password does not match");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "UserName already exist");
+        }
+
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void rdResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdResActionPerformed
+        // TODO add your handling code here:
+        if (rdRes.isSelected()) {
+            rdOr.setSelected(false);
+            rdInd.setSelected(false);
+
+            txtAge.setEditable(false);
+            txtAge.setEnabled(false);
+            cmbGender.setEditable(false);
+            cmbGender.setEnabled(false);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
+        }
+
+
+    }//GEN-LAST:event_rdResActionPerformed
+
+    private void rdOrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdOrActionPerformed
+        // TODO add your handling code here:
+        if (rdOr.isSelected()) {
+            rdRes.setSelected(false);
+            rdInd.setSelected(false);
+
+            txtAge.setEditable(false);
+            txtAge.setEnabled(false);
+            cmbGender.setEditable(false);
+            cmbGender.setEnabled(false);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
+        }
+    }//GEN-LAST:event_rdOrActionPerformed
+
+    private void rdIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdIndActionPerformed
+        // TODO add your handling code here:
+        if (rdInd.isSelected()) {
+            rdOr.setSelected(false);
+            rdRes.setSelected(false);
+
+            txtAge.setEditable(true);
+            txtAge.setEnabled(true);
+            cmbGender.setEditable(true);
+            cmbGender.setEnabled(true);
+        } else if (rdRes.isSelected() == false && rdOr.isSelected() == false && rdInd.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Please Provide Donor Type!!");
+        }
+    }//GEN-LAST:event_rdIndActionPerformed
+
+    private void cmbLoginTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLoginTypeActionPerformed
+        // TODO add your handling code here:
+
+        if (cmbLoginType.getSelectedIndex() == 0) {
+            // rdPanel.setVisible(true);
+            rdRes.setVisible(true);
+            rdOr.setText("Organization");
+
+        } else {
+            // rdPanel.setVisible(false);
+            rdRes.setVisible(false);
+            rdOr.setText("Orphanage/Old Age Home");
+
+        }
+
+    }//GEN-LAST:event_cmbLoginTypeActionPerformed
+
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        // TODO add your handling code here:
+        nameValidation();
+    }//GEN-LAST:event_txtNameFocusLost
+
+    private void txtAgeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAgeFocusLost
+        // TODO add your handling code here:
+        ageValidation();
+    }//GEN-LAST:event_txtAgeFocusLost
+
+    private void txtuserAddrss1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtuserAddrss1FocusLost
+        // TODO add your handling code here:
+        addressValidation();
+    }//GEN-LAST:event_txtuserAddrss1FocusLost
+
+    private void txtUserCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserCityFocusLost
+        // TODO add your handling code here:
+        cityValidation();
+    }//GEN-LAST:event_txtUserCityFocusLost
+
+    private void txtStateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtStateFocusLost
+        // TODO add your handling code here:
+        stateValidation();
+    }//GEN-LAST:event_txtStateFocusLost
+
+    private void txtZipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtZipCodeFocusLost
+        // TODO add your handling code here:
+        zipValidation();
+    }//GEN-LAST:event_txtZipCodeFocusLost
+
+    private void txtUserPhnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserPhnFocusLost
+        // TODO add your handling code here:
+        phnValidation();
+    }//GEN-LAST:event_txtUserPhnFocusLost
+
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        // TODO add your handling code here:
+        userNameValidation();
+    }//GEN-LAST:event_txtUserNameFocusLost
+
+    private void txtPwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPwdFocusLost
+        // TODO add your handling code here:
+        pwdValidation();
+    }//GEN-LAST:event_txtPwdFocusLost
+
+    private void txtCnfPwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCnfPwdFocusLost
+        // TODO add your handling code here:
+        cnfPwdValidation();
+    }//GEN-LAST:event_txtCnfPwdFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        emailValidation();
+    }//GEN-LAST:event_txtEmailFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbGender;
+    private javax.swing.JComboBox<String> cmbLoginType;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JRadioButton rdInd;
+    private javax.swing.JRadioButton rdOr;
+    private javax.swing.JPanel rdPanel;
+    private javax.swing.JRadioButton rdRes;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtCnfPwd;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPwd;
+    private javax.swing.JTextField txtState;
+    private javax.swing.JTextField txtUserCity;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserPhn;
+    private javax.swing.JTextField txtZipCode;
+    private javax.swing.JTextField txtuserAddrss1;
     // End of variables declaration//GEN-END:variables
+
+    private boolean mandatoryValidations() {
+        if (txtName.getText().isEmpty() || txtName.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide Name!!");
+            return true;
+        }
+
+        if (txtAge.isVisible()) {
+            if (txtAge.getText().isEmpty() || txtAge.getText() == "") {
+                JOptionPane.showMessageDialog(this, "Please Provide Age!!");
+                return true;
+            }
+        }
+
+        if (txtuserAddrss1.getText().isEmpty() || txtuserAddrss1.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide Address!!");
+            return true;
+        }
+
+        if (txtUserCity.getText().isEmpty() || txtUserCity.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide City!!");
+            return true;
+        }
+
+        if (txtState.getText().isEmpty() || txtState.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide State!!");
+            return true;
+        }
+
+        if (txtZipCode.getText().isEmpty() || txtZipCode.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide ZipCode!!");
+            return true;
+        }
+
+        if (txtUserPhn.getText().isEmpty() || txtUserPhn.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide Phone No!!");
+            return true;
+        }
+        if (txtUserName.getText().isEmpty() || txtUserName.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide User Name!!");
+            return true;
+        }
+        if (txtPwd.getText().isEmpty() || txtPwd.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide Password!!");
+            return true;
+        }
+        if (txtCnfPwd.getText().isEmpty() || txtCnfPwd.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please  Confirm Password!!");
+            return true;
+        }
+        if (txtEmail.getText().isEmpty() || txtEmail.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Please Provide Email!!");
+            return true;
+        }
+
+        if (!rdRes.isSelected() && !rdOr.isSelected() && !rdInd.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Please Provide Resident Address!!");
+            return true;
+        }
+
+        return isNotValid;
+    }
+
+    private boolean nameValidation() {
+        isNotValid = false;
+        if ((!txtName.getText().isEmpty()) && !txtName.getText().matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Name !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean ageValidation() {
+        isNotValid = false;
+        if (txtAge.isVisible()) {
+            if ((!txtAge.getText().isEmpty()) && Integer.parseInt(txtAge.getText()) < 0 && Integer.parseInt(txtAge.getText()) > 100) {
+                JOptionPane.showMessageDialog(this, "Please Provide Valid Age !!");
+                isNotValid = true;
+            }
+        }
+        return isNotValid;
+    }
+
+    private boolean addressValidation() {
+        isNotValid = false;
+        if ((!txtuserAddrss1.getText().isEmpty()) && !txtuserAddrss1.getText().matches("^[#.0-9a-zA-Z ]+$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Address !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean cityValidation() {
+        isNotValid = false;
+        if ((!txtUserCity.getText().isEmpty()) && !txtUserCity.getText().matches("^[a-zA-Z_]*$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid City !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean userNameValidation() {
+        isNotValid = false;
+        if ((!txtUserName.getText().isEmpty()) && !txtUserName.getText().matches("^[a-zA-Z0-9_]*$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid User Name !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean pwdValidation() {
+        isNotValid = false;
+        if ((!txtPwd.getText().isEmpty()) && !txtPwd.getText().matches("^[a-zA-Z0-9]*$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Password !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean cnfPwdValidation() {
+        isNotValid = false;
+        if ((!txtCnfPwd.getText().isEmpty()) && !txtCnfPwd.getText().matches("^[a-zA-Z0-9]*$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Password !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean phnValidation() {
+        isNotValid = false;
+        if ((!txtUserPhn.getText().isEmpty()) && !txtUserPhn.getText().matches("^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Phone Number !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean emailValidation() {
+        isNotValid = false;
+        if ((!txtEmail.getText().isEmpty()) && !txtEmail.getText().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Email Address !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean zipValidation() {
+        isNotValid = false;
+        if ((!txtZipCode.getText().isEmpty()) && !txtZipCode.getText().matches("^[0-9]{5}(?:-[0-9]{4})?$")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid Zip Code !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private boolean stateValidation() {
+        isNotValid = false;
+        if ((!txtState.getText().isEmpty()) && !txtState.getText().matches("([a-zA-Z]+|[a-zA-Z]+\\\\s[a-zA-Z]+)")) {
+            JOptionPane.showMessageDialog(this, "Please Provide Valid State !!");
+            isNotValid = true;
+        }
+        return isNotValid;
+    }
+
+    private String getReqType() {
+        String reqType = "";
+        if (rdOr.isSelected()) {
+            reqType = "Organization";
+        } else if (rdInd.isSelected()) {
+            reqType = "Individual";
+        } else if (rdRes.isSelected()) {
+            reqType = "Restaurant";
+        }
+        return reqType;
+    }
+
+    private void clearFields() {
+        
+                txtName.setText("");
+                txtuserAddrss1.setText("");
+                txtUserCity.setText("");
+                txtAge.setText("");
+                cmbGender.setSelectedIndex(0);
+                txtState.setText("");
+                txtEmail.setText("");
+                txtUserPhn.setText("");
+                txtZipCode.setText("");
+                txtPwd.setText("");
+                txtUserName.setText("");
+                txtCnfPwd.setText("");
+                cmbLoginType.setSelectedIndex(0);
+                rdInd.setSelected(true);
+                rdOr.setSelected(false);
+                rdRes.setSelected(false);
+                
+    }
+
 }

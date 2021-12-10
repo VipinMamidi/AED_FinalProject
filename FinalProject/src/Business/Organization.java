@@ -24,9 +24,16 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
-        RestaurantAdmin("RestaurantAdmin"),
-        Customer("Customer"),
-        DeliveryMan("Delivery"),
+//        RestaurantAdmin("RestaurantAdmin"),
+//        Customer("Customer"),
+//        DeliveryMan("Delivery"),
+//        SysAdmin("Sysadmin");
+        FCAdmin("FCAdmin"),
+        FCPManager("FCPManager"),
+        Donor("Donor"),
+        Requestor("Requestor"),
+        NGOAgent("NGOAgent"),
+       // Volunteer("Volunteer"),
         SysAdmin("Sysadmin");
         
         private String value;

@@ -4,6 +4,9 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  *
  * @author sowmyachinimilli
@@ -13,8 +16,12 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
     /**
      * Creates new form AddWarehousePanel
      */
-    public ManageWarehousePanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public ManageWarehousePanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.ecosystem = ecosystem;
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -26,25 +33,27 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        SplitPaneWH = new javax.swing.JSplitPane();
         SysAdminControlPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAddWH = new javax.swing.JButton();
+        btnViewWH = new javax.swing.JButton();
         SysAdminWorkareaPanel = new javax.swing.JPanel();
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setText("Add Warehouse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SysAdminControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
+
+        btnAddWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnAddWH.setText("Add Warehouse");
+        btnAddWH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddWHActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton2.setText("View/Modify");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnViewWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewWH.setText("View/Modify");
+        btnViewWH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnViewWHActionPerformed(evt);
             }
         });
 
@@ -55,61 +64,67 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
             .addGroup(SysAdminControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SysAdminControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAddWH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewWH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SysAdminControlPanelLayout.setVerticalGroup(
             SysAdminControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SysAdminControlPanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(jButton1)
+                .addComponent(btnAddWH)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addComponent(btnViewWH)
+                .addContainerGap(449, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(SysAdminControlPanel);
+        SplitPaneWH.setLeftComponent(SysAdminControlPanel);
+
+        SysAdminWorkareaPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
         javax.swing.GroupLayout SysAdminWorkareaPanelLayout = new javax.swing.GroupLayout(SysAdminWorkareaPanel);
         SysAdminWorkareaPanel.setLayout(SysAdminWorkareaPanelLayout);
         SysAdminWorkareaPanelLayout.setHorizontalGroup(
             SysAdminWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 621, Short.MAX_VALUE)
+            .addGap(0, 834, Short.MAX_VALUE)
         );
         SysAdminWorkareaPanelLayout.setVerticalGroup(
             SysAdminWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 596, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(SysAdminWorkareaPanel);
+        SplitPaneWH.setRightComponent(SysAdminWorkareaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(SplitPaneWH, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(SplitPaneWH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        AddWarehousePanel objAddWH = new AddWarehousePanel(userProcessContainer,ecosystem);
+        SplitPaneWH.setRightComponent(objAddWH);
+    }//GEN-LAST:event_btnAddWHActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnViewWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        ViewModifyWarehousePanel objViewModWH = new ViewModifyWarehousePanel(userProcessContainer,ecosystem);
+        SplitPaneWH.setRightComponent(objViewModWH);
+    }//GEN-LAST:event_btnViewWHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSplitPane SplitPaneWH;
     private javax.swing.JPanel SysAdminControlPanel;
     private javax.swing.JPanel SysAdminWorkareaPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton btnAddWH;
+    private javax.swing.JButton btnViewWH;
     // End of variables declaration//GEN-END:variables
 }
