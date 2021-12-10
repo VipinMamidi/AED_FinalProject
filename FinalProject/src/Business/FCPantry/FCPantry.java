@@ -101,7 +101,9 @@ public class FCPantry {
     public void setFcpAccount(UserAccount fcpAccount) {
         this.fcpAccount = fcpAccount;
     }
-    
-   
+    @Override
+    public String toString(){
+        return fcpId;
+    }
     
 }

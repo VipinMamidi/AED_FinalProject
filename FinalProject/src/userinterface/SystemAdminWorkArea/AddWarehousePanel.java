@@ -359,7 +359,7 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         fcwAccount.setPassword(txtFCApwd.getText());
       //  fcwAccount.setRole(new FCAdminRole());
         fcw.setFcwAccount(fcwAccount);
-       // ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
+        ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
        JOptionPane.showMessageDialog(this, "Food Cloud Warehouse added successfully!");
        clearfields(); 
         }

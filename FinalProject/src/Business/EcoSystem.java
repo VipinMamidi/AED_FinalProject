@@ -9,6 +9,8 @@ package Business;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
+import Business.FCWarehouse.FCWarehouse;
+import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.DonorRole;
@@ -32,6 +34,7 @@ public class EcoSystem extends Organization{
     
     private RequestorDirectory reqDir;
     private DonorDirectory donDir;
+    private FCWarehouseDirectory fcwDir;
     
 
     public static EcoSystem getBusiness() {
@@ -101,5 +104,11 @@ public class EcoSystem extends Organization{
         }
         
        return true;
+    }
+    public FCWarehouseDirectory getFCWDirectory(){
+        return fcwDir;
+    }
+    public void setFCWDirectory(ArrayList<FCWarehouse> fcwList){
+        fcwDir.setFcwList(fcwList);
     }
 }
