@@ -224,20 +224,24 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        logoutJButton.setEnabled(false);
-        userNameJTextField.setEnabled(true);
-        passwordField.setEnabled(true);
-        loginJButton.setEnabled(true);
-
-        userNameJTextField.setText("");
-        passwordField.setText("");
-
-        container.removeAll();
-        JPanel blankJP = new JPanel();
-        container.add("blank", blankJP);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
-        dB4OUtil.storeSystem(ecosystem);
+         try {
+             logoutJButton.setEnabled(false);
+             userNameJTextField.setEnabled(true);
+             passwordField.setEnabled(true);
+             loginJButton.setEnabled(true);
+             
+             userNameJTextField.setText("");
+             passwordField.setText("");
+             
+             container.removeAll();
+             HomeJPanel hmJP = new HomeJPanel(container);
+             container.add("Home", hmJP);
+             CardLayout crdLyt = (CardLayout) container.getLayout();
+             crdLyt.next(container);
+             dB4OUtil.storeSystem(ecosystem);
+         } catch (IOException ex) {
+             Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
