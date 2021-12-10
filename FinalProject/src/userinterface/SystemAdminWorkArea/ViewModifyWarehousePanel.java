@@ -439,7 +439,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                         get(selectedRowIndex).getUserAcc()
         );
         // finally delete the user from customer directory*/
-      //  ecosystem.getFCWDirectory().deleteFCWarehouse(selectedFCW);
+        ecosystem.getFCWDirectory().deleteFCWarehouse(selectedFCW);
         
         JOptionPane.showMessageDialog(this, "Food Cloud Warehouse deleted Successfully");
         populateWHtable();
@@ -455,7 +455,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblWarehouse.getModel();
         String WHid = lblWHid1.getText();
         
-     /*   ArrayList<FCWarehouse> fcwList = ecosystem.getFCWDirectory().getFcwList();
+        ArrayList<FCWarehouse> fcwList = ecosystem.getFCWDirectory().getFcwList();
         for(FCWarehouse f: fcwList)
         {
             if(f.getFcwId().equals(WHid))
@@ -474,8 +474,8 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                break;
             }
             
-        }*/
-       // ecosystem.setFCWDirectory(fcwList);
+        }
+        ecosystem.setFCWDirectory(fcwList);
         JOptionPane.showMessageDialog(this, "Food CLoud Warehouse details updated successfully");
         clearfields();
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -522,7 +522,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
     private void populateWHtable() {
         DefaultTableModel model = (DefaultTableModel) tblWarehouse.getModel();
         model.setRowCount(0);
-      /*  for(FCWarehouse fcwh: ecosystem.getFCWDirectory().getFcwList()){
+        for(FCWarehouse fcwh: ecosystem.getFCWDirectory().getFcwList()){
            Object[] row = new Object[8];
            row[0] =fcwh;
            row[1] =fcwh.getFcwName();
@@ -532,7 +532,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
            row[5] =fcwh.getFcwState();
            row[6] =fcwh.getFcwZipcode();
            row[7] =fcwh.getFcwAdmin();
-        } */
+        } 
     }
     private void clearfields() {
         txtWHname.setText("");

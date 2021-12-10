@@ -443,9 +443,9 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             UserAccount fcpAccount=new UserAccount();
             fcpAccount.setUsername(txtFCPuname.getText());
             fcpAccount.setPassword(txtFCPpwd.getText());
-            //  fcwAccount.setRole(new FCAdminRole());
+            //  fcpAccount.setRole(new FCAdminRole());
             fcp.setFcpAccount(fcpAccount);
-            // ecosystem.getFCWDirectory().addNewFCWarehouse(fcw);
+           // ecosystem.getFCPDirectory().addNewFCPantry(fcp);
             JOptionPane.showMessageDialog(this, "Food Cloud Pantry added successfully!");
             clearfields();
         }
@@ -557,6 +557,14 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
         }
 
     private void clearfields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        txtFCPname.setText("");
+        txtFCPPhno.setText("");
+        txtFCPAdd.setText("");
+        txtFCPCity.setText("");
+        txtFCPState.setText("");
+        txtFCPZip.setText("");
+        txtFCPManager.setText("");
+        txtFCPuname.setText("");
+        txtFCPpwd.setText("");
     }
 }

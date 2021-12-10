@@ -42,7 +42,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        SplitPaneSysAdmin = new javax.swing.JSplitPane();
         MenubarPanel = new javax.swing.JPanel();
         btnMgWH = new javax.swing.JButton();
         btnMgPT = new javax.swing.JButton();
@@ -52,7 +52,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnMgNGO = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        SplitPaneSysAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         btnMgWH.setBackground(new java.awt.Color(225, 144, 108));
         btnMgWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -128,7 +128,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        jSplitPane1.setLeftComponent(MenubarPanel);
+        SplitPaneSysAdmin.setLeftComponent(MenubarPanel);
 
         WorkAreaPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
 
@@ -140,39 +140,39 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGap(0, 563, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(WorkAreaPanel);
+        SplitPaneSysAdmin.setRightComponent(WorkAreaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
+            .addComponent(SplitPaneSysAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 44, Short.MAX_VALUE))
+            .addComponent(SplitPaneSysAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMgWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHActionPerformed
         // TODO add your handling code here:
         ManageWarehousePanel objWH = new ManageWarehousePanel(userProcessContainer,ecosystem);
-        userProcessContainer.add("Manage Warehouse",objWH);
+        SplitPaneSysAdmin.setRightComponent(objWH);
+        /*userProcessContainer.add("Manage Warehouse",objWH);
         CardLayout crdlyt = (CardLayout) userProcessContainer.getLayout();
-        crdlyt.next(userProcessContainer);
+        crdlyt.next(userProcessContainer); */
     }//GEN-LAST:event_btnMgWHActionPerformed
 
     private void btnMgPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTActionPerformed
         // TODO add your handling code here:
         ManagePantryPanel objFCP = new ManagePantryPanel(userProcessContainer,ecosystem);
-        userProcessContainer.add("Manage Pantry",objFCP);
+         SplitPaneSysAdmin.setRightComponent(objFCP);
+       /* userProcessContainer.add("Manage Pantry",objFCP);
         CardLayout crdlyt = (CardLayout) userProcessContainer.getLayout();
-        crdlyt.next(userProcessContainer);
+        crdlyt.next(userProcessContainer); */
     }//GEN-LAST:event_btnMgPTActionPerformed
 
     private void btnMgNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgNGOActionPerformed
@@ -182,12 +182,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenubarPanel;
+    private javax.swing.JSplitPane SplitPaneSysAdmin;
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnMgNGO;
     private javax.swing.JButton btnMgPT;
     private javax.swing.JButton btnMgUsers;
     private javax.swing.JButton btnMgWH;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
