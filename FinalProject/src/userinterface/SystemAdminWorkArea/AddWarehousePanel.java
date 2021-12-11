@@ -31,6 +31,7 @@ public class AddWarehousePanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     FCWarehouseDirectory fcd;
+    UserAccountDirectory uad;
     public AddWarehousePanel(String img) {
     this(new ImageIcon(img).getImage());
   }
@@ -359,15 +360,19 @@ public class AddWarehousePanel extends javax.swing.JPanel {
         fcw.setFcwZipcode(txtWHZip.getText());
         fcw.setFcwAdmin(txtWHFCAdmin.getText());
         UserAccount fcwAccount=new UserAccount();
-        fcwAccount.setUsername(txtFCAuname.getText());
-        fcwAccount.setPassword(txtFCApwd.getText());
+        String uaName = txtFCAuname.getText();
+        fcwAccount.setUsername(uaName);
+        String uaPwd = txtFCApwd.getText();
+        fcwAccount.setPassword(uaPwd);
         fcwAccount.setRole(new FCAdminRole());
         fcwAccount.setEmployee(employee);
-        uaList.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
         fcw.setFcwAccount(fcwAccount);
        fcd = ecosystem.getFCWDirectory();
        fcd.addNewFCWarehouse(fcw);
        ecosystem.setFCWDirectory(fcd);
+        uad=ecosystem.getUserAccountDirectory();
+        uad.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
+        ecosystem.setUserAccountDirectory(uad);
        JOptionPane.showMessageDialog(this, "Food Cloud Warehouse added successfully!");
        clearfields(); 
         }

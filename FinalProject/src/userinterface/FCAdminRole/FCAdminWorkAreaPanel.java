@@ -50,7 +50,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
         btnMgWHitems.setBackground(new java.awt.Color(225, 144, 108));
         btnMgWHitems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnMgWHitems.setText("Manage Warehouse Items");
+        btnMgWHitems.setText("View Donation Requests");
         btnMgWHitems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMgWHitemsActionPerformed(evt);
@@ -80,7 +80,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         lblWelcomemsg.setText("Welcome,");
 
         btnCurReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnCurReq.setText("Current Requests");
+        btnCurReq.setText("extra");
         btnCurReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCurReqActionPerformed(evt);
@@ -92,11 +92,11 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         MenubarPanelLayout.setHorizontalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(btnMgWHitems)
-                .addGap(68, 68, 68)
+                .addGap(65, 65, 65)
                 .addComponent(btnMgPTitems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(btnMgWHitems)
+                .addGap(53, 53, 53)
                 .addComponent(btnCurReq)
                 .addGap(64, 64, 64)
                 .addComponent(btnMgVol)
@@ -117,10 +117,10 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                     .addComponent(lblWelcomemsg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMgWHitems)
                     .addComponent(btnMgPTitems)
                     .addComponent(btnCurReq)
-                    .addComponent(btnMgVol))
+                    .addComponent(btnMgVol)
+                    .addComponent(btnMgWHitems))
                 .addGap(15, 15, 15))
         );
 
@@ -155,13 +155,13 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgWHitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHitemsActionPerformed
         // TODO add your handling code here:
-        ManageWHitemsPanel objWHI = new ManageWHitemsPanel(userProcessContainer,ecosystem);
-        SplitPaneFCAdmin.setRightComponent(objWHI);
+        
     }//GEN-LAST:event_btnMgWHitemsActionPerformed
 
     private void btnMgPTitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTitemsActionPerformed
         // TODO add your handling code here:
-
+        ManagePantryItemsPanel objWHI = new ManagePantryItemsPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objWHI);
     }//GEN-LAST:event_btnMgPTitemsActionPerformed
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed

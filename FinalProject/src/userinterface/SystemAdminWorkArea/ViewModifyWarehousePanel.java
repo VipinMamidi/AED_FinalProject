@@ -31,6 +31,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         populateWHtable();
+        txtFCAuname.setEnabled(false);
     }
 
     /**

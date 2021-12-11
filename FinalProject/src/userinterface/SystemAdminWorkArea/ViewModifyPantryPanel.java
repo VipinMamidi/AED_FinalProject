@@ -31,6 +31,7 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         populatePantryTable();
+        txtFCPuname.setEnabled(false);
     }
 
     /**

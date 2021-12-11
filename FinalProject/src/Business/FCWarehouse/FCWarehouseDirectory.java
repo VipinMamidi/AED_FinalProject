@@ -5,14 +5,18 @@
 package Business.FCWarehouse;
 
 import java.util.ArrayList;
+import Business.FCWarehouse.FCWarehouseDirectory;
 
 /**
  *
  * @author sowmyachinimilli
  */
 public class FCWarehouseDirectory {
-     ArrayList<FCWarehouse> fcwList = new ArrayList<FCWarehouse>();
+     ArrayList<FCWarehouse> fcwList;
 
+     public FCWarehouseDirectory(){
+         fcwList = new ArrayList<FCWarehouse>();
+     }
     public ArrayList<FCWarehouse> getFcwList() {
         return fcwList;
     }
@@ -25,5 +29,14 @@ public class FCWarehouseDirectory {
     }
     public void deleteFCWarehouse(FCWarehouse selectedfcw){
         fcwList.remove(selectedfcw);
+    }
+    public String getWHname(String FCAname){
+        String WHname;
+        for(FCWarehouse f: fcwList){
+            if(f.getFcwAdmin().equals(FCAname)){
+                return f.getFcwName();
+            }
+        }
+        return null;
     }
 }

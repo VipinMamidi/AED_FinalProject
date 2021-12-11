@@ -10,6 +10,7 @@ import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
 import Business.FCPantry.FCPantryDirectory;
+import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.Requestor.RequestorDirectory;
@@ -38,6 +39,7 @@ public class EcoSystem extends Organization{
     private FCWarehouseDirectory fcwDir;
     private FCPantryDirectory fcpDir;
     private UserAccountDirectory uaDir;
+    private FCPantryItemsDirectory fcpiDir;
 
     public static EcoSystem getBusiness() {
         return business;
@@ -49,13 +51,14 @@ public class EcoSystem extends Organization{
     
 
     public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir)/*, FCPantryDirectory fcpDir,
-            UserAccountDirectory uaDir)*/ {
+            UserAccountDirectory uaDir,FCPantryItemsDirectory fcpiDir)*/ {
 
         this.reqDir = reqDir;
         this.donDir = donDir;
         this.fcwDir = fcwDir;
        // this.fcpDir = fcpDir;
        // this.uaDir = uaDir;
+       //this.fcpiDir = fcpiDir;
     }
 
     public RequestorDirectory getReqDir() {
@@ -97,6 +100,7 @@ public class EcoSystem extends Organization{
         this.fcwDir = new FCWarehouseDirectory();
         this.fcpDir = new FCPantryDirectory();
         this.uaDir = new UserAccountDirectory();
+        this.fcpiDir = new FCPantryItemsDirectory();
        // networkList=new ArrayList<Network>();
     }
 
@@ -127,5 +131,11 @@ public class EcoSystem extends Organization{
     }
     public void setUserAccountDirectory(UserAccountDirectory uad){
         this.uaDir=uad;
+    }
+    public FCPantryItemsDirectory getFCPIDirectory(){
+        return fcpiDir;
+    }
+    public void setFCPIDirectory(FCPantryItemsDirectory fcpid){
+        this.fcpiDir = fcpid;
     }
 }

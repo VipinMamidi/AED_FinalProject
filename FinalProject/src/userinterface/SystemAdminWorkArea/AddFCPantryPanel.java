@@ -26,6 +26,7 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     FCPantryDirectory fcpd;
+    UserAccountDirectory uad;
     public AddFCPantryPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -441,7 +442,7 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             UserAccountDirectory uaList = ecosystem.getUserAccountDirectory();
             Employee employee = new Employee();
             employee.setName(txtFCPname.getText());
-            String role = "FCPManager";
+            String role = "txtFCPManager";
             FCPantry fcp=new FCPantry();
             fcp.setFcpId("fcp"+txtFCPid.getText());
             fcp.setFcpWHname(txtWHfcpname.getText());
@@ -457,7 +458,9 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             fcpAccount.setPassword(txtFCPpwd.getText());
             fcpAccount.setRole(new FCPManagerRole());
             fcpAccount.setEmployee(employee);
-            uaList.createUserAccount(txtFCPuname.getText(), txtFCPpwd.getText(), employee, new FCPManagerRole());
+            uad=ecosystem.getUserAccountDirectory();
+            uad.createUserAccount(txtFCPuname.getText(), txtFCPpwd.getText(), employee, new FCPManagerRole());
+            ecosystem.setUserAccountDirectory(uad);
             fcp.setFcpAccount(fcpAccount);
             fcpd = ecosystem.getFCPDirectory();
             fcpd.addNewFCPantry(fcp);
