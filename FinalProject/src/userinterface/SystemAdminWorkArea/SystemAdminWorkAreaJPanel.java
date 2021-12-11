@@ -10,7 +10,10 @@ import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -182,7 +185,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMgPTActionPerformed
 
     private void btnMgNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgNGOActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            ManageNGOJPanel objNGO = new ManageNGOJPanel(userProcessContainer,ecosystem);
+            SplitPaneSysAdmin.setRightComponent(objNGO);
+        } catch (IOException ex) {
+            Logger.getLogger(SystemAdminWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnMgNGOActionPerformed
 
     private void btnMgUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgUsersActionPerformed

@@ -10,6 +10,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
 import Business.FCWarehouse.FCWarehouseDirectory;
+import Business.NGO.NGODirectory;
 
 import Business.Organization;
 import Business.Requestor.RequestorDirectory;
@@ -52,7 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory());
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory()); //to add ngodirectory
         }
        
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));

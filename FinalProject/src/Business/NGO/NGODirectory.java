@@ -24,5 +24,13 @@ public class NGODirectory {
     public void setNgoList(ArrayList<NGO> ngoList) {
         this.ngoList = ngoList;
     }
+    
+    public void addNewNGO(NGO ngo){
+        ngoList.add(ngo);
+    }
+    
+    public void deleteNGO(NGO selectedfcw){
+        ngoList.remove(selectedfcw);
+    }
 
 }
