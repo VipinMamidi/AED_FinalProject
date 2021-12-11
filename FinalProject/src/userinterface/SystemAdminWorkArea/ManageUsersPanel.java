@@ -6,6 +6,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ public class ManageUsersPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    UserAccountDirectory uad;
     public ManageUsersPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -223,8 +225,8 @@ public class ManageUsersPanel extends javax.swing.JPanel {
         UserAccount selectedUA = (UserAccount)model.getValueAt(selectedRowIndex, 0);
         txtUAname.setText(selectedUA.getUsername());
         txtUApwd.setText(selectedUA.getPassword());
-       // txtUArole.setText(String.valueOf(selectedUA.getRole()));
-      //  txtUAemp.setText(String.valueOf(selectedUA.getEmployee()));
+        txtUArole.setText(String.valueOf(selectedUA.getRole()));
+        txtUAemp.setText(String.valueOf(selectedUA.getEmployee()));
       
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -245,8 +247,10 @@ public class ManageUsersPanel extends javax.swing.JPanel {
             get(selectedRowIndex).getUserAcc()
         );
         // finally delete the user from customer directory*/
-        ecosystem.getUserAccountDirectory().deleteUserAccount(selectedUA);
-
+        //ecosystem.getUserAccountDirectory().deleteUserAccount(selectedUA);
+        uad= ecosystem.getUserAccountDirectory();
+        uad.deleteUserAccount(selectedUA);
+        ecosystem.setUserAccountDirectory(uad);
         JOptionPane.showMessageDialog(this, "User Account deleted Successfully");
         populateUserTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -309,6 +313,7 @@ public class ManageUsersPanel extends javax.swing.JPanel {
            row[1] =ua.getPassword();
            row[2] =ua.getRole();
            row[3] =ua.getEmployee();
+           model.addRow(row);
         }  
     }
 

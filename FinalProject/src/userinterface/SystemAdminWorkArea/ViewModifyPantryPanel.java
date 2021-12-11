@@ -5,7 +5,9 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import Business.Employee.Employee;
 import Business.FCPantry.FCPantry;
+import Business.FCPantry.FCPantryDirectory;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -23,11 +25,13 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
+    FCPantryDirectory fcpd;
     public ViewModifyPantryPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         populatePantryTable();
+        txtFCPuname.setEnabled(false);
     }
 
     /**
@@ -400,7 +404,9 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
         );
         // finally delete the user from customer directory*/
         //  ecosystem.getFCPDirectory().deleteFCPantry(selectedFCP);
-
+        fcpd= ecosystem.getFCPDirectory();
+        fcpd.deleteFCPantry(selectedFCP);
+        ecosystem.setFCPDirectory(fcpd);
         JOptionPane.showMessageDialog(this, "Food Cloud Pantry deleted Successfully");
         populatePantryTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -487,7 +493,7 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblPantry.getModel();
         String FCPid = lblFCPid1.getText();
 
-       /* ArrayList<FCPantry> fcpList = ecosystem.getFCPDirectory().getFcwList();
+        ArrayList<FCPantry> fcpList = ecosystem.getFCPDirectory().getFcpList();
         for(FCPantry f: fcpList)
         {
             if(f.getFcpId().equals(FCPid))
@@ -499,17 +505,24 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
                 f.setFcpState(txtFCPState.getText());
                 f.setFcpZipcode(txtFCPZip.getText());
                 f.setFcpManager(txtFCPManager.getText());
-                UserAccount FCPua=new UserAccount();
-                FCPua.setUsername(txtFCPuname.getText());
-                FCPua.setPassword(txtFCPpwd.getText());
-                f.setFcpAccount(FCPua);
+                //UserAccount FCPua=new UserAccount();
+                //FCPua.setUsername(txtFCPuname.getText());
+                //FCPua.setPassword(txtFCPpwd.getText());
+                //f.setFcpAccount(FCPua);
+                if(f.getFcpAccount().getUsername().equals(txtFCPuname.getText())){
+                    Employee emp=new Employee();
+                    emp.setName(txtFCPManager.getText());
+                    f.getFcpAccount().setPassword(txtFCPpwd.getText());
+                    f.getFcpAccount().setEmployee(emp);
+                }
                 break;
             }
 
-        } */
+        } 
         // ecosystem.setFCWDirectory(fcwList);
-        JOptionPane.showMessageDialog(this, "Food CLoud Pantry details updated successfully");
+        JOptionPane.showMessageDialog(this, "Food Cloud Pantry details updated successfully");
         clearfields();
+        populatePantryTable();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
@@ -554,7 +567,7 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
     private void populatePantryTable() {
         DefaultTableModel model = (DefaultTableModel) tblPantry.getModel();
         model.setRowCount(0);
-      /*  for(FCPantry fcp: ecosystem.getFCPDirectory().getFcpList()){
+        for(FCPantry fcp: ecosystem.getFCPDirectory().getFcpList()){
            Object[] row = new Object[9];
            row[0] =fcp;
            row[1] =fcp.getFcpName();
@@ -565,7 +578,8 @@ public class ViewModifyPantryPanel extends javax.swing.JPanel {
            row[6] =fcp.getFcpCity();
            row[7] =fcp.getFcpState();
            row[8] =fcp.getFcpZipcode();
-        }  */
+           model.addRow(row);
+        }  
     } 
 
     private void clearfields() {

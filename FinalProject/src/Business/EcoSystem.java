@@ -9,6 +9,8 @@ package Business;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
+import Business.FCPantry.FCPantryDirectory;
+import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
@@ -38,7 +40,10 @@ public class EcoSystem extends Organization{
     private DonorDirectory donDir;
     private FCWarehouseDirectory fcwDir;
     private NGODirectory ngoDir;
-    
+    private FCPantryDirectory fcpDir;
+    private UserAccountDirectory uaDir;
+    private FCPantryItemsDirectory fcpiDir;
+
 
     public static EcoSystem getBusiness() {
         return business;
@@ -49,13 +54,18 @@ public class EcoSystem extends Organization{
     }
     
 
+
     public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir, NGODirectory ngoDir) { // to add ngo directory
+
 
         this.reqDir = reqDir;
         this.donDir = donDir;
         this.fcwDir = fcwDir;
         this.ngoDir = ngoDir;
        
+       // this.fcpDir = fcpDir;
+       // this.uaDir = uaDir;
+       //this.fcpiDir = fcpiDir;
     }
 
     public NGODirectory getNgoDir() {
@@ -105,6 +115,9 @@ public class EcoSystem extends Organization{
         this.donDir = new DonorDirectory();
         this.fcwDir = new FCWarehouseDirectory();
         this.ngoDir = new NGODirectory();
+        this.fcpDir = new FCPantryDirectory();
+        this.uaDir = new UserAccountDirectory();
+        this.fcpiDir = new FCPantryItemsDirectory();
        // networkList=new ArrayList<Network>();
     }
 
@@ -126,5 +139,20 @@ public class EcoSystem extends Organization{
     }
     public void setFCWDirectory(FCWarehouseDirectory fcd){
         this.fcwDir = fcd;
+    }
+    public FCPantryDirectory getFCPDirectory(){
+        return fcpDir;
+    }
+    public void setFCPDirectory(FCPantryDirectory fcp){
+        this.fcpDir = fcp;
+    }
+    public void setUserAccountDirectory(UserAccountDirectory uad){
+        this.uaDir=uad;
+    }
+    public FCPantryItemsDirectory getFCPIDirectory(){
+        return fcpiDir;
+    }
+    public void setFCPIDirectory(FCPantryItemsDirectory fcpid){
+        this.fcpiDir = fcpid;
     }
 }

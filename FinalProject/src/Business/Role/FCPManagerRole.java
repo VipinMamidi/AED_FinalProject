@@ -7,14 +7,14 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
 
 /**
  *
  * @author sowmyachinimilli
  */
-public class FCAdminRole extends Role{
+public class FCPManagerRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new FCAdminWorkAreaPanel(userProcessContainer, business,account);
-    } 
+        return new FCPManagerWorkAreaPanel(userProcessContainer,account, business);
+    }
 }

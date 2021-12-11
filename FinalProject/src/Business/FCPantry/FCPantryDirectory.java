@@ -11,11 +11,7 @@ import java.util.ArrayList;
  * @author sowmyachinimilli
  */
 public class FCPantryDirectory {
-    private ArrayList<FCPantry> fcpList;
-    
-    public FCPantryDirectory(){
-        fcpList = new ArrayList();
-    }
+    private ArrayList<FCPantry> fcpList = new ArrayList<FCPantry>();
 
     public ArrayList<FCPantry> getFcpList() {
         return fcpList;
@@ -28,6 +24,6 @@ public class FCPantryDirectory {
         fcpList.add(fcp);
     }
     public void deleteFCPantry(FCPantry selectedfcp){
-        fcpList.remove(fcpList);
+        fcpList.remove(selectedfcp);
     }
 }

@@ -6,21 +6,25 @@
 package userinterface.FCAdminRole;
 
 import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.ViewModifyPantryPanel;
 
 /**
  *
  * @author sowmyachinimilli
  */
-public class ManageWHitemsPanel extends javax.swing.JPanel {
+public class ManagePantryItemsPanel extends javax.swing.JPanel {
 
     /** Creates new form ManageWHitemsPanel */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public ManageWHitemsPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    UserAccount userAcc;
+    public ManagePantryItemsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        this.userAcc =userAcc;
     }
 
     /** This method is called from within the constructor to
@@ -32,27 +36,27 @@ public class ManageWHitemsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SplitPaneWHI = new javax.swing.JSplitPane();
+        SplitPaneFCP = new javax.swing.JSplitPane();
         FCControlPanel = new javax.swing.JPanel();
-        btnAddWHI = new javax.swing.JButton();
-        btnViewWHI = new javax.swing.JButton();
+        btnAddItems = new javax.swing.JButton();
+        btnViewItems = new javax.swing.JButton();
         FCWorkareaPanel = new javax.swing.JPanel();
 
         FCControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
 
-        btnAddWHI.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnAddWHI.setText("Add Stock");
-        btnAddWHI.addActionListener(new java.awt.event.ActionListener() {
+        btnAddItems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnAddItems.setText("Add Items");
+        btnAddItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddWHIActionPerformed(evt);
+                btnAddItemsActionPerformed(evt);
             }
         });
 
-        btnViewWHI.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnViewWHI.setText("View/Update Stock");
-        btnViewWHI.addActionListener(new java.awt.event.ActionListener() {
+        btnViewItems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewItems.setText("View/Update Items");
+        btnViewItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewWHIActionPerformed(evt);
+                btnViewItemsActionPerformed(evt);
             }
         });
 
@@ -63,21 +67,21 @@ public class ManageWHitemsPanel extends javax.swing.JPanel {
             .addGroup(FCControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FCControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewWHI, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddWHI, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewItems, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddItems, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FCControlPanelLayout.setVerticalGroup(
             FCControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FCControlPanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(btnAddWHI)
+                .addComponent(btnAddItems)
                 .addGap(26, 26, 26)
-                .addComponent(btnViewWHI)
+                .addComponent(btnViewItems)
                 .addContainerGap(449, Short.MAX_VALUE))
         );
 
-        SplitPaneWHI.setLeftComponent(FCControlPanel);
+        SplitPaneFCP.setLeftComponent(FCControlPanel);
 
         FCWorkareaPanel.setPreferredSize(new java.awt.Dimension(840, 600));
 
@@ -92,37 +96,39 @@ public class ManageWHitemsPanel extends javax.swing.JPanel {
             .addGap(0, 596, Short.MAX_VALUE)
         );
 
-        SplitPaneWHI.setRightComponent(FCWorkareaPanel);
+        SplitPaneFCP.setRightComponent(FCWorkareaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneWHI, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneWHI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddWHIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWHIActionPerformed
+    private void btnAddItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemsActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_btnAddWHIActionPerformed
+       AddPantryItemsPanel objAddPI = new AddPantryItemsPanel(userProcessContainer, ecosystem,userAcc);
+       SplitPaneFCP.setRightComponent(objAddPI);
+    }//GEN-LAST:event_btnAddItemsActionPerformed
 
-    private void btnViewWHIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWHIActionPerformed
+    private void btnViewItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewItemsActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_btnViewWHIActionPerformed
+       ViewPantryItemsPanel objViewPI = new ViewPantryItemsPanel(userProcessContainer, ecosystem,userAcc);
+       SplitPaneFCP.setRightComponent(objViewPI);
+    }//GEN-LAST:event_btnViewItemsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FCControlPanel;
     private javax.swing.JPanel FCWorkareaPanel;
-    private javax.swing.JSplitPane SplitPaneWHI;
-    private javax.swing.JButton btnAddWHI;
-    private javax.swing.JButton btnViewWHI;
+    private javax.swing.JSplitPane SplitPaneFCP;
+    private javax.swing.JButton btnAddItems;
+    private javax.swing.JButton btnViewItems;
     // End of variables declaration//GEN-END:variables
 
 }
