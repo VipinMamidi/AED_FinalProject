@@ -635,7 +635,7 @@ public class SignupWorkAreaJPanel extends javax.swing.JPanel {
                         req.setReqCity(txtUserCity.getText());
                         req.setReqState(txtState.getText());
                         req.setReqEmail(txtEmail.getText());
-                        req.setReqPhno(Long.parseLong(txtUserPhn.getText()));
+                        req.setReqPhno(txtUserPhn.getText());
                         req.setReqZipcode(txtZipCode.getText());
                         req.setReqUserName(txtUserName.getText());
                         req.setReqPwd(txtPwd.getText());
