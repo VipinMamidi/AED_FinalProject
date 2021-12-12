@@ -15,6 +15,10 @@ public class VolunteerDirectory {
     
     private ArrayList<Volunteer> volunteerList;
     
+    public VolunteerDirectory(){
+        volunteerList = new ArrayList();
+    }
+    
     public ArrayList<Volunteer> getVolunteerList() {
         return volunteerList;
     }
@@ -23,4 +27,11 @@ public class VolunteerDirectory {
         this.volunteerList = volunteerList;
     }
     
+    public void addNewVolunteer(Volunteer vol){
+        volunteerList.add(vol);
+    }
+    
+    public void deleteVolunteer(Volunteer selectedvol){
+        volunteerList.remove(selectedvol);
+    }
 }

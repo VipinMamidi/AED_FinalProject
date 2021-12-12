@@ -4,10 +4,17 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import userinterface.DonorRole.DonorAreaJPanel;
+
 /**
  *
  * @author sowmyachinimilli
  */
-public class DeliveryVolunteer {
-    
+public class DeliveryVolunteer extends Role{
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+        return new DonorAreaJPanel(userProcessContainer, business, account);
+    }
 }

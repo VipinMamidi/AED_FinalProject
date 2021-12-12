@@ -8,7 +8,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.NGORole.NGOWorkAreaPanel;
+import userinterface.NGORole.ManageVolunteerPanel;
 
 /**
  *
@@ -16,6 +16,6 @@ import userinterface.NGORole.NGOWorkAreaPanel;
  */
 public class NgoRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new NGOWorkAreaPanel(userProcessContainer, account);
+        return new ManageVolunteerPanel(userProcessContainer, business,account);
     }
 }

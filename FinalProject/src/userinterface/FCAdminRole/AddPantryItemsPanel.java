@@ -181,7 +181,7 @@ public class AddPantryItemsPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addComponent(lblAddFCPTitle)
                 .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblWHname)
                     .addComponent(lblWHval))
                 .addGap(18, 18, 18)
