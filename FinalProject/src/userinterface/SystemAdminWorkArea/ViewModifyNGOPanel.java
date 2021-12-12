@@ -49,6 +49,7 @@ public class ViewModifyNGOPanel extends javax.swing.JPanel {
               ecosystem.setNgoDir(new NGODirectory());
           }
         populatengotable();
+        txtNGOuname.setEnabled(false);
     }
 
     /**

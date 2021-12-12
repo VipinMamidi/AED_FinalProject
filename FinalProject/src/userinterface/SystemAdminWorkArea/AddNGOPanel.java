@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.NGO.NGO;
 import Business.NGO.NGODirectory;
+import Business.Role.NgoRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.Dimension;
@@ -31,6 +32,7 @@ public class AddNGOPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     NGODirectory ngod;
+    UserAccountDirectory uad;
     public AddNGOPanel(JPanel userProcessContainer, EcoSystem ecosystem) throws IOException {
         initComponents();
 
@@ -402,10 +404,18 @@ public class AddNGOPanel extends javax.swing.JPanel {
             ngoAccount.setPassword(txtNGOpwd.getText());
             // uaList.createUserAccount(txtFCAuname.getText(), txtFCApwd.getText(), employee, new FCAdminRole());
             //                ua = usersList.getUserAccount(txtUserName.getText());
+            
+            
+            ngoAccount.setRole(new NgoRole());
+            ngoAccount.setEmployee(employee);
+            uad=ecosystem.getUserAccountDirectory();
+            uad.createUserAccount(txtNGOAgentuname.getText(), txtNGOpwd.getText(), employee, new NgoRole());
+            ecosystem.setUserAccountDirectory(uad);
             ngo.setNgoAccount(ngoAccount);
             ngod = ecosystem.getNgoDir();
             ngod.addNewNGO(ngo);
             ecosystem.setNgoDir(ngod);
+            
             JOptionPane.showMessageDialog(this, "NGO added successfully!");
             clearfields();
         }

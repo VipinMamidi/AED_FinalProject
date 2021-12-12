@@ -15,6 +15,7 @@ import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
+import Business.NGOVolunteer.VolunteerDirectory;
 import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
@@ -45,9 +46,9 @@ public class EcoSystem extends Organization{
     private FCPantryDirectory fcpDir;
     private UserAccountDirectory uaDir;
     private FCPantryItemsDirectory fcpiDir;
+    private VolunteerDirectory volDir;
     private DonationDirectory donatDir;
     private ReqorderDirectory reqorderDir;
-    
     public static EcoSystem getBusiness() {
         return business;
     }
@@ -58,13 +59,14 @@ public class EcoSystem extends Organization{
     
 
 
-    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir, NGODirectory ngoDir) { // to add ngo directory
+    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir, NGODirectory ngoDir, VolunteerDirectory volDir) { // to add ngo directory
 
 
         this.reqDir = reqDir;
         this.donDir = donDir;
         this.fcwDir = fcwDir;
         this.ngoDir = ngoDir;
+        this.volDir =volDir;
        
        // this.fcpDir = fcpDir;
        // this.uaDir = uaDir;
@@ -73,6 +75,16 @@ public class EcoSystem extends Organization{
        //this.reqorderDir = reqorderDir;
     }
 
+
+    public VolunteerDirectory getVolDir() {
+        return volDir;
+    }
+
+    public void setVolDir(VolunteerDirectory volDir) {
+        this.volDir = volDir;
+    }
+    
+    
     public NGODirectory getNgoDir() {
         return ngoDir;
     }
@@ -123,7 +135,9 @@ public class EcoSystem extends Organization{
         this.fcpDir = new FCPantryDirectory();
         this.uaDir = new UserAccountDirectory();
         this.fcpiDir = new FCPantryItemsDirectory();
+        this.volDir = new VolunteerDirectory();
         this.donatDir = new DonationDirectory();
+
        // networkList=new ArrayList<Network>();
     }
 

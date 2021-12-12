@@ -4,6 +4,7 @@
  */
 package Business.NGOVolunteer;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -11,21 +12,25 @@ import java.util.ArrayList;
  * @author sowmyachinimilli
  */
 public class Volunteer {
-    private int volId;
+    private String volId;
     private String volName;
     private String volAge;
     private String volPhno;
     private String volAddress;
     private String volCity;
+    private String volState;
     private String volZipcode;
-    private int volExp;
-    private ArrayList<String> volAvaildays;
+    private String volExp;
+    //private ArrayList<String> volAvaildays;
+    private UserAccount volAccount;
+    private String volUserName;
+    private String volPwd;
 
-    public int getVolId() {
+    public String getVolId() {
         return volId;
     }
 
-    public void setVolId(int volId) {
+    public void setVolId(String volId) {
         this.volId = volId;
     }
 
@@ -77,20 +82,59 @@ public class Volunteer {
         this.volZipcode = volZipcode;
     }
 
-    public int getVolExp() {
+    public String getVolExp() {
         return volExp;
     }
 
-    public void setVolExp(int volExp) {
+    public void setVolExp(String volExp) {
         this.volExp = volExp;
     }
 
-    public ArrayList<String> getVolAvaildays() {
-        return volAvaildays;
+//    public ArrayList<String> getVolAvaildays() {
+//        return volAvaildays;
+//    }
+//
+//    public void setVolAvaildays(ArrayList<String> volAvaildays) {
+//        this.volAvaildays = volAvaildays;
+//    }
+    
+    
+    public UserAccount getVolAccount() {
+        return volAccount;
     }
 
-    public void setVolAvaildays(ArrayList<String> volAvaildays) {
-        this.volAvaildays = volAvaildays;
+    public void setVolAccount(UserAccount volAccount) {
+        this.volAccount = volAccount;
+    }
+
+    public String getVolUserName() {
+        return volUserName;
+    }
+
+    public void setVolUserName(String volUserName) {
+        this.volUserName = volUserName;
+    }
+
+    public String getVolPwd() {
+        return volPwd;
+    }
+
+    public void setVolPwd(String volPwd) {
+        this.volPwd = volPwd;
+    }
+    
+    
+    public String getVolState() {
+        return volState;
+    }
+
+    public void setVolState(String volState) {
+        this.volState = volState;
+    }
+    
+    @Override
+    public String toString(){
+        return volId;
     }
     
     
