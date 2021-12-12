@@ -48,5 +48,12 @@ public class RequestorDirectory {
         reqIdGeneration++;
         return reqIdGeneration;
     }
-    
+    public String getreqState(String name){
+        for(Requestor r: reqAccList){
+            if(r.getReqAccount().getUsername().equals(name)){
+                return r.getReqState();
+            }
+        }
+        return null;
+    }
 }

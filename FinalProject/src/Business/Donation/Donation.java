@@ -12,12 +12,13 @@ import Business.UserAccount.UserAccount;
  * @author sowmyachinimilli
  */
 public class Donation {
-    private int donatId;
+    private String donatId;
     private String donatDname;
     private String donatFooditem;
     private String donatFoodQuant;
     private String donatPickuptype;
     private String donatStatus;
+    private String donatWHname;
     private Donor donatDonor;
     private UserAccount donatDonorAcc;
     
@@ -61,11 +62,11 @@ public class Donation {
         this.donatStatus = donatStatus;
     }
 
-    public int getDonatId() {
+    public String getDonatId() {
         return donatId;
     }
 
-    public void setDonatId(int donatId) {
+    public void setDonatId(String donatId) {
         this.donatId = donatId;
     }
 
@@ -84,5 +85,16 @@ public class Donation {
     public void setDonatPickuptype(String donatPickuptype) {
         this.donatPickuptype = donatPickuptype;
     }
-    
+
+    public String getDonatWHname() {
+        return donatWHname;
+    }
+
+    public void setDonatWHname(String donatWHname) {
+        this.donatWHname = donatWHname;
+    }
+    @Override
+    public String toString(){
+        return donatId;
+    }
 }

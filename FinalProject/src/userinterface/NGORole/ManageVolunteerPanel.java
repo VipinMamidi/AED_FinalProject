@@ -8,6 +8,7 @@ package userinterface.NGORole;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -21,11 +22,15 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
-    public ManageVolunteerPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
+    JPanel jp;
+    JSplitPane jsp;
+    public ManageVolunteerPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc, JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc =userAcc;
+        this.jp = jp;
+        this.jsp = jsp;
     }
 
     /**

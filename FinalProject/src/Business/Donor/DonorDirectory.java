@@ -48,5 +48,12 @@ public class DonorDirectory {
         donIdGeneration++;
         return donIdGeneration;
     }
-    
+    public String getdonState(String name){
+        for(Donor d: donorList){
+            if(d.getDonorAccount().getUsername().equals(name)){
+                return d.getDonorState();
+            }
+        }
+        return null;
+    }
 }

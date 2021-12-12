@@ -8,6 +8,7 @@ package Business;
 
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donation.DonationDirectory;
 import Business.Donor.DonorDirectory;
 import Business.FCPantry.FCPantryDirectory;
 import Business.FCPantry.FCPantryItemsDirectory;
@@ -15,6 +16,7 @@ import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
 import Business.NGOVolunteer.VolunteerDirectory;
+import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.DonorRole;
@@ -45,8 +47,8 @@ public class EcoSystem extends Organization{
     private UserAccountDirectory uaDir;
     private FCPantryItemsDirectory fcpiDir;
     private VolunteerDirectory volDir;
-
-
+    private DonationDirectory donatDir;
+    private ReqorderDirectory reqorderDir;
     public static EcoSystem getBusiness() {
         return business;
     }
@@ -69,6 +71,8 @@ public class EcoSystem extends Organization{
        // this.fcpDir = fcpDir;
        // this.uaDir = uaDir;
        //this.fcpiDir = fcpiDir;
+       //this.donatDit = doantDir;
+       //this.reqorderDir = reqorderDir;
     }
 
 
@@ -132,6 +136,8 @@ public class EcoSystem extends Organization{
         this.uaDir = new UserAccountDirectory();
         this.fcpiDir = new FCPantryItemsDirectory();
         this.volDir = new VolunteerDirectory();
+        this.donatDir = new DonationDirectory();
+
        // networkList=new ArrayList<Network>();
     }
 
@@ -168,5 +174,17 @@ public class EcoSystem extends Organization{
     }
     public void setFCPIDirectory(FCPantryItemsDirectory fcpid){
         this.fcpiDir = fcpid;
+    }
+    public DonationDirectory getDonatDirectory(){
+        return donatDir;
+    }
+    public void setDonatDirectory(DonationDirectory donatDir){
+        this.donatDir = donatDir;
+    }
+    public ReqorderDirectory getReqorderDirectory(){
+        return reqorderDir;
+    }
+    public void setReqorderDirectory(ReqorderDirectory reqorderDir){
+        this.reqorderDir = reqorderDir;
     }
 }

@@ -24,5 +24,10 @@ public class DonationDirectory {
     public void setDonatList(ArrayList<Donation> donatList) {
         this.donatList = donatList;
     }
-    
+     public void addNewDonation(Donation dt){
+        donatList.add(dt);
+    }
+    public void deleteDonation(Donation selectedD){
+        donatList.remove(selectedD);
+    }
 }

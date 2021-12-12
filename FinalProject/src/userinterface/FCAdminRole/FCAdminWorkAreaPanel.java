@@ -6,7 +6,12 @@ package userinterface.FCAdminRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import userinterface.MainJFrame;
 
 /**
  *
@@ -20,11 +25,15 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAccount;
-    public FCAdminWorkAreaPanel(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount userAccount) {
+    JPanel jp;
+    JSplitPane jsp;
+    public FCAdminWorkAreaPanel(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount userAccount, JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.userAccount = userAccount;
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
     }
 
     /**
@@ -38,22 +47,23 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
         SplitPaneFCAdmin = new javax.swing.JSplitPane();
         MenubarPanel = new javax.swing.JPanel();
-        btnMgWHitems = new javax.swing.JButton();
+        btnViewDonReq = new javax.swing.JButton();
         btnMgPTitems = new javax.swing.JButton();
         btnMgVol = new javax.swing.JButton();
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         btnCurReq = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
         SplitPaneFCAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnMgWHitems.setBackground(new java.awt.Color(225, 144, 108));
-        btnMgWHitems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnMgWHitems.setText("View Donation Requests");
-        btnMgWHitems.addActionListener(new java.awt.event.ActionListener() {
+        btnViewDonReq.setBackground(new java.awt.Color(225, 144, 108));
+        btnViewDonReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewDonReq.setText("View Donation Requests");
+        btnViewDonReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMgWHitemsActionPerformed(evt);
+                btnViewDonReqActionPerformed(evt);
             }
         });
 
@@ -87,6 +97,14 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
@@ -94,15 +112,17 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(btnMgPTitems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                .addComponent(btnMgWHitems)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnViewDonReq)
+                .addGap(33, 33, 33)
                 .addComponent(btnCurReq)
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
                 .addComponent(btnMgVol)
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(378, Short.MAX_VALUE)
                 .addComponent(lblWelcomemsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblwelusername)
@@ -120,7 +140,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                     .addComponent(btnMgPTitems)
                     .addComponent(btnCurReq)
                     .addComponent(btnMgVol)
-                    .addComponent(btnMgWHitems))
+                    .addComponent(btnViewDonReq)
+                    .addComponent(btnLogout))
                 .addGap(15, 15, 15))
         );
 
@@ -153,10 +174,11 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMgWHitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHitemsActionPerformed
+    private void btnViewDonReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDonReqActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnMgWHitemsActionPerformed
+        DonationRequestsPanel objDonReq =  new DonationRequestsPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objDonReq);
+    }//GEN-LAST:event_btnViewDonReqActionPerformed
 
     private void btnMgPTitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTitemsActionPerformed
         // TODO add your handling code here:
@@ -166,12 +188,24 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
         // TODO add your handling code here:
-      
+        
     }//GEN-LAST:event_btnMgVolActionPerformed
 
     private void btnCurReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurReqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCurReqActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        try {
+            // TODO add your handling code here:
+            MainJFrame mjf = new MainJFrame();
+            mjf.logout(userProcessContainer, jp, jsp);
+        } catch (IOException ex) {
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -179,9 +213,10 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     private javax.swing.JSplitPane SplitPaneFCAdmin;
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnCurReq;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;
-    private javax.swing.JButton btnMgWHitems;
+    private javax.swing.JButton btnViewDonReq;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
