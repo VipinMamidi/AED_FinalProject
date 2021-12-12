@@ -6,7 +6,12 @@ package userinterface.FCAdminRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import userinterface.MainJFrame;
 
 /**
  *
@@ -20,11 +25,15 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAccount;
-    public FCAdminWorkAreaPanel(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount userAccount) {
+    JPanel jp;
+    JSplitPane jsp;
+    public FCAdminWorkAreaPanel(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount userAccount, JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.userAccount = userAccount;
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
     }
 
     /**
@@ -44,6 +53,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         btnCurReq = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
         SplitPaneFCAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -87,6 +97,14 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
@@ -96,11 +114,13 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                 .addComponent(btnMgPTitems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnViewDonReq)
-                .addGap(99, 99, 99)
+                .addGap(33, 33, 33)
                 .addComponent(btnCurReq)
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
                 .addComponent(btnMgVol)
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap(378, Short.MAX_VALUE)
                 .addComponent(lblWelcomemsg)
@@ -120,7 +140,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                     .addComponent(btnMgPTitems)
                     .addComponent(btnCurReq)
                     .addComponent(btnMgVol)
-                    .addComponent(btnViewDonReq))
+                    .addComponent(btnViewDonReq)
+                    .addComponent(btnLogout))
                 .addGap(15, 15, 15))
         );
 
@@ -173,12 +194,25 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCurReqActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        try {
+            // TODO add your handling code here:
+            MainJFrame mjf = new MainJFrame();
+            mjf.logout(userProcessContainer, jp, jsp);
+        } catch (IOException ex) {
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneFCAdmin;
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnCurReq;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;
     private javax.swing.JButton btnViewDonReq;

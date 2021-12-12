@@ -6,7 +6,13 @@ package userinterface.DonorRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.MainJFrame;
 
 /**
  *
@@ -21,8 +27,10 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
 
     private UserAccount userAccount;
     EcoSystem ecosystem;
+    JPanel jp;
+    JSplitPane jsp;
     
-     public DonorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account) {
+     public DonorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account, JPanel jp, JSplitPane jsp) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -30,6 +38,8 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         //valueLabel.setText(enterprise.getName());
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
        
     }
 
@@ -49,6 +59,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         btnDonNow = new javax.swing.JButton();
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
         SplitPaneDon.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -84,6 +95,14 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblWelcomemsg.setText("Welcome,");
 
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
@@ -91,11 +110,13 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(btnProfile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addComponent(btnViewDon)
-                .addGap(238, 238, 238)
+                .addGap(48, 48, 48)
                 .addComponent(btnDonNow)
-                .addGap(73, 73, 73))
+                .addGap(53, 53, 53)
+                .addComponent(btnLogout)
+                .addGap(92, 92, 92))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblWelcomemsg)
@@ -114,7 +135,8 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProfile)
                     .addComponent(btnDonNow)
-                    .addComponent(btnViewDon))
+                    .addComponent(btnViewDon)
+                    .addComponent(btnLogout))
                 .addGap(15, 15, 15))
         );
 
@@ -165,12 +187,24 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         SplitPaneDon.setRightComponent(objDonNow);
     }//GEN-LAST:event_btnDonNowActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            MainJFrame mjf = new MainJFrame();
+            mjf.logout(userProcessContainer, jp, jsp);
+        } catch (IOException ex) {
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneDon;
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnDonNow;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnViewDon;
     private javax.swing.JLabel lblWelcomemsg;

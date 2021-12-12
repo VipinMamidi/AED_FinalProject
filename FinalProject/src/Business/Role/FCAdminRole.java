@@ -16,6 +16,6 @@ import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
  */
 public class FCAdminRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
-        return new FCAdminWorkAreaPanel(userProcessContainer, business,account);
+        return new FCAdminWorkAreaPanel(userProcessContainer, business,account, jp, jsp);
     } 
 }

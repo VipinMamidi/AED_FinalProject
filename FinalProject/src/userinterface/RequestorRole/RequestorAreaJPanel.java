@@ -7,6 +7,7 @@ package userinterface.RequestorRole;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -22,14 +23,18 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
 
     private UserAccount userAccount;
     EcoSystem ecosystem;
+    JPanel jp;
+    JSplitPane jsp ;
     
-     public RequestorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account) {
+     public RequestorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account,JPanel jp, JSplitPane jsp) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
       
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
        
     }
 
