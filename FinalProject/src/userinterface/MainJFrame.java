@@ -18,14 +18,18 @@ import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
 import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
@@ -43,7 +47,7 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-     private EcoSystem ecosystem;
+    private EcoSystem ecosystem;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     UserAccount ua;
     RequestorDirectory rd;
@@ -58,13 +62,13 @@ public class MainJFrame extends javax.swing.JFrame {
         if (ecosystem == null) {
             ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory()); //to add ngodirectory
         }
-       
+
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
-        Image newimg = img.getScaledInstance( jLabel3.getWidth(), jLabel3.getHeight(),  java.awt.Image.SCALE_SMOOTH ) ; 
+        Image newimg = img.getScaledInstance(jLabel3.getWidth(), jLabel3.getHeight(), java.awt.Image.SCALE_SMOOTH);
         jLabel3.setIcon(new ImageIcon(newimg));
-        
+
         Image icon = ImageIO.read(getClass().getResource("/Images/logo.jpeg"));
-        Image newIcon = icon.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ; 
+        Image newIcon = icon.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         jLabel4.setIcon(new ImageIcon(newIcon));
     }
 
@@ -200,7 +204,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
-        
+
         String username = userNameJTextField.getText();
         String password = passwordField.getText();
         UserAccountDirectory userDirectory = ecosystem.getUserAccountDirectory();
@@ -208,8 +212,11 @@ public class MainJFrame extends javax.swing.JFrame {
         this.ua = userDirectory.authenticateUser(username, password);
         if (ua == null) {
             JOptionPane.showMessageDialog(this, "Invalid credentials!!");
-        }
-        else {
+        } else {
+
+            jSplitPane1.setOneTouchExpandable(true);
+            jSplitPane1.setDividerLocation(0.0);
+
             if (ua.getRole().toString().equals("Business.Role.SystemAdminRole")) {
 
                 userNameJTextField.setEnabled(false);
@@ -217,71 +224,51 @@ public class MainJFrame extends javax.swing.JFrame {
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(container, ecosystem);
+                SystemAdminWorkAreaJPanel sa = new SystemAdminWorkAreaJPanel(container, ecosystem, jPanel1, jSplitPane1);
                 container.add("Sysadmin", sa);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
-            } 
-            else if (ua.getRole().toString().equals("Business.Role.FCAdminRole")) {
+            } else if (ua.getRole().toString().equals("Business.Role.FCAdminRole")) {
 
                 userNameJTextField.setEnabled(false);
                 passwordField.setEnabled(false);
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                FCAdminWorkAreaPanel fca = new FCAdminWorkAreaPanel(container, ecosystem,ua);
+                FCAdminWorkAreaPanel fca = new FCAdminWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("FCAdmin", fca);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
-            }
-             else if (ua.getRole().toString().equals("Business.Role.DonorRole")) {
+            } else if (ua.getRole().toString().equals("Business.Role.DonorRole")) {
 
                 userNameJTextField.setEnabled(false);
                 passwordField.setEnabled(false);
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                DonorAreaJPanel don = new DonorAreaJPanel(container, ecosystem, ua);
+                DonorAreaJPanel don = new DonorAreaJPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("Donor", don);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
-            }
-            else if (ua.getRole().toString().equals("Business.Role.RequestorRole")) {
+            } else if (ua.getRole().toString().equals("Business.Role.RequestorRole")) {
 
                 userNameJTextField.setEnabled(false);
                 passwordField.setEnabled(false);
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                RequestorAreaJPanel req = new RequestorAreaJPanel(container, ecosystem, ua);
+                RequestorAreaJPanel req = new RequestorAreaJPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("Requestor", req);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
             }
         }
-        
+
 
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-         try {
-             logoutJButton.setEnabled(false);
-             userNameJTextField.setEnabled(true);
-             passwordField.setEnabled(true);
-             loginJButton.setEnabled(true);
-             
-             userNameJTextField.setText("");
-             passwordField.setText("");
-             
-             container.removeAll();
-             HomeJPanel hmJP = new HomeJPanel(container);
-             container.add("Home", hmJP);
-             CardLayout crdLyt = (CardLayout) container.getLayout();
-             crdLyt.next(container);
-             dB4OUtil.storeSystem(ecosystem);
-         } catch (IOException ex) {
-             Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        logout(container, jPanel1, jSplitPane1);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
@@ -297,6 +284,45 @@ public class MainJFrame extends javax.swing.JFrame {
             Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnNewUserActionPerformed
+
+    public void logout(JPanel container, JPanel jp, JSplitPane jsp) {
+        try {
+
+            Component[] component = jp.getComponents();
+
+            for (int i = 0; i < component.length; i++) {
+                if (component[i] instanceof JTextField) {
+                    JTextField jt = (JTextField) component[i];
+                    jt.setEnabled(true);
+                    jt.setText("");
+                }
+
+                if (component[i] instanceof JButton) {
+                    JButton jb = (JButton) component[i];
+                    if (jb.getText() == "Login") {
+                        jb.setEnabled(true);
+                    }
+                    if (jb.getText() == "Logout") {
+                        jb.setEnabled(false);
+                    }
+
+                }
+
+            }
+            
+            jsp.setOneTouchExpandable(true);
+            jsp.setDividerLocation(0.2);
+
+            container.removeAll();
+            HomeJPanel hmJP = new HomeJPanel(container);
+            container.add("Home", hmJP);
+            CardLayout crdLyt = (CardLayout) container.getLayout();
+            crdLyt.next(container);
+            dB4OUtil.storeSystem(ecosystem);
+        } catch (IOException ex) {
+            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -325,7 +351,7 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         AddWarehousePanel panel = new AddWarehousePanel(
-        new ImageIcon("images/blurbg.png").getImage());
+                new ImageIcon("images/blurbg.png").getImage());
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -337,7 +363,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNewUser;
     private javax.swing.JPanel container;
