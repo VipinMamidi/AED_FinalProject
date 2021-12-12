@@ -6,7 +6,10 @@ package userinterface.RequestorRole;
 
 import Business.EcoSystem;
 import Business.Requestor.Requestor;
+import Business.Requestor.RequestorDirectory;
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +26,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
     UserAccount userAcc;
     String reqUname;
     String reqName;
+    RequestorDirectory reqDir;
     public RequestorProfilePanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -68,6 +72,16 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         lblDstate = new javax.swing.JLabel();
         txtDcity = new javax.swing.JTextField();
         lblDcity = new javax.swing.JLabel();
+        lblDName1 = new javax.swing.JLabel();
+        lblDphno1 = new javax.swing.JLabel();
+        lblDadd1 = new javax.swing.JLabel();
+        lblDcity1 = new javax.swing.JLabel();
+        lblDstate1 = new javax.swing.JLabel();
+        lblDzip1 = new javax.swing.JLabel();
+        lblDemail1 = new javax.swing.JLabel();
+        lblUname1 = new javax.swing.JLabel();
+        lblDpwd2 = new javax.swing.JLabel();
+        lblDpwd3 = new javax.swing.JLabel();
 
         txtDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDadd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -196,6 +210,26 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
         lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDcity.setText("City");
 
+        lblDName1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDphno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDadd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDcity1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDstate1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDzip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDemail1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblUname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDpwd2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        lblDpwd3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,33 +245,66 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
                         .addGap(125, 125, 125)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblDphno)
-                                    .addComponent(lblDadd)
-                                    .addComponent(lblDcity)
-                                    .addComponent(lblDstate)
-                                    .addComponent(lblDzip)
-                                    .addComponent(lblDemail)
-                                    .addComponent(lblUname)
-                                    .addComponent(lblDpwd)
-                                    .addComponent(lblDpwd1)
-                                    .addComponent(lblDName))
-                                .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lblDphno)
+                                        .addComponent(lblDadd)
+                                        .addComponent(lblDcity)
+                                        .addComponent(lblDstate)
+                                        .addComponent(lblDzip)
+                                        .addComponent(lblDemail)
+                                        .addComponent(lblDpwd)
+                                        .addComponent(lblDpwd1)
+                                        .addComponent(lblDName))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(52, 52, 52)
+                                        .addComponent(lblUname)))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDName1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblDphno1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDcity1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDzip1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDemail1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDstate1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblUname1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblDpwd2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblDpwd3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblDadd1))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addComponent(btnSubmit)))))
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,43 +315,53 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDName)
                     .addComponent(txtDname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit))
+                    .addComponent(btnEdit)
+                    .addComponent(lblDName1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDphno)
-                    .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDphno1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDadd)
-                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDadd1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDcity)
-                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDcity1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDstate)
-                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDstate1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDzip)
-                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDzip1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDemail)
-                    .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDemail1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUname)
-                    .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUname1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDpwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDpwd))
+                    .addComponent(lblDpwd)
+                    .addComponent(lblDpwd2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDpwd1)
-                    .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDpwd3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnSubmit)
                 .addGap(44, 44, 44))
@@ -293,22 +370,22 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
 
     private void txtDaddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDaddFocusLost
         // TODO add your handling code here:
-//        if(!(txtDadd.getText().matches("^[a-zA-Z]*$"))){
-//            lblDadd1.setText("Invalid input. Please enter only alphabets");
-//        }
-//        else{
-//            lblDadd1.setText("");
-//        }
+        if(!(txtDadd.getText().matches("^[a-zA-Z]*$"))){
+            lblDadd1.setText("Invalid input. Please enter only alphabets");
+        }
+        else{
+            lblDadd1.setText("");
+        }
     }//GEN-LAST:event_txtDaddFocusLost
 
     private void txtDnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDnameFocusLost
         // TODO add your handling code here:
-//        if(!(txtDname.getText().matches("^[a-zA-Z]*$"))){
-//            lblDName1.setText("Invalid input. Please enter only alphabets");
-//        }
-//        else{
-//            lblDName1.setText("");
-//        }
+        if(!(txtDname.getText().matches("^[a-zA-Z]*$"))){
+            lblDName1.setText("Invalid input. Please enter only alphabets");
+        }
+        else{
+            lblDName1.setText("");
+        }
     }//GEN-LAST:event_txtDnameFocusLost
 
     private void txtDpwd1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDpwd1FocusLost
@@ -325,88 +402,88 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
 
     private void txtDphnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDphnoFocusLost
         // TODO add your handling code here:
-//        if(!(txtDphno.getText().matches("^[0-9]*$")) || !(txtDphno.getText().length()==10)) {
-//            lblDphno1.setText("Please enter a valid phone number");
-//        }
-//        else{
-//            lblDphno1.setText("");
-//
-//        }
+        if(!(txtDphno.getText().matches("^[0-9]*$")) || !(txtDphno.getText().length()==10)) {
+            lblDphno1.setText("Please enter a valid phone number");
+        }
+        else{
+            lblDphno1.setText("");
+
+        }
     }//GEN-LAST:event_txtDphnoFocusLost
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-//        enablefields();
+        enablefields();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-//        if(!nullCheck()){
-//            ArrayList<Donor> donList = ecosystem.getDonDir().getDonorList();
-//            for(Donor d: donList)
-//            {
-//                if(d.getDonorAccount().getUsername().equals(DonUname))
-//                {
-//                    d.setDonorName(txtDname.getText());
-//                    d.setDonorPhno(txtDphno.getText());
-//                    d.setDonorEmail(txtDemail.getText());
-//                    d.setDonorAddres(txtDadd.getText());
-//                    d.setDonorCity(txtDcity.getText());
-//                    d.setDonorState(txtDstate.getText());
-//                    d.setDonorZipcode(txtDzip.getText());
-//                    d.setDonUserName(txtDuname.getText());
-//                    d.setDonPwd(txtDpwd.getText());
-//                }
-//            }
-//            // ecosystem.setFCWDirectory(fcwList);
-//            donDir = ecosystem.getDonDir();
-//            ecosystem.setDonDir(donDir);
-//            JOptionPane.showMessageDialog(this, "Profile updated successfully");
-//            disableFields();
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this, "All fields are mandatory!");
-//        }
+        if(!nullCheck()){
+            ArrayList<Requestor> reqList = ecosystem.getReqDir().getReqAccList();
+            for(Requestor r: reqList)
+            {
+                if(r.getReqAccount().getUsername().equals(reqUname))
+                {
+                    r.setReqName(txtDname.getText());
+                    r.setReqPhno(txtDphno.getText());
+                    r.setReqEmail(txtDemail.getText());
+                    r.setReqAddres(txtDadd.getText());
+                    r.setReqCity(txtDcity.getText());
+                    r.setReqState(txtDstate.getText());
+                    r.setReqZipcode(txtDzip.getText());
+                    r.setReqUserName(txtDuname.getText());
+                    r.setReqPwd(txtDpwd.getText());
+                }
+            }
+            // ecosystem.setFCWDirectory(fcwList);
+            reqDir = ecosystem.getReqDir();
+            ecosystem.setReqDir(reqDir);
+            JOptionPane.showMessageDialog(this, "Profile updated successfully");
+            disableFields();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "All fields are mandatory!");
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtDemailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDemailFocusLost
         // TODO add your handling code here:
-//        if ((!txtDemail.getText().isEmpty()) && !txtDemail.getText().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
-//            lblDemail1.setText( "Please Provide Valid Email Address !!");
-//        }
-//        else{
-//            lblDemail1.setText("");
-//        }
+        if ((!txtDemail.getText().isEmpty()) && !txtDemail.getText().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
+            lblDemail1.setText( "Please Provide Valid Email Address !!");
+        }
+        else{
+            lblDemail1.setText("");
+        }
     }//GEN-LAST:event_txtDemailFocusLost
 
     private void txtDzipFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDzipFocusLost
         // TODO add your handling code here:
-//        if((txtDzip.getText().matches("^[a-zA-Z]*$"))){
-//            lblDzip1.setText("Invalid input. Please enter only numbers");
-//        }
-//        else{
-//            lblDzip1.setText("");
-//        }
+        if((txtDzip.getText().matches("^[a-zA-Z]*$"))){
+            lblDzip1.setText("Invalid input. Please enter only numbers");
+        }
+        else{
+            lblDzip1.setText("");
+        }
     }//GEN-LAST:event_txtDzipFocusLost
 
     private void txtDstateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDstateFocusLost
         // TODO add your handling code here:
-//        if(!(txtDstate.getText().matches("^[a-zA-Z]*$"))){
-//            lblDstate1.setText("Invalid input. Please enter only alphabets");
-//        }
-//        else{
-//            lblDstate1.setText("");
-//        }
+        if(!(txtDstate.getText().matches("^[a-zA-Z]*$"))){
+            lblDstate1.setText("Invalid input. Please enter only alphabets");
+        }
+        else{
+            lblDstate1.setText("");
+        }
     }//GEN-LAST:event_txtDstateFocusLost
 
     private void txtDcityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDcityFocusLost
         // TODO add your handling code here:
-//        if(!(txtDcity.getText().matches("^[a-zA-Z]*$"))){
-//            lblDcity1.setText("Invalid input. Please enter only alphabets");
-//        }
-//        else{
-//            lblDcity1.setText("");
-//        }
+        if(!(txtDcity.getText().matches("^[a-zA-Z]*$"))){
+            lblDcity1.setText("Invalid input. Please enter only alphabets");
+        }
+        else{
+            lblDcity1.setText("");
+        }
     }//GEN-LAST:event_txtDcityFocusLost
 
 
@@ -414,16 +491,26 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblDName;
+    private javax.swing.JLabel lblDName1;
     private javax.swing.JLabel lblDadd;
+    private javax.swing.JLabel lblDadd1;
     private javax.swing.JLabel lblDcity;
+    private javax.swing.JLabel lblDcity1;
     private javax.swing.JLabel lblDemail;
+    private javax.swing.JLabel lblDemail1;
     private javax.swing.JLabel lblDonProfileTitle;
     private javax.swing.JLabel lblDphno;
+    private javax.swing.JLabel lblDphno1;
     private javax.swing.JLabel lblDpwd;
     private javax.swing.JLabel lblDpwd1;
+    private javax.swing.JLabel lblDpwd2;
+    private javax.swing.JLabel lblDpwd3;
     private javax.swing.JLabel lblDstate;
+    private javax.swing.JLabel lblDstate1;
     private javax.swing.JLabel lblDzip;
+    private javax.swing.JLabel lblDzip1;
     private javax.swing.JLabel lblUname;
+    private javax.swing.JLabel lblUname1;
     private javax.swing.JTextField txtDadd;
     private javax.swing.JTextField txtDcity;
     private javax.swing.JTextField txtDemail;
@@ -437,7 +524,7 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateFields() {
-       /* for(Requestor r: ecosystem.getReqDir().getReqAccList()){
+        for(Requestor r: ecosystem.getReqDir().getReqAccList()){
             txtDname.setText(r.getReqName());
             txtDname.setEnabled(false);
             txtDphno.setText(r.getReqPhno());
@@ -446,16 +533,68 @@ public class RequestorProfilePanel extends javax.swing.JPanel {
             txtDemail.setEnabled(false);
             txtDadd.setText(r.getReqAddres());
             txtDadd.setEnabled(false);
-            txtDcity.setText(d.getDonorCity());
+            txtDcity.setText(r.getReqCity());
             txtDcity.setEnabled(false);
-            txtDstate.setText(d.getDonorState());
+            txtDstate.setText(r.getReqState());
             txtDstate.setEnabled(false);
-            txtDzip.setText(d.getDonorState());
+            txtDzip.setText(r.getReqZipcode());
             txtDzip.setEnabled(false);
-            txtDuname.setText(d.getDonorAccount().getUsername());
+            txtDuname.setText(r.getReqAccount().getUsername());
             txtDuname.setEnabled(false);
-            txtDpwd.setText(d.getDonorAccount().getPassword());
+            txtDpwd.setText(r.getReqAccount().getUsername());
             txtDpwd.setEnabled(false);
-        } */
+        } 
     } 
+
+    private void enablefields() {
+        txtDname.setEnabled(true);
+        txtDphno.setEnabled(true);
+        txtDemail.setEnabled(true);
+        txtDadd.setEnabled(true);
+        txtDcity.setEnabled(true);
+        txtDstate.setEnabled(true);
+        txtDzip.setEnabled(true);
+        txtDuname.setEnabled(true);
+        txtDpwd.setEnabled(true);
+        btnSubmit.setVisible(true);
+        lblDpwd1.setVisible(true);
+        txtDpwd1.setVisible(true);
+    }
+
+    private boolean nullCheck() {
+        if(txtDname.getText().length()!=0 && txtDphno.getText().length()!=0 && txtDemail.getText().length()!=0 
+                && txtDadd.getText().length()!=0 && txtDcity.getText().length()!=0 && txtDstate.getText().length()!=0
+                && txtDzip.getText().length()!=0 && txtDuname.getText().length()!=0 && txtDpwd.getText().length()!=0
+                && txtDpwd1.getText().length()!=0 )
+        {
+            return false;
+        }
+        else return true;
+    }
+
+    private void disableFields() {
+        txtDname.setEnabled(false);
+        txtDphno.setEnabled(false);
+        txtDemail.setEnabled(false);
+        txtDadd.setEnabled(false);
+        txtDcity.setEnabled(false);
+        txtDstate.setEnabled(false);
+        txtDzip.setEnabled(false);
+        txtDuname.setEnabled(false);
+        txtDpwd.setEnabled(false);
+        btnSubmit.setVisible(false);
+        lblDpwd1.setVisible(false);
+        txtDpwd1.setVisible(false);
+        lblDName1.setText("");
+        lblDphno1.setText("");
+        lblDemail1.setText("");
+        lblDadd1.setText("");
+        lblDcity1.setText("");
+        lblDstate1.setText("");
+        lblDzip1.setText("");
+        lblUname1.setText("");
+        lblDpwd2.setText("");
+        lblDpwd3.setText("");
+    }
+    
 }

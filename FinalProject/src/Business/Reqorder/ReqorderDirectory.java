@@ -24,5 +24,10 @@ public class ReqorderDirectory {
     public void setReqOrderList(ArrayList<Reqorder> reqOrderList) {
         this.reqOrderList = reqOrderList;
     }
-    
+     public void addNewReqorder(Reqorder rq){
+        reqOrderList.add(rq);
+    }
+    public void deleteReqorder(Reqorder selectedD){
+        reqOrderList.remove(selectedD);
+    }
 }

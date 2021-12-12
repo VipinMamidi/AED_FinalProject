@@ -15,6 +15,7 @@ import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
+import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.DonorRole;
@@ -45,6 +46,7 @@ public class EcoSystem extends Organization{
     private UserAccountDirectory uaDir;
     private FCPantryItemsDirectory fcpiDir;
     private DonationDirectory donatDir;
+    private ReqorderDirectory reqorderDir;
     
     public static EcoSystem getBusiness() {
         return business;
@@ -68,6 +70,7 @@ public class EcoSystem extends Organization{
        // this.uaDir = uaDir;
        //this.fcpiDir = fcpiDir;
        //this.donatDit = doantDir;
+       //this.reqorderDir = reqorderDir;
     }
 
     public NGODirectory getNgoDir() {
@@ -163,5 +166,11 @@ public class EcoSystem extends Organization{
     }
     public void setDonatDirectory(DonationDirectory donatDir){
         this.donatDir = donatDir;
+    }
+    public ReqorderDirectory getReqorderDirectory(){
+        return reqorderDir;
+    }
+    public void setReqorderDirectory(ReqorderDirectory reqorderDir){
+        this.reqorderDir = reqorderDir;
     }
 }

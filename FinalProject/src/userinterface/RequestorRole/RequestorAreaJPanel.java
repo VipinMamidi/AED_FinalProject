@@ -29,13 +29,12 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
      public RequestorAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account,JPanel jp, JSplitPane jsp) {
         initComponents();
         
-        this.userProcessContainer = userProcessContainer;
-      
+        this.userProcessContainer = userProcessContainer;    
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.jp = jp;
         this.jsp = jsp;
-       
+        lblwelname.setText(account.getEmployee().getName());
     }
 
     /**
@@ -114,9 +113,9 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblwelname)
-                    .addComponent(lblWelcomemsg))
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblWelcomemsg)
+                    .addComponent(lblwelname))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProfile)
@@ -156,8 +155,8 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
 
     private void btnReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReqActionPerformed
         // TODO add your handling code here:
-//        ViewDonationPanel objViewDon = new ViewDonationPanel(userProcessContainer,ecosystem,userAccount);
-//        SplitPaneReq.setRightComponent(objViewDon);
+        RequestFoodPanel objReq = new RequestFoodPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneReq.setRightComponent(objReq);
     }//GEN-LAST:event_btnReqActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
@@ -168,8 +167,8 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
         // TODO add your handling code here:
-//        DonateNowPanel objDonNow = new DonateNowPanel(userProcessContainer,ecosystem,userAccount);
-//        SplitPaneReq.setRightComponent(objDonNow);
+        ReqorderStatusPanel objReqstatus = new ReqorderStatusPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneReq.setRightComponent(objReqstatus);
     }//GEN-LAST:event_btnStatusActionPerformed
 
 

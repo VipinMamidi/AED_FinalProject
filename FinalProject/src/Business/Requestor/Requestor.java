@@ -14,6 +14,7 @@ public class Requestor {
     private int reqId;
     private String reqName;
     private String reqType;
+    private String reqQuan;
     private String reqPhno;
     private String reqAddres;
     private String reqCity;
@@ -38,6 +39,22 @@ public class Requestor {
 
     public void setReqPwd(String reqPwd) {
         this.reqPwd = reqPwd;
+    }
+
+    public String getReqQuan() {
+        return reqQuan;
+    }
+
+    public void setReqQuan(String reqQuan) {
+        this.reqQuan = reqQuan;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
    
     
