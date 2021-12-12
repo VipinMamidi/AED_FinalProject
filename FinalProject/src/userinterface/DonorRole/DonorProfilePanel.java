@@ -8,7 +8,14 @@ import Business.Donor.Donor;
 import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -26,16 +33,20 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     UserAccount userAcc;
     String DonUname;
     DonorDirectory donDir;
-    public DonorProfilePanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
+
+    public DonorProfilePanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateFields();
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         DonUname = userAcc.getUsername();
+        setBG();
+        setLogo();
     }
 
     /**
@@ -80,12 +91,21 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         lblUname1 = new javax.swing.JLabel();
         lblDpwd2 = new javax.swing.JLabel();
         lblDpwd3 = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
+        logoImage = new javax.swing.JLabel();
+        LabelImage = new javax.swing.JLabel();
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(2000, 1100));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblDonProfileTitle.setText("My Food Cloud Profile");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 20, -1, -1));
 
-        lblDName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDName.setText("Name");
+        lblDName.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDName.setText("Name :");
+        add(lblDName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         txtDname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -94,9 +114,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDnameFocusLost(evt);
             }
         });
+        add(txtDname, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 137, -1));
 
-        lblDphno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDphno.setText("Phone Number");
+        lblDphno.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDphno.setText("Phone Number :");
+        add(lblDphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
 
         txtDphno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDphno.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -105,9 +127,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDphnoFocusLost(evt);
             }
         });
+        add(txtDphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 137, -1));
 
-        lblDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDadd.setText("Address");
+        lblDadd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDadd.setText("Address :");
+        add(lblDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
 
         txtDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDadd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -116,9 +140,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDaddFocusLost(evt);
             }
         });
+        add(txtDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 137, -1));
 
-        lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDcity.setText("City");
+        lblDcity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDcity.setText("City :");
+        add(lblDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
 
         txtDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDcity.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -127,9 +153,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDcityFocusLost(evt);
             }
         });
+        add(txtDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 137, -1));
 
-        lblDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDstate.setText("State");
+        lblDstate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDstate.setText("State :");
+        add(lblDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
 
         txtDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDstate.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -138,9 +166,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDstateFocusLost(evt);
             }
         });
+        add(txtDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 137, -1));
 
-        lblDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDzip.setText("Zipcode");
+        lblDzip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDzip.setText("Zipcode :");
+        add(lblDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
         txtDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDzip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -149,9 +179,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDzipFocusLost(evt);
             }
         });
+        add(txtDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 137, -1));
 
-        lblDemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDemail.setText("Email Id");
+        lblDemail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDemail.setText("Email Id :");
+        add(lblDemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
 
         txtDemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDemail.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -160,23 +192,29 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDemailFocusLost(evt);
             }
         });
+        add(txtDemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 137, -1));
 
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, -1, -1));
 
+        btnEdit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnEdit.setText("Edit Profile");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, -1, -1));
 
-        lblUname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblUname.setText("Username");
+        lblUname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblUname.setText("Username :");
+        add(lblUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
         txtDuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDuname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -185,9 +223,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDunameFocusLost(evt);
             }
         });
+        add(txtDuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 137, -1));
 
-        lblDpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDpwd.setText("Password");
+        lblDpwd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDpwd.setText("Password :");
+        add(lblDpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, -1, -1));
 
         txtDpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDpwd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -196,9 +236,11 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDpwdFocusLost(evt);
             }
         });
+        add(txtDpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 137, -1));
 
-        lblDpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDpwd1.setText("Confirm Password");
+        lblDpwd1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDpwd1.setText("Confirm Password :");
+        add(lblDpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, -1, -1));
 
         txtDpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDpwd1.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -207,222 +249,133 @@ public class DonorProfilePanel extends javax.swing.JPanel {
                 txtDpwd1FocusLost(evt);
             }
         });
+        add(txtDpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 137, -1));
 
         lblDName1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
 
         lblDphno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDphno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
         lblDadd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDadd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
 
         lblDcity1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDcity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
 
         lblDstate1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDstate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, -1, -1));
 
         lblDzip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDzip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
 
         lblDemail1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
 
         lblUname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblUname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, -1, -1));
 
         lblDpwd2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDpwd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
 
         lblDpwd3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblDpwd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(393, 393, 393)
-                        .addComponent(lblDonProfileTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(btnEdit)
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblDphno)
-                                    .addComponent(lblDadd)
-                                    .addComponent(lblDcity)
-                                    .addComponent(lblDstate)
-                                    .addComponent(lblDzip)
-                                    .addComponent(lblDemail)
-                                    .addComponent(lblUname)
-                                    .addComponent(lblDpwd)
-                                    .addComponent(lblDpwd1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(72, 72, 72)
-                                        .addComponent(lblDName)))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDName1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDphno1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDcity1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblDzip1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDemail1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDstate1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblUname1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblDpwd2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblDpwd3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblDadd1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(btnSubmit)))))
-                .addContainerGap(388, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblDonProfileTitle)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDName)
-                    .addComponent(txtDname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit)
-                    .addComponent(lblDName1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDphno)
-                    .addComponent(txtDphno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDphno1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDadd)
-                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDadd1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDcity)
-                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDcity1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDstate)
-                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDstate1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDzip)
-                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDzip1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDemail)
-                    .addComponent(txtDemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDemail1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUname)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblUname1)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDpwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDpwd)
-                    .addComponent(lblDpwd2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDpwd1)
-                    .addComponent(txtDpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDpwd3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
-                .addGap(58, 58, 58))
-        );
+        btnCancel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, -1, -1));
+        add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 90, 80));
+
+        LabelImage.setText(" ");
+        add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 700));
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setBG() {
+        try {
+            LabelImage.setMinimumSize(new Dimension(1500, 1000));
+            LabelImage.setPreferredSize(new Dimension(1500, 1000));
+            LabelImage.setMaximumSize(new Dimension(1500, 1000));
+            
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+            
+            Image newimg = img.getScaledInstance(2500, 1000, java.awt.Image.SCALE_SMOOTH);
+            LabelImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+            
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+            
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void txtDnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDnameFocusLost
         // TODO add your handling code here:
-         if(!(txtDname.getText().matches("^[a-zA-Z]*$"))){
+        if (!(txtDname.getText().matches("^[a-zA-Z]*$"))) {
             lblDName1.setText("Invalid input. Please enter only alphabets");
-        }
-        else{
+        } else {
             lblDName1.setText("");
-        }         
+        }
     }//GEN-LAST:event_txtDnameFocusLost
 
     private void txtDphnoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDphnoFocusLost
         // TODO add your handling code here:
-        if(!(txtDphno.getText().matches("^[0-9]*$")) || !(txtDphno.getText().length()==10)) {
-                lblDphno1.setText("Please enter a valid phone number");
-        }
-        else{
-             lblDphno1.setText("");
-            
+        if (!(txtDphno.getText().matches("^[0-9]*$")) || !(txtDphno.getText().length() == 10)) {
+            lblDphno1.setText("Please enter a valid phone number");
+        } else {
+            lblDphno1.setText("");
+
         }
     }//GEN-LAST:event_txtDphnoFocusLost
 
     private void txtDaddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDaddFocusLost
         // TODO add your handling code here:
-        if(!(txtDadd.getText().matches("^[a-zA-Z]*$"))){
+        if (!(txtDadd.getText().matches("^[a-zA-Z]*$"))) {
             lblDadd1.setText("Invalid input. Please enter only alphabets");
-        }
-        else{
+        } else {
             lblDadd1.setText("");
         }
     }//GEN-LAST:event_txtDaddFocusLost
 
     private void txtDcityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDcityFocusLost
         // TODO add your handling code here:
-        if(!(txtDcity.getText().matches("^[a-zA-Z]*$"))){
+        if (!(txtDcity.getText().matches("^[a-zA-Z]*$"))) {
             lblDcity1.setText("Invalid input. Please enter only alphabets");
-        }
-        else{
+        } else {
             lblDcity1.setText("");
         }
     }//GEN-LAST:event_txtDcityFocusLost
 
     private void txtDstateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDstateFocusLost
         // TODO add your handling code here:
-         if(!(txtDstate.getText().matches("^[a-zA-Z]*$"))){
+        if (!(txtDstate.getText().matches("^[a-zA-Z]*$"))) {
             lblDstate1.setText("Invalid input. Please enter only alphabets");
-        }
-        else{
+        } else {
             lblDstate1.setText("");
         }
     }//GEN-LAST:event_txtDstateFocusLost
 
     private void txtDzipFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDzipFocusLost
         // TODO add your handling code here:
-        if((txtDzip.getText().matches("^[a-zA-Z]*$"))){
+        if ((txtDzip.getText().matches("^[a-zA-Z]*$"))) {
             lblDzip1.setText("Invalid input. Please enter only numbers");
-        }
-        else{
+        } else {
             lblDzip1.setText("");
         }
     }//GEN-LAST:event_txtDzipFocusLost
@@ -430,46 +383,42 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     private void txtDemailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDemailFocusLost
         // TODO add your handling code here:
         if ((!txtDemail.getText().isEmpty()) && !txtDemail.getText().matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
-            lblDemail1.setText( "Please Provide Valid Email Address !!");
-        }
-        else{
+            lblDemail1.setText("Please Provide Valid Email Address !!");
+        } else {
             lblDemail1.setText("");
         }
     }//GEN-LAST:event_txtDemailFocusLost
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(!nullCheck()){
+        if (!nullCheck()) {
             ArrayList<Donor> donList = ecosystem.getDonDir().getDonorList();
-            for(Donor d: donList)
-            {
-                if(d.getDonorAccount().getUsername().equals(DonUname))
-                {
-                d.setDonorName(txtDname.getText());
-                d.setDonorPhno(txtDphno.getText());
-                d.setDonorEmail(txtDemail.getText());
-                d.setDonorAddres(txtDadd.getText());
-                d.setDonorCity(txtDcity.getText());
-                d.setDonorState(txtDstate.getText());
-                d.setDonorZipcode(txtDzip.getText());
-                d.setDonUserName(txtDuname.getText());
-                d.setDonPwd(txtDpwd.getText());
-                }           
+            for (Donor d : donList) {
+                if (d.getDonorAccount().getUsername().equals(DonUname)) {
+                    d.setDonorName(txtDname.getText());
+                    d.setDonorPhno(txtDphno.getText());
+                    d.setDonorEmail(txtDemail.getText());
+                    d.setDonorAddres(txtDadd.getText());
+                    d.setDonorCity(txtDcity.getText());
+                    d.setDonorState(txtDstate.getText());
+                    d.setDonorZipcode(txtDzip.getText());
+                    d.setDonUserName(txtDuname.getText());
+                    d.setDonPwd(txtDpwd.getText());
+                }
             }
-       // ecosystem.setFCWDirectory(fcwList);
-        donDir = ecosystem.getDonDir();
-        ecosystem.setDonDir(donDir);
-        JOptionPane.showMessageDialog(this, "Profile updated successfully");
-        disableFields();
-        }
-        else{
-           JOptionPane.showMessageDialog(this, "All fields are mandatory!"); 
+            // ecosystem.setFCWDirectory(fcwList);
+            donDir = ecosystem.getDonDir();
+            ecosystem.setDonDir(donDir);
+            JOptionPane.showMessageDialog(this, "Profile updated successfully");
+            disableFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "All fields are mandatory!");
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-          enablefields();
+        enablefields();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void txtDunameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDunameFocusLost
@@ -484,8 +433,15 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDpwd1FocusLost
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        disableFields();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImage;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblDName;
@@ -509,6 +465,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDzip1;
     private javax.swing.JLabel lblUname;
     private javax.swing.JLabel lblUname1;
+    private javax.swing.JLabel logoImage;
     private javax.swing.JTextField txtDadd;
     private javax.swing.JTextField txtDcity;
     private javax.swing.JTextField txtDemail;
@@ -522,7 +479,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateFields() {
-        for(Donor d: ecosystem.getDonDir().getDonorList()){
+        for (Donor d : ecosystem.getDonDir().getDonorList()) {
             txtDname.setText(d.getDonorName());
             txtDname.setEnabled(false);
             txtDphno.setText(d.getDonorPhno());
@@ -555,19 +512,20 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         txtDuname.setEnabled(true);
         txtDpwd.setEnabled(true);
         btnSubmit.setVisible(true);
+        btnCancel.setVisible(true);
         lblDpwd1.setVisible(true);
         txtDpwd1.setVisible(true);
     }
 
     private boolean nullCheck() {
-        if(txtDname.getText().length()!=0 && txtDphno.getText().length()!=0 && txtDemail.getText().length()!=0 
-                && txtDadd.getText().length()!=0 && txtDcity.getText().length()!=0 && txtDstate.getText().length()!=0
-                && txtDzip.getText().length()!=0 && txtDuname.getText().length()!=0 && txtDpwd.getText().length()!=0
-                && txtDpwd1.getText().length()!=0 )
-        {
+        if (txtDname.getText().length() != 0 && txtDphno.getText().length() != 0 && txtDemail.getText().length() != 0
+                && txtDadd.getText().length() != 0 && txtDcity.getText().length() != 0 && txtDstate.getText().length() != 0
+                && txtDzip.getText().length() != 0 && txtDuname.getText().length() != 0 && txtDpwd.getText().length() != 0
+                && txtDpwd1.getText().length() != 0) {
             return false;
+        } else {
+            return true;
         }
-        else return true;
     }
 
     private void disableFields() {
@@ -581,6 +539,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
         txtDuname.setEnabled(false);
         txtDpwd.setEnabled(false);
         btnSubmit.setVisible(false);
+        btnCancel.setVisible(false);
         lblDpwd1.setVisible(false);
         txtDpwd1.setVisible(false);
         lblDName1.setText("");

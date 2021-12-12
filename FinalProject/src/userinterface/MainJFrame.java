@@ -70,6 +70,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Image icon = ImageIO.read(getClass().getResource("/Images/logo.jpeg"));
         Image newIcon = icon.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         jLabel4.setIcon(new ImageIcon(newIcon));
+        pack();
     }
 
     /**
