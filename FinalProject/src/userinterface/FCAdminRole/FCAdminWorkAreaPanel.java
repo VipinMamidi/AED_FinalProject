@@ -38,7 +38,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
         SplitPaneFCAdmin = new javax.swing.JSplitPane();
         MenubarPanel = new javax.swing.JPanel();
-        btnMgWHitems = new javax.swing.JButton();
+        btnViewDonReq = new javax.swing.JButton();
         btnMgPTitems = new javax.swing.JButton();
         btnMgVol = new javax.swing.JButton();
         lblwelusername = new javax.swing.JLabel();
@@ -48,12 +48,12 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
         SplitPaneFCAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnMgWHitems.setBackground(new java.awt.Color(225, 144, 108));
-        btnMgWHitems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnMgWHitems.setText("View Donation Requests");
-        btnMgWHitems.addActionListener(new java.awt.event.ActionListener() {
+        btnViewDonReq.setBackground(new java.awt.Color(225, 144, 108));
+        btnViewDonReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewDonReq.setText("View Donation Requests");
+        btnViewDonReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMgWHitemsActionPerformed(evt);
+                btnViewDonReqActionPerformed(evt);
             }
         });
 
@@ -94,15 +94,15 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(btnMgPTitems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                .addComponent(btnMgWHitems)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnViewDonReq)
+                .addGap(99, 99, 99)
                 .addComponent(btnCurReq)
                 .addGap(64, 64, 64)
                 .addComponent(btnMgVol)
                 .addGap(73, 73, 73))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(378, Short.MAX_VALUE)
                 .addComponent(lblWelcomemsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblwelusername)
@@ -120,7 +120,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                     .addComponent(btnMgPTitems)
                     .addComponent(btnCurReq)
                     .addComponent(btnMgVol)
-                    .addComponent(btnMgWHitems))
+                    .addComponent(btnViewDonReq))
                 .addGap(15, 15, 15))
         );
 
@@ -153,10 +153,10 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMgWHitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHitemsActionPerformed
+    private void btnViewDonReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDonReqActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_btnMgWHitemsActionPerformed
+    }//GEN-LAST:event_btnViewDonReqActionPerformed
 
     private void btnMgPTitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTitemsActionPerformed
         // TODO add your handling code here:
@@ -181,7 +181,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCurReq;
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;
-    private javax.swing.JButton btnMgWHitems;
+    private javax.swing.JButton btnViewDonReq;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables

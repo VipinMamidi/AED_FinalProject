@@ -46,16 +46,16 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="btnMgPTitems" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="147" max="32767" attributes="0"/>
-                      <Component id="btnMgWHitems" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnViewDonReq" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       <Component id="btnCurReq" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Component id="btnMgVol" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="378" max="32767" attributes="0"/>
                       <Component id="lblWelcomemsg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblwelusername" min="-2" max="-2" attributes="0"/>
@@ -76,7 +76,7 @@
                           <Component id="btnMgPTitems" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCurReq" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMgVol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMgWHitems" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnViewDonReq" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
@@ -84,7 +84,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnMgWHitems">
+            <Component class="javax.swing.JButton" name="btnViewDonReq">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6c" green="90" red="e1" type="rgb"/>
@@ -95,7 +95,7 @@
                 <Property name="text" type="java.lang.String" value="View Donation Requests"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgWHitemsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDonReqActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnMgPTitems">

@@ -42,30 +42,138 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        SplitPaneDon = new javax.swing.JSplitPane();
+        MenubarPanel = new javax.swing.JPanel();
+        btnViewDon = new javax.swing.JButton();
+        btnProfile = new javax.swing.JButton();
+        btnDonNow = new javax.swing.JButton();
+        lblwelusername = new javax.swing.JLabel();
+        lblWelcomemsg = new javax.swing.JLabel();
+        WorkAreaPanel = new javax.swing.JPanel();
 
-        jLabel1.setText("donaar pyanell!");
+        SplitPaneDon.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        btnViewDon.setBackground(new java.awt.Color(225, 144, 108));
+        btnViewDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewDon.setText("View Donations");
+        btnViewDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDonActionPerformed(evt);
+            }
+        });
+
+        btnProfile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnProfile.setText("My Profile");
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfileActionPerformed(evt);
+            }
+        });
+
+        btnDonNow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnDonNow.setText("Donate Now");
+        btnDonNow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonNowActionPerformed(evt);
+            }
+        });
+
+        lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblwelusername.setText("Donor!");
+
+        lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblWelcomemsg.setText("Welcome,");
+
+        javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
+        MenubarPanel.setLayout(MenubarPanelLayout);
+        MenubarPanelLayout.setHorizontalGroup(
+            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(btnProfile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addComponent(btnViewDon)
+                .addGap(238, 238, 238)
+                .addComponent(btnDonNow)
+                .addGap(73, 73, 73))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblWelcomemsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblwelusername)
+                .addGap(441, 441, 441))
+        );
+        MenubarPanelLayout.setVerticalGroup(
+            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblwelusername)
+                    .addComponent(lblWelcomemsg))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProfile)
+                    .addComponent(btnDonNow)
+                    .addComponent(btnViewDon))
+                .addGap(15, 15, 15))
+        );
+
+        SplitPaneDon.setLeftComponent(MenubarPanel);
+
+        WorkAreaPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
+
+        javax.swing.GroupLayout WorkAreaPanelLayout = new javax.swing.GroupLayout(WorkAreaPanel);
+        WorkAreaPanel.setLayout(WorkAreaPanelLayout);
+        WorkAreaPanelLayout.setHorizontalGroup(
+            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1004, Short.MAX_VALUE)
+        );
+        WorkAreaPanelLayout.setVerticalGroup(
+            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 563, Short.MAX_VALUE)
+        );
+
+        SplitPaneDon.setRightComponent(WorkAreaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(jLabel1)
-                .addContainerGap(137, Short.MAX_VALUE))
+            .addComponent(SplitPaneDon, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel1)
-                .addContainerGap(170, Short.MAX_VALUE))
+            .addComponent(SplitPaneDon, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnViewDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDonActionPerformed
+        // TODO add your handling code here:
+        ViewDonationPanel objViewDon = new ViewDonationPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneDon.setRightComponent(objViewDon);
+    }//GEN-LAST:event_btnViewDonActionPerformed
+
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        // TODO add your handling code here:
+        DonorProfilePanel objDonProf = new DonorProfilePanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneDon.setRightComponent(objDonProf);
+    }//GEN-LAST:event_btnProfileActionPerformed
+
+    private void btnDonNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonNowActionPerformed
+        // TODO add your handling code here:
+        DonateNowPanel objDonNow = new DonateNowPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneDon.setRightComponent(objDonNow);
+    }//GEN-LAST:event_btnDonNowActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel MenubarPanel;
+    private javax.swing.JSplitPane SplitPaneDon;
+    private javax.swing.JPanel WorkAreaPanel;
+    private javax.swing.JButton btnDonNow;
+    private javax.swing.JButton btnProfile;
+    private javax.swing.JButton btnViewDon;
+    private javax.swing.JLabel lblWelcomemsg;
+    private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
 }
