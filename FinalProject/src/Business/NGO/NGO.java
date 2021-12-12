@@ -11,7 +11,7 @@ import Business.UserAccount.UserAccount;
  * @author sowmyachinimilli
  */
 public class NGO {
-    private int ngoId;
+    private String ngoId;
     private String ngoName;
     private String ngoPhno;
     private String ngoAddress;
@@ -21,11 +21,11 @@ public class NGO {
     private String ngoAgent;
     private UserAccount ngoAccount;
 
-    public int getNgoId() {
+    public String getNgoId() {
         return ngoId;
     }
 
-    public void setNgoId(int ngoId) {
+    public void setNgoId(String ngoId) {
         this.ngoId = ngoId;
     }
 

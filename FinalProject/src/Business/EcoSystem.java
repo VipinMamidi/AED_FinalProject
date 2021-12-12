@@ -14,9 +14,11 @@ import Business.FCPantry.FCPantryDirectory;
 import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
+import Business.NGO.NGODirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.DonorRole;
+import Business.Role.NgoRole;
 import Business.Role.RequestorRole;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
@@ -38,6 +40,7 @@ public class EcoSystem extends Organization{
     private RequestorDirectory reqDir;
     private DonorDirectory donDir;
     private FCWarehouseDirectory fcwDir;
+    private NGODirectory ngoDir;
     private FCPantryDirectory fcpDir;
     private UserAccountDirectory uaDir;
     private FCPantryItemsDirectory fcpiDir;
@@ -52,16 +55,27 @@ public class EcoSystem extends Organization{
     }
     
 
-    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir)/*, FCPantryDirectory fcpDir,
-            UserAccountDirectory uaDir,FCPantryItemsDirectory fcpiDir, DonationDirectory donatDir)*/ {
+
+    public EcoSystem(RequestorDirectory reqDir, DonorDirectory donDir, FCWarehouseDirectory fcwDir, NGODirectory ngoDir) { // to add ngo directory
+
 
         this.reqDir = reqDir;
         this.donDir = donDir;
         this.fcwDir = fcwDir;
+        this.ngoDir = ngoDir;
+       
        // this.fcpDir = fcpDir;
        // this.uaDir = uaDir;
        //this.fcpiDir = fcpiDir;
        //this.donatDit = doantDir;
+    }
+
+    public NGODirectory getNgoDir() {
+        return ngoDir;
+    }
+
+    public void setNgoDir(NGODirectory ngoDir) {
+        this.ngoDir = ngoDir;
     }
 
     public RequestorDirectory getReqDir() {
@@ -93,6 +107,7 @@ public class EcoSystem extends Organization{
         roleList.add(new SystemAdminRole());
         roleList.add(new RequestorRole());
         roleList.add(new DonorRole());
+        roleList.add(new NgoRole());
         
         return roleList;
     }
@@ -101,6 +116,7 @@ public class EcoSystem extends Organization{
          this.reqDir =  new RequestorDirectory();
         this.donDir = new DonorDirectory();
         this.fcwDir = new FCWarehouseDirectory();
+        this.ngoDir = new NGODirectory();
         this.fcpDir = new FCPantryDirectory();
         this.uaDir = new UserAccountDirectory();
         this.fcpiDir = new FCPantryItemsDirectory();
