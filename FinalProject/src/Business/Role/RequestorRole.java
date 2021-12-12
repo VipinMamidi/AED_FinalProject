@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import userinterface.RequestorRole.RequestorAreaJPanel;
 
 /**
@@ -16,7 +17,7 @@ import userinterface.RequestorRole.RequestorAreaJPanel;
  */
 public class RequestorRole extends Role{
     
-     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
         return new RequestorAreaJPanel(userProcessContainer,business, account);
     }
     

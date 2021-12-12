@@ -7,6 +7,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
 
@@ -16,7 +17,7 @@ import userinterface.RequestorRole.RequestorAreaJPanel;
  */
 public class DonorRole extends Role{
     
-     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
         return new DonorAreaJPanel(userProcessContainer, business, account);
     }
     

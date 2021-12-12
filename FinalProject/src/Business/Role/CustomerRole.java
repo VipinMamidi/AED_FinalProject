@@ -10,6 +10,7 @@ import Business.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.CustomerRole.CustomerAreaJPanel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
 public class CustomerRole extends Role{
 
     
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem busines, JPanel jp, JSplitPane jsp) {
         return new CustomerAreaJPanel(userProcessContainer, account);
     }
     

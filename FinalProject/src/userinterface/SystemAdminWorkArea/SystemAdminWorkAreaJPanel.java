@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.MainJFrame;
 
 /**
  *
@@ -30,10 +32,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    JPanel jp;
+    JSplitPane jsp;
+    
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem, JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
       //  this.userAcc = userAcc;
     }
     
@@ -55,6 +62,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         btnMgNGO = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
         SplitPaneSysAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -97,6 +105,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
@@ -112,14 +128,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(btnMgWH)
                         .addGap(98, 98, 98)
                         .addComponent(btnMgPT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblwelusername)
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addComponent(lblwelusername)
+                        .addGap(174, 174, 174))
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addComponent(btnMgNGO)
                         .addGap(77, 77, 77)
-                        .addComponent(btnMgUsers)))
-                .addGap(174, 174, 174))
+                        .addComponent(btnMgUsers)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(btnLogout)
+                        .addGap(20, 20, 20))))
         );
         MenubarPanelLayout.setVerticalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +153,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnMgUsers)
                     .addComponent(btnMgWH)
                     .addComponent(btnMgPT)
-                    .addComponent(btnMgNGO))
+                    .addComponent(btnMgNGO)
+                    .addComponent(btnLogout))
                 .addGap(15, 15, 15))
         );
 
@@ -200,11 +221,24 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
          SplitPaneSysAdmin.setRightComponent(objUSER);
     }//GEN-LAST:event_btnMgUsersActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        try {
+            // TODO add your handling code here:
+            MainJFrame mf = new MainJFrame();
+            mf.logout(userProcessContainer, jp, jsp);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(SystemAdminWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneSysAdmin;
     private javax.swing.JPanel WorkAreaPanel;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgNGO;
     private javax.swing.JButton btnMgPT;
     private javax.swing.JButton btnMgUsers;

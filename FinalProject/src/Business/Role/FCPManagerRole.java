@@ -7,6 +7,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
 
 /**
@@ -14,7 +15,7 @@ import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
  * @author sowmyachinimilli
  */
 public class FCPManagerRole extends Role{
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
         return new FCPManagerWorkAreaPanel(userProcessContainer,account, business);
     }
 }

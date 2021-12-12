@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -42,7 +43,9 @@ public abstract class Role {
     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account,  
-            EcoSystem business);
+            EcoSystem business,
+            JPanel jp,
+            JSplitPane jsp);
 
     @Override
     public String toString() {
