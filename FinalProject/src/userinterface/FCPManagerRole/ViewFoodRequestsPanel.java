@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userinterface.FCAdminRole;
+package userinterface.FCPManagerRole;
 
-import Business.Donation.Donation;
 import Business.EcoSystem;
+import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,21 +15,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author sowmyachinimilli
  */
-public class DonationRequestsPanel extends javax.swing.JPanel {
+public class ViewFoodRequestsPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewDonations
+     * Creates new form ViewFoodRequestsPanel
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
-    public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
+    public ViewFoodRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateTable();
-        
     }
 
     /**
@@ -43,19 +42,20 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDonReq = new javax.swing.JTable();
+        tblFdReqs = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        lblDRid = new javax.swing.JLabel();
+        lblRid = new javax.swing.JLabel();
         txtDRid = new javax.swing.JTextField();
         lblDRid1 = new javax.swing.JLabel();
         cbVol = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
         lblDonProfileTitle1 = new javax.swing.JLabel();
+        btnProcess = new javax.swing.JButton();
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblDonProfileTitle.setText("Donation Requests");
+        lblDonProfileTitle.setText("Food Requests");
 
-        tblDonReq.setModel(new javax.swing.table.DefaultTableModel(
+        tblFdReqs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -63,15 +63,15 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Donation Id", "Food Item", "Quantity", "Warehouse", "Status"
+                "Request Id", "Requestor", "Quantity", "Order Type", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tblDonReq);
+        jScrollPane1.setViewportView(tblFdReqs);
 
         jButton1.setText("Assign");
 
-        lblDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDRid.setText("Donation Id");
+        lblRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblRid.setText("Request ID");
 
         txtDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDRid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -101,6 +101,13 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle1.setText("Assign Volunteer");
 
+        btnProcess.setText("Process Request");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,25 +118,16 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDRid1)
+                            .addComponent(lblRid))
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(418, 418, 418)
-                                .addComponent(lblDonProfileTitle))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(323, 323, 323)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDRid1)
-                                    .addComponent(lblDRid))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 388, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSend)
-                .addGap(87, 87, 87))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -137,23 +135,34 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(385, 385, 385)
-                        .addComponent(lblDonProfileTitle1)))
+                        .addComponent(lblDonProfileTitle1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(437, 437, 437)
+                        .addComponent(lblDonProfileTitle)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnProcess)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSend)
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(16, 16, 16)
                 .addComponent(lblDonProfileTitle)
-                .addGap(31, 31, 31)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSend)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSend)
+                    .addComponent(btnProcess))
                 .addGap(14, 14, 14)
                 .addComponent(lblDonProfileTitle1)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDRid)
+                    .addComponent(lblRid)
                     .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,51 +176,74 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
     private void txtDRidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDRidFocusLost
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_txtDRidFocusLost
 
     private void txtDRidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDRidKeyReleased
         // TODO add your handling code here:
-
     }//GEN-LAST:event_txtDRidKeyReleased
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblDonReq.getSelectedRow();
+        int selectedRowIndex = tblFdReqs.getSelectedRow();
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a request");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
-        Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
-        txtDRid.setText(selectedD.getDonatId());
+        DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
+        Reqorder selectedR = (Reqorder)model.getValueAt(selectedRowIndex, 0);
+        txtDRid.setText(selectedR.getReqOrderId());
         //volunteer list
     }//GEN-LAST:event_btnSendActionPerformed
 
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblFdReqs.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a request to process");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
+        Reqorder selectedR = (Reqorder)model.getValueAt(selectedRowIndex, 0);
+        if(selectedR.getReqOrderType().equals("Delivery")){
+            JOptionPane.showMessageDialog(this, "Please send the request to volunteer");
+        }
+        if(selectedR.getReqOrderStatus().equals("Requested") && selectedR.getReqOrderType().equals("Take Out")){
+            selectedR.setReqOrderStatus("Accepted");
+        }
+        if(selectedR.getReqOrderStatus().equals("Accepted") && selectedR.getReqOrderType().equals("Take Out")){
+            selectedR.setReqOrderStatus("Complete");
+        }
+        if(selectedR.getReqOrderStatus().equals("Complete")){
+            JOptionPane.showMessageDialog(this, "This request is completed already");
+        }
+    }//GEN-LAST:event_btnProcessActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblDRid;
     private javax.swing.JLabel lblDRid1;
     private javax.swing.JLabel lblDonProfileTitle;
     private javax.swing.JLabel lblDonProfileTitle1;
-    private javax.swing.JTable tblDonReq;
+    private javax.swing.JLabel lblRid;
+    private javax.swing.JTable tblFdReqs;
     private javax.swing.JTextField txtDRid;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
         model.setRowCount(0);
-        for(Donation dt: ecosystem.getDonatDirectory().getDonatList()){
+        for(Reqorder rq: ecosystem.getReqorderDirectory().getReqOrderList()){
            Object[] row = new Object[5];
-           row[0] =dt;
-           row[1] =dt.getDonatFooditem();
-           row[2] =dt.getDonatFoodQuant();
-           row[3] =dt.getDonatWHname();
-           row[4] =dt.getDonatStatus();
+           row[0] =rq;
+           row[1] =rq.getReqName();
+           row[2] =rq.getReqOrderQuant();
+           row[3] =rq.getReqOrderType();
+           row[4] =rq.getReqOrderStatus();
            model.addRow(row);
         } 
     }
