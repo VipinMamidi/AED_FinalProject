@@ -4,6 +4,12 @@
  */
 package userinterface.FCAdminRole;
 
+import Business.Donation.Donation;
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sowmyachinimilli
@@ -13,8 +19,15 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewDonations
      */
-    public DonationRequestsPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAcc;
+    public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAcc = userAcc;
+        populateTable();
     }
 
     /**
@@ -28,12 +41,12 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDon = new javax.swing.JTable();
+        tblDonReq = new javax.swing.JTable();
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("Donation Requests");
 
-        tblDon.setModel(new javax.swing.table.DefaultTableModel(
+        tblDonReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -44,7 +57,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 "Donation Id", "Food Item", "Quantity", "Warehouse", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tblDon);
+        jScrollPane1.setViewportView(tblDonReq);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,6 +87,20 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDonProfileTitle;
-    private javax.swing.JTable tblDon;
+    private javax.swing.JTable tblDonReq;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        model.setRowCount(0);
+        for(Donation dt: ecosystem.getDonatDirectory().getDonatList()){
+           Object[] row = new Object[5];
+           row[0] =dt;
+           row[1] =dt.getDonatFooditem();
+           row[2] =dt.getDonatFoodQuant();
+           row[3] =dt.getDonatWHname();
+           row[4] =dt.getDonatStatus();
+           model.addRow(row);
+        } 
+    }
 }

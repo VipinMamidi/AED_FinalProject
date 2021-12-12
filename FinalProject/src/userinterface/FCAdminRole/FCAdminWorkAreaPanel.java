@@ -155,7 +155,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnViewDonReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDonReqActionPerformed
         // TODO add your handling code here:
-        
+        DonationRequestsPanel objDonReq =  new DonationRequestsPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objDonReq);
     }//GEN-LAST:event_btnViewDonReqActionPerformed
 
     private void btnMgPTitemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgPTitemsActionPerformed
@@ -166,7 +167,7 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
         // TODO add your handling code here:
-      
+        
     }//GEN-LAST:event_btnMgVolActionPerformed
 
     private void btnCurReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurReqActionPerformed
