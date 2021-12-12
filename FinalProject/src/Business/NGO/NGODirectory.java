@@ -29,8 +29,8 @@ public class NGODirectory {
         ngoList.add(ngo);
     }
     
-    public void deleteNGO(NGO selectedfcw){
-        ngoList.remove(selectedfcw);
+    public void deleteNGO(NGO selectedngo){
+        ngoList.remove(selectedngo);
     }
 
 }

@@ -14,7 +14,8 @@ public class Requestor {
     private int reqId;
     private String reqName;
     private String reqType;
-    private long reqPhno;
+    private String reqQuan;
+    private String reqPhno;
     private String reqAddres;
     private String reqCity;
     private String reqState;
@@ -38,6 +39,22 @@ public class Requestor {
 
     public void setReqPwd(String reqPwd) {
         this.reqPwd = reqPwd;
+    }
+
+    public String getReqQuan() {
+        return reqQuan;
+    }
+
+    public void setReqQuan(String reqQuan) {
+        this.reqQuan = reqQuan;
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
    
     
@@ -76,11 +93,11 @@ public class Requestor {
         this.reqType = reqType;
     }
 
-    public long getReqPhno() {
+    public String getReqPhno() {
         return reqPhno;
     }
 
-    public void setReqPhno(long reqPhno) {
+    public void setReqPhno(String reqPhno) {
         this.reqPhno = reqPhno;
     }
 

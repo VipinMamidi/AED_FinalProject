@@ -146,7 +146,7 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="bgImgLbl" pref="1002" max="32767" attributes="0"/>
+          <Component id="bgImgLbl" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -270,7 +270,7 @@
                       <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Component id="bgImgLbl" alignment="0" pref="0" max="32767" attributes="0"/>
       </Group>

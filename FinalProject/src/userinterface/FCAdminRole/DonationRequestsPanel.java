@@ -4,6 +4,13 @@
  */
 package userinterface.FCAdminRole;
 
+import Business.Donation.Donation;
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sowmyachinimilli
@@ -13,8 +20,15 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewDonations
      */
-    public DonationRequestsPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAcc;
+    public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAcc = userAcc;
+        populateTable();
     }
 
     /**
@@ -28,12 +42,19 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDon = new javax.swing.JTable();
+        tblDonReq = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        lblDRid = new javax.swing.JLabel();
+        txtDRid = new javax.swing.JTextField();
+        lblDRid1 = new javax.swing.JLabel();
+        cbVol = new javax.swing.JComboBox<>();
+        btnSend = new javax.swing.JButton();
+        lblDonProfileTitle1 = new javax.swing.JLabel();
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("Donation Requests");
 
-        tblDon.setModel(new javax.swing.table.DefaultTableModel(
+        tblDonReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -44,20 +65,79 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 "Donation Id", "Food Item", "Quantity", "Warehouse", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tblDon);
+        jScrollPane1.setViewportView(tblDonReq);
+
+        jButton1.setText("Assign");
+
+        lblDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDRid.setText("Donation Id");
+
+        txtDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtDRid.setPreferredSize(new java.awt.Dimension(150, 25));
+        txtDRid.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDRidFocusLost(evt);
+            }
+        });
+        txtDRid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDRidKeyReleased(evt);
+            }
+        });
+
+        lblDRid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDRid1.setText("Assign Volunteer");
+
+        cbVol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnSend.setText("Send request to volunteer");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
+
+        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setText("Assign Volunteer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(418, 418, 418)
-                .addComponent(lblDonProfileTitle)
-                .addContainerGap(445, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(418, 418, 418)
+                                .addComponent(lblDonProfileTitle))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(323, 323, 323)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDRid1)
+                                    .addComponent(lblDRid))
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 388, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSend)
+                .addGap(87, 87, 87))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(406, 406, 406)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(385, 385, 385)
+                        .addComponent(lblDonProfileTitle1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,14 +146,72 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 .addComponent(lblDonProfileTitle)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSend)
+                .addGap(14, 14, 14)
+                .addComponent(lblDonProfileTitle1)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDRid)
+                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDRid1)
+                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(jButton1)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtDRidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDRidFocusLost
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_txtDRidFocusLost
+
+    private void txtDRidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDRidKeyReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtDRidKeyReleased
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblDonReq.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a request");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
+        txtDRid.setText(selectedD.getDonatId());
+        //volunteer list
+    }//GEN-LAST:event_btnSendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSend;
+    private javax.swing.JComboBox<String> cbVol;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDRid;
+    private javax.swing.JLabel lblDRid1;
     private javax.swing.JLabel lblDonProfileTitle;
-    private javax.swing.JTable tblDon;
+    private javax.swing.JLabel lblDonProfileTitle1;
+    private javax.swing.JTable tblDonReq;
+    private javax.swing.JTextField txtDRid;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        model.setRowCount(0);
+        for(Donation dt: ecosystem.getDonatDirectory().getDonatList()){
+           Object[] row = new Object[5];
+           row[0] =dt;
+           row[1] =dt.getDonatFooditem();
+           row[2] =dt.getDonatFoodQuant();
+           row[3] =dt.getDonatWHname();
+           row[4] =dt.getDonatStatus();
+           model.addRow(row);
+        } 
+    }
 }

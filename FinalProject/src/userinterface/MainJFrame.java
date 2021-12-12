@@ -11,6 +11,7 @@ import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Donor.DonorDirectory;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
+import Business.NGOVolunteer.VolunteerDirectory;
 
 import Business.Organization;
 import Business.Requestor.RequestorDirectory;
@@ -32,6 +33,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.NGORole.ManageVolunteerPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
 import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
@@ -60,7 +62,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory()); //to add ngodirectory
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory(), new VolunteerDirectory()); //to add ngodirectory
         }
 
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
@@ -260,6 +262,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 RequestorAreaJPanel req = new RequestorAreaJPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("Requestor", req);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.NgoRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                ManageVolunteerPanel req = new ManageVolunteerPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                container.add("NGOAgent", req);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
             }
