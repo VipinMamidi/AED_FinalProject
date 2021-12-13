@@ -6,8 +6,18 @@ package userinterface.RequestorRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import userinterface.FCAdminRole.ViewPantryItemsPanel;
+import userinterface.MainJFrame;
+import userinterface.NGORole.NGOWorkAreaPanel;
 
 /**
  *
@@ -35,6 +45,8 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         this.jp = jp;
         this.jsp = jsp;
         lblwelname.setText(account.getEmployee().getName());
+        setBG();
+        logoutlogo();
     }
 
     /**
@@ -53,11 +65,15 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         btnStatus = new javax.swing.JButton();
         lblwelname = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
+        lbllogout = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
+        LabelImg = new javax.swing.JLabel();
 
         SplitPaneReq.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnReq.setBackground(new java.awt.Color(225, 144, 108));
+        MenubarPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnReq.setBackground(new java.awt.Color(105, 158, 208));
         btnReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnReq.setText("Request Food");
         btnReq.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +82,7 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnProfile.setBackground(new java.awt.Color(105, 158, 208));
         btnProfile.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnProfile.setText("My Profile");
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +91,7 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnStatus.setBackground(new java.awt.Color(105, 158, 208));
         btnStatus.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnStatus.setText("Check Status");
         btnStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -88,40 +106,57 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblWelcomemsg.setText("Welcome,");
 
+        lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbllogoutMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+            .addGroup(MenubarPanelLayout.createSequentialGroup()
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addGap(432, 432, 432)
                         .addComponent(lblWelcomemsg)
                         .addGap(18, 18, 18)
-                        .addComponent(lblwelname)
-                        .addGap(211, 224, Short.MAX_VALUE))
+                        .addComponent(lblwelname))
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(btnProfile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(99, 99, 99)
                         .addComponent(btnReq)
-                        .addGap(232, 232, 232)))
-                .addComponent(btnStatus)
-                .addGap(73, 73, 73))
+                        .addGap(102, 102, 102)
+                        .addComponent(btnStatus)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 832, Short.MAX_VALUE)
+                .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
         );
         MenubarPanelLayout.setVerticalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+            .addGroup(MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblWelcomemsg)
-                    .addComponent(lblwelname))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProfile)
-                    .addComponent(btnStatus)
-                    .addComponent(btnReq))
-                .addGap(15, 15, 15))
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblWelcomemsg)
+                            .addComponent(lblwelname))
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenubarPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnProfile)
+                                    .addComponent(btnReq))
+                                .addGap(15, 15, 15))
+                            .addGroup(MenubarPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStatus)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
 
         SplitPaneReq.setLeftComponent(MenubarPanel);
@@ -132,11 +167,11 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         WorkAreaPanel.setLayout(WorkAreaPanelLayout);
         WorkAreaPanelLayout.setHorizontalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1004, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 1604, Short.MAX_VALUE)
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
         );
 
         SplitPaneReq.setRightComponent(WorkAreaPanel);
@@ -149,10 +184,45 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneReq, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addComponent(SplitPaneReq, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(RequestorAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+      public void logoutlogo() {
+
+        try {
+           
+            lbllogout.setMinimumSize(new Dimension(50,60));
+            lbllogout.setPreferredSize(new Dimension(50,60));
+            lbllogout.setMaximumSize(new Dimension(50,60));
+            
+            Image img1 = ImageIO.read(getClass().getResource("/Images/Logout.png"));
+            Image newimg1 = img1.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+
+            lbllogout.setIcon(new ImageIcon(newimg1));
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(RequestorAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     private void btnReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReqActionPerformed
         // TODO add your handling code here:
         RequestFoodPanel objReq = new RequestFoodPanel(userProcessContainer,ecosystem,userAccount);
@@ -171,8 +241,20 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
         SplitPaneReq.setRightComponent(objReqstatus);
     }//GEN-LAST:event_btnStatusActionPerformed
 
+    private void lbllogoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogoutMousePressed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            MainJFrame mjf = new MainJFrame();
+            mjf.logout(userProcessContainer, jp, jsp);
+        } catch (IOException ex) {
+            Logger.getLogger(RequestorAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lbllogoutMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneReq;
     private javax.swing.JPanel WorkAreaPanel;
@@ -180,6 +262,7 @@ public class RequestorAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnReq;
     private javax.swing.JButton btnStatus;
     private javax.swing.JLabel lblWelcomemsg;
+    private javax.swing.JLabel lbllogout;
     private javax.swing.JLabel lblwelname;
     // End of variables declaration//GEN-END:variables
 }

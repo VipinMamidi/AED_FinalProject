@@ -7,8 +7,16 @@ package userinterface.NGORole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -31,6 +39,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         this.userAcc =userAcc;
         this.jp = jp;
         this.jsp = jsp;
+        setBG();
     }
 
     /**
@@ -47,9 +56,12 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         btnAddItems = new javax.swing.JButton();
         btnViewItems = new javax.swing.JButton();
         NGOWorkareaPanel = new javax.swing.JPanel();
+        LabelImg = new javax.swing.JLabel();
 
+        NGOControlPanel.setBackground(new java.awt.Color(255, 255, 255));
         NGOControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
 
+        btnAddItems.setBackground(new java.awt.Color(105, 158, 208));
         btnAddItems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnAddItems.setText("Add Volunteer");
         btnAddItems.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +70,7 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewItems.setBackground(new java.awt.Color(105, 158, 208));
         btnViewItems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnViewItems.setText("View/Update Volunteer ");
         btnViewItems.addActionListener(new java.awt.event.ActionListener() {
@@ -95,11 +108,11 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         NGOWorkareaPanel.setLayout(NGOWorkareaPanelLayout);
         NGOWorkareaPanelLayout.setHorizontalGroup(
             NGOWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 824, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
         );
         NGOWorkareaPanelLayout.setVerticalGroup(
             NGOWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
         );
 
         SplitPaneNGO.setRightComponent(NGOWorkareaPanel);
@@ -128,8 +141,23 @@ public class ManageVolunteerPanel extends javax.swing.JPanel {
         SplitPaneNGO.setRightComponent(objViewPI);
     }//GEN-LAST:event_btnViewItemsActionPerformed
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1350, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(ManageVolunteerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JPanel NGOControlPanel;
     private javax.swing.JPanel NGOWorkareaPanel;
     private javax.swing.JSplitPane SplitPaneNGO;

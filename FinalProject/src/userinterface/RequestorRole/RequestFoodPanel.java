@@ -10,8 +10,15 @@ import Business.Reqorder.Reqorder;
 import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.Requestor;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -49,6 +56,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
             }
         }         
         cbCity.setModel(new DefaultComboBoxModel<String>(CityList.toArray(new String[0])));
+        setBG();
     }
 
     /**
@@ -83,21 +91,29 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         lblDfdquan5 = new javax.swing.JLabel();
         lblDfdquan6 = new javax.swing.JLabel();
         cbDel = new javax.swing.JComboBox<>();
+        LabelImg = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("Request Food");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 16, -1, -1));
 
         lblDfdquan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDfdquan.setText("Request for");
+        add(lblDfdquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 153, -1, -1));
 
         sdQuan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         sdQuan.setMajorTickSpacing(10);
         sdQuan.setMinimum(10);
         sdQuan.setPaintTicks(true);
         sdQuan.setAutoscrolls(true);
+        add(sdQuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 145, -1, -1));
 
         lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle1.setText("Delivery Address");
+        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 110, -1, -1));
 
         chkAdd.setText("Same Address as in Profile");
         chkAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -105,9 +121,11 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 chkAddActionPerformed(evt);
             }
         });
+        add(chkAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 150, -1, -1));
 
         lblDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDadd.setText("Address");
+        add(lblDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 220, -1, -1));
 
         txtDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDadd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -116,9 +134,11 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 txtDaddFocusLost(evt);
             }
         });
+        add(txtDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 220, 137, -1));
 
         lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDcity.setText("City");
+        add(lblDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, -1, -1));
 
         txtDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDcity.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -127,9 +147,11 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 txtDcityFocusLost(evt);
             }
         });
+        add(txtDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 270, 137, -1));
 
         lblDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDstate.setText("State");
+        add(lblDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 320, -1, -1));
 
         txtDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDstate.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -138,9 +160,11 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 txtDstateFocusLost(evt);
             }
         });
+        add(txtDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 320, 137, -1));
 
         lblDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDzip.setText("Zipcode");
+        add(lblDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 370, -1, -1));
 
         txtDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDzip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -149,9 +173,11 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 txtDzipFocusLost(evt);
             }
         });
+        add(txtDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 360, 137, -1));
 
         lblDfdquan2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDfdquan2.setText("Select city");
+        add(lblDfdquan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 249, -1, -1));
 
         cbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCity.addActionListener(new java.awt.event.ActionListener() {
@@ -159,11 +185,14 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 cbCityActionPerformed(evt);
             }
         });
+        add(cbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 245, -1, -1));
 
         lblDfdquan3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDfdquan3.setText("Select a nearest pantry");
+        add(lblDfdquan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 297, -1, -1));
 
         cbWH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbWH, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 297, -1, -1));
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit Request");
@@ -172,18 +201,23 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 430, -1, -1));
 
         lblDfdquan1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan1.setText("Min 10");
+        add(lblDfdquan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 185, -1, -1));
 
         lblDfdquan4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan4.setText("Max 100");
+        add(lblDfdquan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 185, -1, -1));
 
         lblDfdquan5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan5.setText("persons");
+        add(lblDfdquan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 154, -1, -1));
 
         lblDfdquan6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDfdquan6.setText("Select delivery type");
+        add(lblDfdquan6, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 344, -1, -1));
 
         cbDel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cbDel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-select-", "Take Out", "Delivery" }));
@@ -192,140 +226,8 @@ public class RequestFoodPanel extends javax.swing.JPanel {
                 cbDelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(450, 450, 450)
-                .addComponent(lblDonProfileTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(lblDfdquan))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDfdquan3)
-                            .addComponent(lblDfdquan6))
-                        .addGap(52, 52, 52)
-                        .addComponent(cbDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblDonProfileTitle1)
-                                .addGap(39, 39, 39))
-                            .addComponent(chkAdd, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDzip, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDcity, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDadd, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDstate, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(107, 107, 107))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(397, 397, 397)
-                            .addComponent(btnSubmit))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(183, 183, 183)
-                            .addComponent(lblDfdquan2)
-                            .addGap(45, 45, 45)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblDfdquan4)
-                                        .addComponent(sdQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblDfdquan5))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(263, 263, 263)
-                            .addComponent(lblDfdquan1)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblDonProfileTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(lblDfdquan)
-                        .addGap(127, 127, 127)
-                        .addComponent(lblDfdquan3)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDfdquan6)
-                            .addComponent(cbDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDonProfileTitle1)
-                                .addGap(18, 18, 18)
-                                .addComponent(chkAdd))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDadd)
-                                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDcity)
-                                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDstate)
-                            .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDzip)
-                            .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(220, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(145, 145, 145)
-                            .addComponent(sdQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(154, 154, 154)
-                            .addComponent(lblDfdquan5)))
-                    .addGap(2, 2, 2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDfdquan1)
-                        .addComponent(lblDfdquan4))
-                    .addGap(45, 45, 45)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDfdquan2))
-                    .addGap(25, 25, 25)
-                    .addComponent(cbWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                    .addComponent(btnSubmit)
-                    .addGap(95, 95, 95)))
-        );
+        add(cbDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 340, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chkAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAddActionPerformed
@@ -348,6 +250,21 @@ public class RequestFoodPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_chkAddActionPerformed
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(RequestFoodPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void txtDaddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDaddFocusLost
         // TODO add your handling code here:
 
@@ -431,6 +348,7 @@ public class RequestFoodPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cbCity;
     private javax.swing.JComboBox<String> cbDel;

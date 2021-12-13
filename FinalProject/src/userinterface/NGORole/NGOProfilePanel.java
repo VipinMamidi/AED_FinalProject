@@ -10,9 +10,17 @@ import Business.NGO.NGO;
 import Business.NGO.NGODirectory;
 import Business.NGOVolunteer.VolunteerDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -40,6 +48,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         lblNGOpwd1.setVisible(false);
         txtNGOpwd1.setVisible(false);
         NGOUname = userAcc.getUsername();
+        setBG();
     }
 
     /**
@@ -84,12 +93,17 @@ public class NGOProfilePanel extends javax.swing.JPanel {
         lblNGOname1 = new javax.swing.JLabel();
         lblNGOpwd2 = new javax.swing.JLabel();
         lblNGOpwd3 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNGOProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblNGOProfileTitle.setText("My Profile");
+        add(lblNGOProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 23, -1, -1));
 
         lblNGOName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOName.setText("Name");
+        add(lblNGOName, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 81, -1, -1));
 
         txtNGOname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -98,9 +112,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOnameFocusLost(evt);
             }
         });
+        add(txtNGOname, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 77, 137, -1));
 
         lblNGOphno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOphno.setText("Phone Number");
+        add(lblNGOphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 127, -1, -1));
 
         txtNGOphno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOphno.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -109,9 +125,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOphnoFocusLost(evt);
             }
         });
+        add(txtNGOphno, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 123, 137, -1));
 
         lblNGOadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOadd.setText("Address");
+        add(lblNGOadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 170, -1, -1));
 
         txtNGOadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOadd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -120,9 +138,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOaddFocusLost(evt);
             }
         });
+        add(txtNGOadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 166, 137, -1));
 
         lblNGOcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOcity.setText("City");
+        add(lblNGOcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 213, -1, -1));
 
         txtNGOcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOcity.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -131,9 +151,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOcityFocusLost(evt);
             }
         });
+        add(txtNGOcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 209, 137, -1));
 
         lblNGOstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOstate.setText("State");
+        add(lblNGOstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 256, -1, -1));
 
         txtNGOstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOstate.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -142,9 +164,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOstateFocusLost(evt);
             }
         });
+        add(txtNGOstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 252, 137, -1));
 
         lblNGOzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOzip.setText("Zipcode");
+        add(lblNGOzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 299, -1, -1));
 
         txtNGOzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOzip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -153,9 +177,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOzipFocusLost(evt);
             }
         });
+        add(txtNGOzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 295, 137, -1));
 
         lblNGOagent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOagent.setText("NGO Agent");
+        add(lblNGOagent, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 342, -1, -1));
 
         txtNGOAgent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOAgent.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -164,6 +190,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOAgentFocusLost(evt);
             }
         });
+        add(txtNGOAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 338, 137, -1));
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +198,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 513, -1, -1));
 
         btnEdit.setText("Edit Profile");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -178,9 +206,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 btnEditActionPerformed(evt);
             }
         });
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 76, -1, -1));
 
         lblUname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblUname.setText("Username");
+        add(lblUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 389, -1, -1));
 
         txtNGOuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOuname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -189,9 +219,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOunameFocusLost(evt);
             }
         });
+        add(txtNGOuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 381, 137, -1));
 
         lblNGOpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOpwd.setText("Password");
+        add(lblNGOpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 428, -1, -1));
 
         txtNGOpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOpwd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -200,9 +232,11 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOpwdFocusLost(evt);
             }
         });
+        add(txtNGOpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 424, 137, -1));
 
         lblNGOpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblNGOpwd1.setText("Confirm Password");
+        add(lblNGOpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 471, -1, -1));
 
         txtNGOpwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOpwd1.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -216,163 +250,55 @@ public class NGOProfilePanel extends javax.swing.JPanel {
                 txtNGOpwd1ActionPerformed(evt);
             }
         });
+        add(txtNGOpwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 467, 137, -1));
 
         lblNGOName1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 76, -1, -1));
 
         lblNGOphno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOphno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 123, -1, -1));
 
         lblNGOadd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOadd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 166, -1, -1));
 
         lblNGOcity1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOcity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 209, -1, -1));
 
         lblNGOstate1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOstate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 252, -1, -1));
 
         lblNGOzip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOzip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 295, -1, -1));
 
         lblNGOAgent1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOAgent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 338, -1, -1));
 
         lblNGOname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 381, -1, -1));
 
         lblNGOpwd2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOpwd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 424, -1, -1));
 
         lblNGOpwd3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(btnEdit)
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblNGOphno)
-                                    .addComponent(lblNGOadd)
-                                    .addComponent(lblNGOcity)
-                                    .addComponent(lblNGOstate)
-                                    .addComponent(lblNGOzip)
-                                    .addComponent(lblNGOagent)
-                                    .addComponent(lblUname)
-                                    .addComponent(lblNGOpwd)
-                                    .addComponent(lblNGOpwd1)
-                                    .addComponent(lblNGOName))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOName1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOphno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOphno1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOcity1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblNGOzip1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOAgent1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOstate1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOname1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblNGOpwd2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblNGOpwd3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtNGOadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblNGOadd1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(btnSubmit))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(423, 423, 423)
-                        .addComponent(lblNGOProfileTitle)))
-                .addContainerGap(388, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblNGOProfileTitle)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOName)
-                    .addComponent(txtNGOname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit)
-                    .addComponent(lblNGOName1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOphno)
-                    .addComponent(txtNGOphno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOphno1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOadd)
-                    .addComponent(txtNGOadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOadd1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOcity)
-                    .addComponent(txtNGOcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOcity1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOstate)
-                    .addComponent(txtNGOstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOstate1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOzip)
-                    .addComponent(txtNGOzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOzip1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOagent)
-                    .addComponent(txtNGOAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOAgent1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUname)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNGOuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNGOname1)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNGOpwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOpwd)
-                    .addComponent(lblNGOpwd2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOpwd1)
-                    .addComponent(txtNGOpwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOpwd3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
-                .addGap(58, 58, 58))
-        );
+        add(lblNGOpwd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 467, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, -4, 1690, 900));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1750, 950, java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(NGOProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void txtNGOnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNGOnameFocusLost
         // TODO add your handling code here:
         if(!(txtNGOname.getText().matches("^[a-zA-Z]*$"))){
@@ -571,6 +497,7 @@ public class NGOProfilePanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblNGOAgent1;

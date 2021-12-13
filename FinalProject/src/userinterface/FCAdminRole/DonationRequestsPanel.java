@@ -7,6 +7,13 @@ package userinterface.FCAdminRole;
 import Business.Donation.Donation;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +36,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateTable();
+        setBG();
     }
 
     /**
@@ -50,9 +58,13 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         cbVol = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
         lblDonProfileTitle1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("Donation Requests");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 14, -1, -1));
 
         tblDonReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,10 +79,14 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDonReq);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 66, 988, 153));
+
         jButton1.setText("Assign");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 427, -1, -1));
 
         lblDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDRid.setText("Donation Id");
+        add(lblDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 338, -1, -1));
 
         txtDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDRid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -84,11 +100,14 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 txtDRidKeyReleased(evt);
             }
         });
+        add(txtDRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 334, 137, -1));
 
         lblDRid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDRid1.setText("Assign Volunteer");
+        add(lblDRid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 381, -1, -1));
 
         cbVol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbVol, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 377, -1, -1));
 
         btnSend.setText("Send request to volunteer");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -96,72 +115,12 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 btnSendActionPerformed(evt);
             }
         });
+        add(btnSend, new org.netbeans.lib.awtextra.AbsoluteConstraints(708, 231, -1, -1));
 
         lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle1.setText("Assign Volunteer");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(418, 418, 418)
-                                .addComponent(lblDonProfileTitle))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(323, 323, 323)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDRid1)
-                                    .addComponent(lblDRid))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 388, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSend)
-                .addGap(87, 87, 87))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(406, 406, 406)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(lblDonProfileTitle1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblDonProfileTitle)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSend)
-                .addGap(14, 14, 14)
-                .addComponent(lblDonProfileTitle1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDRid)
-                    .addComponent(txtDRid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDRid1)
-                    .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jButton1)
-                .addContainerGap(144, Short.MAX_VALUE))
-        );
+        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 274, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDRidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDRidFocusLost
@@ -174,6 +133,20 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtDRidKeyReleased
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(ViewPantryItemsPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblDonReq.getSelectedRow();
@@ -189,6 +162,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
     private javax.swing.JButton jButton1;
