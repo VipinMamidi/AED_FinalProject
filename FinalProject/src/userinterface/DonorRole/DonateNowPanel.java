@@ -10,8 +10,15 @@ import Business.Donor.Donor;
 import Business.EcoSystem;
 import Business.FCWarehouse.FCWarehouse;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -49,6 +56,9 @@ public class DonateNowPanel extends javax.swing.JPanel {
             }
         }         
         cbCity.setModel(new DefaultComboBoxModel<String>(CityList.toArray(new String[0])));
+        
+        setBG();
+        setLogo();
     }
 
     /**
@@ -83,15 +93,23 @@ public class DonateNowPanel extends javax.swing.JPanel {
         lblDfdquan1 = new javax.swing.JLabel();
         lblDfdquan4 = new javax.swing.JLabel();
         lblDfdquan5 = new javax.swing.JLabel();
+        logoImage = new javax.swing.JLabel();
+        LabelImage = new javax.swing.JLabel();
 
-        lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblDonProfileTitle.setText("Donate Food Details");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDfditem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDfditem.setText("Food Item");
+        lblDonProfileTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblDonProfileTitle.setForeground(new java.awt.Color(51, 153, 255));
+        lblDonProfileTitle.setText("Donate Food ");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
 
-        lblDfdquan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDfdquan.setText("Quantity");
+        lblDfditem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDfditem.setText("Food Item :");
+        add(lblDfditem, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 151, -1, -1));
+
+        lblDfdquan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDfdquan.setText("Quantity :");
+        add(lblDfdquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 199, -1, -1));
 
         txtDfditem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDfditem.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -100,25 +118,31 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 txtDfditemFocusLost(evt);
             }
         });
+        add(txtDfditem, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 147, 137, -1));
 
         sdQuan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         sdQuan.setMajorTickSpacing(10);
         sdQuan.setMinimum(10);
         sdQuan.setPaintTicks(true);
         sdQuan.setAutoscrolls(true);
+        add(sdQuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 190, -1, -1));
 
-        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblDonProfileTitle1.setText("Pickup Address");
+        add(lblDonProfileTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, -1, -1));
 
+        chkAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         chkAdd.setText("Same Address as in Profile");
         chkAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAddActionPerformed(evt);
             }
         });
+        add(chkAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, -1, -1));
 
-        lblDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDadd.setText("Address");
+        lblDadd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDadd.setText("Address :");
+        add(lblDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, -1, -1));
 
         txtDadd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDadd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -127,9 +151,11 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 txtDaddFocusLost(evt);
             }
         });
+        add(txtDadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 137, -1));
 
-        lblDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDcity.setText("City");
+        lblDcity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDcity.setText("City :");
+        add(lblDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, -1, -1));
 
         txtDcity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDcity.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -138,9 +164,11 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 txtDcityFocusLost(evt);
             }
         });
+        add(txtDcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 137, -1));
 
-        lblDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDstate.setText("State");
+        lblDstate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDstate.setText("State :");
+        add(lblDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, -1, -1));
 
         txtDstate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDstate.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -149,9 +177,11 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 txtDstateFocusLost(evt);
             }
         });
+        add(txtDstate, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 137, -1));
 
-        lblDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDzip.setText("Zipcode");
+        lblDzip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDzip.setText("Zipcode :");
+        add(lblDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, -1, -1));
 
         txtDzip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtDzip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -160,9 +190,11 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 txtDzipFocusLost(evt);
             }
         });
+        add(txtDzip, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 137, -1));
 
-        lblDfdquan2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDfdquan2.setText("Select city");
+        lblDfdquan2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDfdquan2.setText("City :");
+        add(lblDfdquan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, -1));
 
         cbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCity.addActionListener(new java.awt.event.ActionListener() {
@@ -170,169 +202,73 @@ public class DonateNowPanel extends javax.swing.JPanel {
                 cbCityActionPerformed(evt);
             }
         });
+        add(cbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 150, -1));
 
-        lblDfdquan3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblDfdquan3.setText("Select a nearest warehouse");
+        lblDfdquan3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblDfdquan3.setText("Nearest Warehouse :");
+        add(lblDfdquan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         cbWH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbWH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbWHActionPerformed(evt);
+            }
+        });
+        add(cbWH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 150, -1));
 
-        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnSubmit.setText("Submit Request");
+        btnSubmit.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        btnSubmit.setText("Donate");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, -1, -1));
 
         lblDfdquan1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan1.setText("Min 10");
+        add(lblDfdquan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 230, -1, -1));
 
         lblDfdquan4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan4.setText("Max 100");
+        add(lblDfdquan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 230, -1, -1));
 
         lblDfdquan5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lblDfdquan5.setText("persons");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(422, 422, 422)
-                        .addComponent(lblDonProfileTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblDonProfileTitle1)
-                                .addGap(39, 39, 39))
-                            .addComponent(chkAdd, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(96, 96, 96))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblDzip))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(214, 214, 214)
-                                            .addComponent(lblDfditem))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addComponent(lblDfdquan2)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(123, 123, 123)
-                                        .addComponent(lblDfdquan3))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(lblDfdquan)))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblDcity))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lblDadd))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(cbWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblDstate))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDfdquan4)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtDfditem, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(sdQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblDfdquan5)
-                                        .addGap(0, 182, Short.MAX_VALUE)))))
-                        .addGap(68, 68, 68))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
-                        .addComponent(lblDfdquan1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(428, 428, 428)
-                .addComponent(btnSubmit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblDonProfileTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(lblDonProfileTitle1)
-                        .addGap(18, 18, 18)
-                        .addComponent(chkAdd))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDfditem)
-                                    .addComponent(txtDfditem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sdQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(lblDfdquan))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(lblDfdquan5)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDadd)
-                                    .addComponent(txtDadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDcity)
-                                    .addComponent(txtDcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblDfdquan1)
-                                    .addComponent(lblDfdquan4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDfdquan2))
-                                .addGap(7, 7, 7)))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDstate)
-                    .addComponent(txtDstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDfdquan3)
-                    .addComponent(cbWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDzip)
-                    .addComponent(txtDzip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
-                .addGap(123, 123, 123))
-        );
+        add(lblDfdquan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 199, -1, -1));
+        add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 18, 102, 104));
+        add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1490, 850));
     }// </editor-fold>//GEN-END:initComponents
 
+      public void setBG() {
+        try {
+            LabelImage.setMinimumSize(new Dimension(1500, 1000));
+            LabelImage.setPreferredSize(new Dimension(1500, 1000));
+            LabelImage.setMaximumSize(new Dimension(1500, 1000));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(2500, 1000, java.awt.Image.SCALE_SMOOTH);
+            LabelImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void txtDfditemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDfditemFocusLost
         // TODO add your handling code here:
         
@@ -378,8 +314,8 @@ public class DonateNowPanel extends javax.swing.JPanel {
             donatD = ecosystem.getDonatDirectory();
             donatD.addNewDonation(dt);
             ecosystem.setDonatDirectory(donatD);
-            //ecosystem.getDonatDirectory().addNewDonation(dt);
-            JOptionPane.showMessageDialog(this, "Your request has been placed. Thank you for your donation!");
+
+            JOptionPane.showMessageDialog(this, "Thank you for your Donation! \n Your request has been placed. ");
             clearfields();
         }
         else{
@@ -419,8 +355,13 @@ public class DonateNowPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_chkAddActionPerformed
 
+    private void cbWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbWHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbWHActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImage;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cbCity;
     private javax.swing.JComboBox<String> cbWH;
@@ -438,6 +379,7 @@ public class DonateNowPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDonProfileTitle1;
     private javax.swing.JLabel lblDstate;
     private javax.swing.JLabel lblDzip;
+    private javax.swing.JLabel logoImage;
     private javax.swing.JSlider sdQuan;
     private javax.swing.JTextField txtDadd;
     private javax.swing.JTextField txtDcity;

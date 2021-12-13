@@ -40,6 +40,7 @@ import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
 import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
 import userinterface.NGORole.ManageVolunteerPanel;
+import userinterface.NGORole.NGOWorkAreaPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
 import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
@@ -81,6 +82,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Image icon = ImageIO.read(getClass().getResource("/Images/logo.jpeg"));
         Image newIcon = icon.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         jLabel4.setIcon(new ImageIcon(newIcon));
+        pack();
     }
 
     /**
@@ -143,7 +145,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(312, 312, 312)
                 .addComponent(loginJLabel)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +154,6 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(logoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +281,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                ManageVolunteerPanel req = new ManageVolunteerPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                NGOWorkAreaPanel req = new NGOWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("NGOAgent", req);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);

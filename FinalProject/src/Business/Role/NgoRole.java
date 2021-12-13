@@ -10,6 +10,7 @@ import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.NGORole.ManageVolunteerPanel;
 import javax.swing.JSplitPane;
+import userinterface.NGORole.NGOWorkAreaPanel;
 
 
 /**
@@ -19,6 +20,6 @@ import javax.swing.JSplitPane;
 public class NgoRole extends Role{
 
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
-        return new ManageVolunteerPanel(userProcessContainer, business, account,jp,jsp);
+        return new NGOWorkAreaPanel(userProcessContainer, business, account,jp,jsp);
     }
 }
