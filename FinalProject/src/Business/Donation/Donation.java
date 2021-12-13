@@ -18,9 +18,44 @@ public class Donation {
     private String donatFoodQuant;
     private String donatPickuptype;
     private String donatStatus;
+    private String donatVol;
     private String donatWHname;
-    private Donor donatDonor;
+    private String donatAdd;
+    private String donatCity;
+    private String donatZip;
     private UserAccount donatDonorAcc;
+
+    public String getDonatAdd() {
+        return donatAdd;
+    }
+
+    public void setDonatAdd(String donatAdd) {
+        this.donatAdd = donatAdd;
+    }
+
+    public String getDonatCity() {
+        return donatCity;
+    }
+
+    public void setDonatCity(String donatCity) {
+        this.donatCity = donatCity;
+    }
+
+    public String getDonatZip() {
+        return donatZip;
+    }
+
+    public void setDonatZip(String donatZip) {
+        this.donatZip = donatZip;
+    }
+
+    public String getDonatVol() {
+        return donatVol;
+    }
+
+    public void setDonatVol(String donatVol) {
+        this.donatVol = donatVol;
+    }
     
     public String getDonatFooditem() {
         return donatFooditem;
@@ -36,14 +71,6 @@ public class Donation {
 
     public void setDonatFoodQuant(String donatFoodQuant) {
         this.donatFoodQuant = donatFoodQuant;
-    }
-
-    public Donor getDonatDonor() {
-        return donatDonor;
-    }
-
-    public void setDonatDonor(Donor donatDonor) {
-        this.donatDonor = donatDonor;
     }
 
     public UserAccount getDonatDonorAcc() {

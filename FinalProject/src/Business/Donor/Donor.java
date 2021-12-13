@@ -40,7 +40,7 @@ public class Donor {
         this.donPwd = donPwd;
     }
 
-   
+    
     
     
     public Donor(UserAccount ua)

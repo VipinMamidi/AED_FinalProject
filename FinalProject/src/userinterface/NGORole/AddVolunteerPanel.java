@@ -357,6 +357,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
 
             volAccount.setRole(new DeliveryVolunteer());
             volAccount.setEmployee(employee);
+            vol.setVolAvail("New");
             uad=ecosystem.getUserAccountDirectory();
             uad.createUserAccount(txtVoluname.getText(), txtVolpwd.getText(), employee, new DeliveryVolunteer());
             ecosystem.setUserAccountDirectory(uad);

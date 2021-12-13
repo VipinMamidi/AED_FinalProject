@@ -8,12 +8,17 @@ import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donation.DonationDirectory;
 import Business.Donor.DonorDirectory;
+import Business.FCPantry.FCPantryDirectory;
+import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
+import Business.NGOVolunteer.VolRequestsDirectory;
 import Business.NGOVolunteer.VolunteerDirectory;
 
 import Business.Organization;
+import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
@@ -33,6 +38,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
 import userinterface.NGORole.ManageVolunteerPanel;
 import userinterface.NGORole.NGOWorkAreaPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
@@ -40,6 +46,7 @@ import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
 import userinterface.SystemAdminWorkArea.AddWarehousePanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+import userinterface.VolunteerRole.VolunteerWorkAreaPanel;
 
 /**
  *
@@ -63,7 +70,9 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory(), new VolunteerDirectory()); //to add ngodirectory
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory(), new VolunteerDirectory(),
+                                        new FCPantryDirectory(),new FCPantryItemsDirectory(), new DonationDirectory(), new ReqorderDirectory() 
+                                        , new VolRequestsDirectory());
         }
 
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
@@ -274,6 +283,30 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 NGOWorkAreaPanel req = new NGOWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("NGOAgent", req);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.FCPManagerRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                FCPManagerWorkAreaPanel fcpm = new FCPManagerWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                container.add("FCPManager", fcpm);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.DeliveryVolunteer")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                VolunteerWorkAreaPanel vol = new VolunteerWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                container.add("Volunteer", vol);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
             }

@@ -442,7 +442,7 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
             UserAccountDirectory uaList = ecosystem.getUserAccountDirectory();
             Employee employee = new Employee();
             employee.setName(txtFCPname.getText());
-            String role = "txtFCPManager";
+            String role = "FCPManager";
             FCPantry fcp=new FCPantry();
             fcp.setFcpId("fcp"+txtFCPid.getText());
             fcp.setFcpWHname(txtWHfcpname.getText());
@@ -591,5 +591,6 @@ public class AddFCPantryPanel extends javax.swing.JPanel {
         txtFCPManager.setText("");
         txtFCPuname.setText("");
         txtFCPpwd.setText("");
+        txtFCPpwd1.setText("");
     }
 }

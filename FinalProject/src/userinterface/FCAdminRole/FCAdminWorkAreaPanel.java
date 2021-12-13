@@ -210,7 +210,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
         // TODO add your handling code here:
-        
+        ManageVolunteerPanel objVol =  new ManageVolunteerPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objVol);
     }//GEN-LAST:event_btnMgVolActionPerformed
 
     private void btnCurReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurReqActionPerformed

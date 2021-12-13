@@ -18,9 +18,20 @@ public class Reqorder {
     private String reqOrderType;
     private String reqOrderStatus;
     private String reqPantryName;
-    private Requestor reqRequestor;
+    private String reqVol;
+    private String reqAdd;
+    private String reqCity;
+    private String reqZip;
     private UserAccount reqRequestorAcc;
 
+    public String getReqVol() {
+        return reqVol;
+    }
+
+    public void setReqVol(String reqVol) {
+        this.reqVol = reqVol;
+    }
+    
     public String getReqOrderId() {
         return reqOrderId;
     }
@@ -69,13 +80,31 @@ public class Reqorder {
         this.reqPantryName = reqPantryName;
     }
 
-    public Requestor getReqRequestor() {
-        return reqRequestor;
+    public String getReqAdd() {
+        return reqAdd;
     }
 
-    public void setReqRequestor(Requestor reqRequestor) {
-        this.reqRequestor = reqRequestor;
+    public void setReqAdd(String reqAdd) {
+        this.reqAdd = reqAdd;
     }
+
+    public String getReqCity() {
+        return reqCity;
+    }
+
+    public void setReqCity(String reqCity) {
+        this.reqCity = reqCity;
+    }
+
+    public String getReqZip() {
+        return reqZip;
+    }
+
+    public void setReqZip(String reqZip) {
+        this.reqZip = reqZip;
+    }
+
+    
 
     public UserAccount getReqRequestorAcc() {
         return reqRequestorAcc;

@@ -6,6 +6,7 @@ package userinterface.FCAdminRole;
 
 import Business.Donation.Donation;
 import Business.EcoSystem;
+import Business.NGOVolunteer.Volunteer;
 import Business.UserAccount.UserAccount;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -30,6 +31,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
+    String volname;
     public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -51,7 +53,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonReq = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         lblDRid = new javax.swing.JLabel();
         txtDRid = new javax.swing.JTextField();
         lblDRid1 = new javax.swing.JLabel();
@@ -157,15 +159,33 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
         Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
         txtDRid.setText(selectedD.getDonatId());
-        //volunteer list
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblDonReq.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a request");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
+        volname= cbVol.getSelectedItem().toString();
+        selectedD.setDonatVol(volname);
+        selectedD.setDonatStatus("Assigned to Volunteer");
+        for(Volunteer v:ecosystem.getVolDir().getVolunteerList()){
+            if(v.getVolName().equals(volname)){
+                v.setVolAvail("No");
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDRid;
     private javax.swing.JLabel lblDRid1;

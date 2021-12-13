@@ -61,7 +61,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnAssign">
       <Properties>
         <Property name="text" type="java.lang.String" value="Assign"/>
       </Properties>

@@ -7,6 +7,7 @@ package userinterface.FCPManagerRole;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -20,11 +21,15 @@ public class FCPManagerWorkAreaPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
      UserAccount account;
      EcoSystem ecosystem;
-    public FCPManagerWorkAreaPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
+     JPanel jp;
+    JSplitPane jsp;
+    public FCPManagerWorkAreaPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account,JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
     }
 
     /**
@@ -36,19 +41,182 @@ public class FCPManagerWorkAreaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        SplitPaneFCPManager = new javax.swing.JSplitPane();
+        MenubarPanel = new javax.swing.JPanel();
+        btnViewfdReqs = new javax.swing.JButton();
+        btnPantryStk = new javax.swing.JButton();
+        btnMgVol = new javax.swing.JButton();
+        lblwelusername = new javax.swing.JLabel();
+        lblWelcomemsg = new javax.swing.JLabel();
+        btnConWH = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        WorkAreaPanel = new javax.swing.JPanel();
+
+        SplitPaneFCPManager.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        btnViewfdReqs.setBackground(new java.awt.Color(225, 144, 108));
+        btnViewfdReqs.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnViewfdReqs.setText("View Food Requests");
+        btnViewfdReqs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewfdReqsActionPerformed(evt);
+            }
+        });
+
+        btnPantryStk.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnPantryStk.setText("Pantry Stock");
+        btnPantryStk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPantryStkActionPerformed(evt);
+            }
+        });
+
+        btnMgVol.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnMgVol.setText("extra");
+        btnMgVol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMgVolActionPerformed(evt);
+            }
+        });
+
+        lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblwelusername.setText("Food Cloud Pantry Manager !");
+
+        lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lblWelcomemsg.setText("Welcome,");
+
+        btnConWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnConWH.setText("Contact Warehouse");
+        btnConWH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConWHActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
+        MenubarPanel.setLayout(MenubarPanelLayout);
+        MenubarPanelLayout.setHorizontalGroup(
+            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblWelcomemsg)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblwelusername)
+                        .addGap(117, 117, 117))
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(btnPantryStk)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnViewfdReqs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addComponent(btnConWH)
+                        .addGap(80, 80, 80)))
+                .addComponent(btnMgVol)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogout)
+                .addContainerGap())
+        );
+        MenubarPanelLayout.setVerticalGroup(
+            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblwelusername)
+                    .addComponent(lblWelcomemsg))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPantryStk)
+                    .addComponent(btnConWH)
+                    .addComponent(btnMgVol)
+                    .addComponent(btnViewfdReqs)
+                    .addComponent(btnLogout))
+                .addGap(15, 15, 15))
+        );
+
+        SplitPaneFCPManager.setLeftComponent(MenubarPanel);
+
+        WorkAreaPanel.setPreferredSize(new java.awt.Dimension(1000, 700));
+
+        javax.swing.GroupLayout WorkAreaPanelLayout = new javax.swing.GroupLayout(WorkAreaPanel);
+        WorkAreaPanel.setLayout(WorkAreaPanelLayout);
+        WorkAreaPanelLayout.setHorizontalGroup(
+            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1004, Short.MAX_VALUE)
+        );
+        WorkAreaPanelLayout.setVerticalGroup(
+            WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 563, Short.MAX_VALUE)
+        );
+
+        SplitPaneFCPManager.setRightComponent(WorkAreaPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCPManager, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(SplitPaneFCPManager, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnViewfdReqsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewfdReqsActionPerformed
+        // TODO add your handling code here:
+        ViewFoodRequestsPanel objFDreqs =  new ViewFoodRequestsPanel(userProcessContainer,ecosystem,account);
+        SplitPaneFCPManager.setRightComponent(objFDreqs);
+    }//GEN-LAST:event_btnViewfdReqsActionPerformed
+
+    private void btnPantryStkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPantryStkActionPerformed
+        // TODO add your handling code here:
+        PantryStockPanel objWHI = new PantryStockPanel(userProcessContainer,ecosystem,account);
+        SplitPaneFCPManager.setRightComponent(objWHI);
+    }//GEN-LAST:event_btnPantryStkActionPerformed
+
+    private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnMgVolActionPerformed
+
+    private void btnConWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConWHActionPerformed
+        // TODO add your handling code here:
+        ContactWarehousePanel objConWH = new ContactWarehousePanel(userProcessContainer,ecosystem,account);
+        SplitPaneFCPManager.setRightComponent(objConWH);
+    }//GEN-LAST:event_btnConWHActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+//        try {
+//            // TODO add your handling code here:
+//            MainJFrame mjf = new MainJFrame();
+//            mjf.logout(userProcessContainer, jp, jsp);
+//        } catch (IOException ex) {
+//            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel MenubarPanel;
+    private javax.swing.JSplitPane SplitPaneFCPManager;
+    private javax.swing.JPanel WorkAreaPanel;
+    private javax.swing.JButton btnConWH;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnMgVol;
+    private javax.swing.JButton btnPantryStk;
+    private javax.swing.JButton btnViewfdReqs;
+    private javax.swing.JLabel lblWelcomemsg;
+    private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
 }
