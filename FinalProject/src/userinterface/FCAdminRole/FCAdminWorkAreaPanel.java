@@ -6,11 +6,16 @@ package userinterface.FCAdminRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import userinterface.DonorRole.DonorProfilePanel;
 import userinterface.MainJFrame;
 
 /**
@@ -34,6 +39,8 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.jp = jp;
         this.jsp = jsp;
+        setBG();
+        logoutlogo();
     }
 
     /**
@@ -53,30 +60,39 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         btnCurReq = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        lbllogout = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
+        LabelImg = new javax.swing.JLabel();
 
         SplitPaneFCAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnViewDonReq.setBackground(new java.awt.Color(225, 144, 108));
+        MenubarPanel.setBackground(new java.awt.Color(255, 255, 255));
+        MenubarPanel.setToolTipText("");
+
+        btnViewDonReq.setBackground(new java.awt.Color(105, 158, 208));
         btnViewDonReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnViewDonReq.setText("View Donation Requests");
+        btnViewDonReq.setToolTipText("");
         btnViewDonReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewDonReqActionPerformed(evt);
             }
         });
 
+        btnMgPTitems.setBackground(new java.awt.Color(105, 158, 208));
         btnMgPTitems.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgPTitems.setText("Manage Pantry Items");
+        btnMgPTitems.setToolTipText("");
         btnMgPTitems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMgPTitemsActionPerformed(evt);
             }
         });
 
+        btnMgVol.setBackground(new java.awt.Color(105, 158, 208));
         btnMgVol.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgVol.setText("Manage Volunteers");
+        btnMgVol.setToolTipText("");
         btnMgVol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMgVolActionPerformed(evt);
@@ -89,19 +105,19 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblWelcomemsg.setText("Welcome,");
 
+        btnCurReq.setBackground(new java.awt.Color(105, 158, 208));
         btnCurReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnCurReq.setText("extra");
+        btnCurReq.setToolTipText("");
         btnCurReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCurReqActionPerformed(evt);
             }
         });
 
-        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+        lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbllogoutMousePressed(evt);
             }
         });
 
@@ -109,39 +125,45 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         MenubarPanel.setLayout(MenubarPanelLayout);
         MenubarPanelLayout.setHorizontalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(btnMgPTitems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewDonReq)
-                .addGap(33, 33, 33)
-                .addComponent(btnCurReq)
-                .addGap(18, 18, 18)
-                .addComponent(btnMgVol)
-                .addGap(18, 18, 18)
-                .addComponent(btnLogout)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addContainerGap(378, Short.MAX_VALUE)
-                .addComponent(lblWelcomemsg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblwelusername)
-                .addGap(394, 394, 394))
+            .addGroup(MenubarPanelLayout.createSequentialGroup()
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(btnMgPTitems)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnViewDonReq)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCurReq)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMgVol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addContainerGap(378, Short.MAX_VALUE)
+                        .addComponent(lblWelcomemsg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblwelusername)
+                        .addGap(279, 279, 279)))
+                .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
         MenubarPanelLayout.setVerticalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblwelusername)
-                    .addComponent(lblWelcomemsg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMgPTitems)
-                    .addComponent(btnCurReq)
-                    .addComponent(btnMgVol)
-                    .addComponent(btnViewDonReq)
-                    .addComponent(btnLogout))
+                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MenubarPanelLayout.createSequentialGroup()
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblwelusername)
+                            .addComponent(lblWelcomemsg))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMgPTitems)
+                            .addComponent(btnCurReq)
+                            .addComponent(btnMgVol)
+                            .addComponent(btnViewDonReq))))
                 .addGap(15, 15, 15))
         );
 
@@ -153,11 +175,11 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         WorkAreaPanel.setLayout(WorkAreaPanelLayout);
         WorkAreaPanelLayout.setHorizontalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1004, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
         );
 
         SplitPaneFCAdmin.setRightComponent(WorkAreaPanel);
@@ -188,14 +210,16 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
         // TODO add your handling code here:
-        
+        ManageVolunteerPanel objVol =  new ManageVolunteerPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objVol);
     }//GEN-LAST:event_btnMgVolActionPerformed
 
     private void btnCurReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurReqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCurReqActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void lbllogoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogoutMousePressed
+        // TODO add your handling code here:
         try {
             // TODO add your handling code here:
             MainJFrame mjf = new MainJFrame();
@@ -203,21 +227,54 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_lbllogoutMousePressed
 
+    public void logoutlogo() {
+
+        try {
+           
+            lbllogout.setMinimumSize(new Dimension(50,60));
+            lbllogout.setPreferredSize(new Dimension(50,60));
+            lbllogout.setMaximumSize(new Dimension(50,60));
+            
+            Image img1 = ImageIO.read(getClass().getResource("/Images/Logout.png"));
+            Image newimg1 = img1.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+
+            lbllogout.setIcon(new ImageIcon(newimg1));
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+     public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneFCAdmin;
     private javax.swing.JPanel WorkAreaPanel;
     private javax.swing.JButton btnCurReq;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;
     private javax.swing.JButton btnViewDonReq;
     private javax.swing.JLabel lblWelcomemsg;
+    private javax.swing.JLabel lbllogout;
     private javax.swing.JLabel lblwelusername;
     // End of variables declaration//GEN-END:variables
 }

@@ -303,7 +303,7 @@ public class DonorProfilePanel extends javax.swing.JPanel {
             
             Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
             
-            Image newimg = img.getScaledInstance(2500, 1000, java.awt.Image.SCALE_SMOOTH);
+            Image newimg = img.getScaledInstance(1450, 950, java.awt.Image.SCALE_SMOOTH);
             LabelImage.setIcon(new ImageIcon(newimg));
         } catch (IOException ex) {
             Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);

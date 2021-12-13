@@ -12,6 +12,13 @@ import Business.NGOVolunteer.VolunteerDirectory;
 import Business.Role.DeliveryVolunteer;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -35,6 +42,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         if(ecosystem.getVolDir() == null){
               ecosystem.setVolDir(new VolunteerDirectory());
           }
+        setBG();
     }
 
     /**
@@ -78,12 +86,17 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
         lblVolZip1 = new javax.swing.JLabel();
         lblVolpwd2 = new javax.swing.JLabel();
         lblVolAdmin1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAddVolTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblAddVolTitle.setText("Add Volunteer");
+        add(lblAddVolTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 6, -1, -1));
 
         lblVolname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolname.setText("Volunteer Name*");
+        lblVolname.setText("Volunteer Name");
+        add(lblVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 104, -1, -1));
 
         txtVolname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -97,9 +110,11 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolnameActionPerformed(evt);
             }
         });
+        add(txtVolname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 137, -1));
 
         lblVolPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolPhno.setText("Phone Number*");
+        lblVolPhno.setText("Phone Number");
+        add(lblVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 190, -1, -1));
 
         txtVolPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolPhno.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -108,9 +123,11 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolPhnoFocusLost(evt);
             }
         });
+        add(txtVolPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 186, 137, -1));
 
         lblVolAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolAdd.setText("Address*");
+        lblVolAdd.setText("Address");
+        add(lblVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 233, -1, -1));
 
         txtVolAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolAdd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -119,21 +136,27 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolAddActionPerformed(evt);
             }
         });
+        add(txtVolAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 229, 137, -1));
 
         lblVolCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolCity.setText("City*");
+        lblVolCity.setText("City");
+        add(lblVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 276, -1, -1));
 
         txtVolCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolCity.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtVolCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 272, 137, -1));
 
         lblVolState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolState.setText("State*");
+        lblVolState.setText("State");
+        add(lblVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 319, -1, -1));
 
         txtVolState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolState.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtVolState, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 315, 137, -1));
 
         lblVolZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolZip.setText("Zipcode*");
+        lblVolZip.setText("Zipcode");
+        add(lblVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 362, -1, -1));
 
         txtVolZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolZip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -142,9 +165,11 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolZipFocusLost(evt);
             }
         });
+        add(txtVolZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 358, 137, -1));
 
         lblVolExp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolExp.setText("Volunteer Experience*");
+        lblVolExp.setText("Volunteer Experience");
+        add(lblVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 405, -1, -1));
 
         txtVolExp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolExp.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -158,21 +183,27 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolExpActionPerformed(evt);
             }
         });
+        add(txtVolExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 401, 137, -1));
 
         lblVoluname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVoluname.setText("Volunteer Username*");
+        lblVoluname.setText("Volunteer Username");
+        add(lblVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 448, -1, -1));
 
         txtVoluname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVoluname.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtVoluname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 444, 137, -1));
 
         lblVolpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolpwd.setText("Password*");
+        lblVolpwd.setText("Password");
+        add(lblVolpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 491, -1, -1));
 
         txtVolpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolpwd.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtVolpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 487, 137, -1));
 
         lblVolcopwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolcopwd1.setText("Confirm Password*");
+        lblVolcopwd1.setText("Confirm Password");
+        add(lblVolcopwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 534, -1, -1));
 
         txtVolcopwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolcopwd1.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -181,6 +212,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolcopwd1FocusLost(evt);
             }
         });
+        add(txtVolcopwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 137, -1));
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -189,9 +221,11 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 573, -1, -1));
 
         lblVolid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolid.setText("Volunteer Id*");
+        lblVolid.setText("Volunteer Id");
+        add(lblVolid, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 61, -1, -1));
 
         txtVolid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -205,9 +239,11 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolidKeyReleased(evt);
             }
         });
+        add(txtVolid, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 57, 134, -1));
 
         lblVolage.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblVolage.setText("Volunteer Age*");
+        lblVolage.setText("Volunteer Age");
+        add(lblVolage, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 147, -1, -1));
 
         txtVolage.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtVolage.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -216,131 +252,31 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
                 txtVolageFocusLost(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(lblAddVolTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblVolPhno)
-                                    .addComponent(lblVolAdd)
-                                    .addComponent(lblVolCity)
-                                    .addComponent(lblVolState)
-                                    .addComponent(lblVolZip)
-                                    .addComponent(lblVoluname, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblVolpwd)
-                                    .addComponent(lblVolcopwd1)
-                                    .addComponent(lblVolExp))
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtVolPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolCity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolState, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolZip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolExp, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVoluname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolcopwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblVolage)
-                                .addGap(40, 40, 40)
-                                .addComponent(txtVolage, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblVolname)
-                                    .addComponent(lblVolid))
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtVolname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVolid, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblVolid2)
-                            .addComponent(lblVolname1)
-                            .addComponent(lblVolPhno1)
-                            .addComponent(lblVolZip1)
-                            .addComponent(lblVolpwd2)
-                            .addComponent(lblVolAdmin1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(btnSubmit)))
-                .addContainerGap(290, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAddVolTitle)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolid)
-                    .addComponent(txtVolid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolid2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolname)
-                    .addComponent(txtVolname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolname1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolage)
-                    .addComponent(txtVolage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolPhno)
-                    .addComponent(txtVolPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolPhno1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolAdd)
-                    .addComponent(txtVolAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVolCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolCity))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolState)
-                    .addComponent(txtVolState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolZip)
-                    .addComponent(txtVolZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolZip1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolExp)
-                    .addComponent(txtVolExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolAdmin1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVoluname)
-                    .addComponent(txtVoluname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVolpwd)
-                    .addComponent(txtVolpwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVolcopwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVolcopwd1)
-                    .addComponent(lblVolpwd2))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
+        add(txtVolage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 143, 137, -1));
+        add(lblVolid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 57, -1, -1));
+        add(lblVolname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 100, -1, -1));
+        add(lblVolPhno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 186, -1, -1));
+        add(lblVolZip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 358, -1, -1));
+        add(lblVolpwd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 530, -1, -1));
+        add(lblVolAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 401, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1390, 790));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, 850, java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(AddVolunteerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void txtVolnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVolnameFocusLost
         // TODO add your handling code here:
         if(!(txtVolname.getText().matches("^[a-zA-Z]*$"))){
@@ -421,6 +357,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
 
             volAccount.setRole(new DeliveryVolunteer());
             volAccount.setEmployee(employee);
+            vol.setVolAvail("New");
             uad=ecosystem.getUserAccountDirectory();
             uad.createUserAccount(txtVoluname.getText(), txtVolpwd.getText(), employee, new DeliveryVolunteer());
             ecosystem.setUserAccountDirectory(uad);
@@ -490,6 +427,7 @@ public class AddVolunteerPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblAddVolTitle;
     private javax.swing.JLabel lblVolAdd;

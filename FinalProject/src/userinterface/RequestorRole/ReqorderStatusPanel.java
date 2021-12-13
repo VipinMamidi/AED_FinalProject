@@ -7,6 +7,13 @@ package userinterface.RequestorRole;
 import Business.EcoSystem;
 import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +35,7 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateTable();
+        setBG();
     }
 
     /**
@@ -42,9 +50,14 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
+        LabelImg = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("My Food Cloud Requests");
+        add(lblDonProfileTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 14, -1, -1));
 
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,34 +72,33 @@ public class ReqorderStatusPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblReq);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(402, 402, 402)
-                .addComponent(lblDonProfileTitle)
-                .addContainerGap(412, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblDonProfileTitle)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(394, Short.MAX_VALUE))
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, 1600, 153));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1600, 840));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDonProfileTitle;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(ReqorderStatusPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void populateTable() {
          DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
         model.setRowCount(0);

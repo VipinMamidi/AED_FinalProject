@@ -8,7 +8,14 @@ import Business.EcoSystem;
 import Business.FCPantry.FCPantryItems;
 import Business.FCPantry.FCPantryItemsDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +41,7 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         populatePantryItemsTable();
         //FCPname = ecosystem.getFCPDirectory()
+        setBG();
     }
 
     /**
@@ -63,9 +71,13 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         lblitemId = new javax.swing.JLabel();
         lblitemId1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAddWHTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblAddWHTitle.setText("View/Modify Pantry Items");
+        add(lblAddWHTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 6, -1, -1));
 
         tblitems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,12 +92,15 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblitems);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 1140, 153));
+
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 220, 92, -1));
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -93,9 +108,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 220, 92, -1));
 
         lblWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHname.setText("Warehouse Name");
+        add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 258, -1, -1));
 
         txtWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -109,9 +126,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtWHnameKeyReleased(evt);
             }
         });
+        add(txtWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 254, 137, -1));
 
         lblFCPname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFCPname.setText("Pantry Name");
+        add(lblFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 301, -1, -1));
 
         txtFCPname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCPname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -125,9 +144,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtFCPnameKeyReleased(evt);
             }
         });
+        add(txtFCPname, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 297, 137, -1));
 
         lblFCPmg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFCPmg.setText("Pantry Manager");
+        add(lblFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 344, -1, -1));
 
         txtFCPmg.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCPmg.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -141,9 +162,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtFCPmgKeyReleased(evt);
             }
         });
+        add(txtFCPmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 340, 137, -1));
 
         lblFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFDitem.setText("Food Item");
+        add(lblFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 387, -1, -1));
 
         txtFDitem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFDitem.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -157,9 +180,11 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtFDitemKeyReleased(evt);
             }
         });
+        add(txtFDitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 383, 137, -1));
 
         lblFDitem1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFDitem1.setText("Item Quantity");
+        add(lblFDitem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 430, -1, -1));
 
         txtItemquan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtItemquan.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -173,6 +198,7 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 txtItemquanKeyReleased(evt);
             }
         });
+        add(txtItemquan, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 426, 137, -1));
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -180,96 +206,32 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 483, 92, -1));
 
         lblitemId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblitemId.setText("Selected Item Id:");
+        add(lblitemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 218, -1, -1));
 
         lblitemId1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblitemId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblitemId1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(lblAddWHTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFCPname)
-                            .addComponent(lblWHname)
-                            .addComponent(lblFCPmg)
-                            .addComponent(lblFDitem)
-                            .addComponent(lblFDitem1))
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFCPname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFCPmg, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFDitem, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtItemquan, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(330, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAddWHTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDelete)
-                            .addComponent(btnEdit)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblitemId)
-                            .addComponent(lblitemId1))))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWHname))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFCPname)
-                    .addComponent(txtFCPname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFCPmg)
-                    .addComponent(txtFCPmg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFDitem)
-                    .addComponent(txtFDitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFDitem1)
-                    .addComponent(txtItemquan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(btnUpdate)
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
+        add(lblitemId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 218, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 6, 1590, 790));
     }// </editor-fold>//GEN-END:initComponents
 
+     public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1650, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(ViewPantryItemsPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblitems.getSelectedRow();
@@ -392,6 +354,7 @@ public class ViewPantryItemsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnUpdate;

@@ -8,12 +8,17 @@ import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryManDirectory;
+import Business.Donation.DonationDirectory;
 import Business.Donor.DonorDirectory;
+import Business.FCPantry.FCPantryDirectory;
+import Business.FCPantry.FCPantryItemsDirectory;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.NGO.NGODirectory;
+import Business.NGOVolunteer.VolRequestsDirectory;
 import Business.NGOVolunteer.VolunteerDirectory;
 
 import Business.Organization;
+import Business.Reqorder.ReqorderDirectory;
 import Business.Requestor.RequestorDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
@@ -33,12 +38,15 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import userinterface.DonorRole.DonorAreaJPanel;
 import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
+import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
 import userinterface.NGORole.ManageVolunteerPanel;
+import userinterface.NGORole.NGOWorkAreaPanel;
 import userinterface.RequestorRole.RequestorAreaJPanel;
 import userinterface.RestaurantAdminRole.AdminWorkAreaJPanel;
 import userinterface.Signup.SignupWorkAreaJPanel;
 import userinterface.SystemAdminWorkArea.AddWarehousePanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+import userinterface.VolunteerRole.VolunteerWorkAreaPanel;
 
 /**
  *
@@ -62,7 +70,9 @@ public class MainJFrame extends javax.swing.JFrame {
         this.setSize(1680, 1050);
         ecosystem = dB4OUtil.retrieveSystem();
         if (ecosystem == null) {
-            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory(), new VolunteerDirectory()); //to add ngodirectory
+            ecosystem = new EcoSystem(new RequestorDirectory(), new DonorDirectory(), new FCWarehouseDirectory(), new NGODirectory(), new VolunteerDirectory(),
+                                        new FCPantryDirectory(),new FCPantryItemsDirectory(), new DonationDirectory(), new ReqorderDirectory() 
+                                        , new VolRequestsDirectory());
         }
 
         Image img = ImageIO.read(getClass().getResource("/Images/background.png"));
@@ -135,7 +145,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(312, 312, 312)
                 .addComponent(loginJLabel)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +154,6 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(logoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,8 +281,32 @@ public class MainJFrame extends javax.swing.JFrame {
                 loginJButton.setEnabled(false);
                 logoutJButton.setEnabled(true);
 
-                ManageVolunteerPanel req = new ManageVolunteerPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                NGOWorkAreaPanel req = new NGOWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
                 container.add("NGOAgent", req);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.FCPManagerRole")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                FCPManagerWorkAreaPanel fcpm = new FCPManagerWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                container.add("FCPManager", fcpm);
+                CardLayout crdLyt = (CardLayout) container.getLayout();
+                crdLyt.next(container);
+            }
+            else if (ua.getRole().toString().equals("Business.Role.DeliveryVolunteer")) {
+
+                userNameJTextField.setEnabled(false);
+                passwordField.setEnabled(false);
+                loginJButton.setEnabled(false);
+                logoutJButton.setEnabled(true);
+
+                VolunteerWorkAreaPanel vol = new VolunteerWorkAreaPanel(container, ecosystem, ua, jPanel1, jSplitPane1);
+                container.add("Volunteer", vol);
                 CardLayout crdLyt = (CardLayout) container.getLayout();
                 crdLyt.next(container);
             }

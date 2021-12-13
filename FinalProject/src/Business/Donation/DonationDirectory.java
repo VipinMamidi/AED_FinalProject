@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author sowmyachinimilli
  */
 public class DonationDirectory {
-    private ArrayList<Donation> donatList;
+    public ArrayList<Donation> donatList = new ArrayList<Donation>();;
     
     public DonationDirectory(){
         donatList = new ArrayList();

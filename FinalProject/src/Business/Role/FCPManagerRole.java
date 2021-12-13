@@ -16,6 +16,6 @@ import userinterface.FCPManagerRole.FCPManagerWorkAreaPanel;
  */
 public class FCPManagerRole extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business, JPanel jp, JSplitPane jsp) {
-        return new FCPManagerWorkAreaPanel(userProcessContainer,account, business);
+        return new FCPManagerWorkAreaPanel(userProcessContainer, business,account,jp,jsp);
     }
 }

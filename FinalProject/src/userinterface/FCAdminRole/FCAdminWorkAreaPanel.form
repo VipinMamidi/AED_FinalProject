@@ -34,6 +34,12 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="MenubarPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -43,25 +49,29 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                      <Component id="btnMgPTitems" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnViewDonReq" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnCurReq" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnMgVol" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="378" max="32767" attributes="0"/>
-                      <Component id="lblWelcomemsg" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblwelusername" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="394" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="btnMgPTitems" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="btnViewDonReq" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="btnCurReq" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnMgVol" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="378" max="32767" attributes="0"/>
+                              <Component id="lblWelcomemsg" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblwelusername" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="lbllogout" min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -69,17 +79,24 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblwelusername" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblWelcomemsg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnMgPTitems" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCurReq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMgVol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnViewDonReq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="lbllogout" min="-2" pref="41" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblwelusername" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblWelcomemsg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnMgPTitems" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCurReq" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMgVol" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnViewDonReq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
@@ -90,12 +107,13 @@
             <Component class="javax.swing.JButton" name="btnViewDonReq">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="6c" green="90" red="e1" type="rgb"/>
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="View Donation Requests"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDonReqActionPerformed"/>
@@ -103,10 +121,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnMgPTitems">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manage Pantry Items"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgPTitemsActionPerformed"/>
@@ -114,10 +136,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnMgVol">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manage Volunteers"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgVolActionPerformed"/>
@@ -141,24 +167,22 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnCurReq">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="extra"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCurReqActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLogout">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Logout"/>
-              </Properties>
+            <Component class="javax.swing.JLabel" name="lbllogout">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbllogoutMousePressed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -178,15 +202,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1004" max="32767" attributes="0"/>
+                  <Component id="LabelImg" alignment="0" pref="1004" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="563" max="32767" attributes="0"/>
+                  <Component id="LabelImg" alignment="0" pref="563" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LabelImg">
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
