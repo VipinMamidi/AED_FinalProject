@@ -10,14 +10,21 @@ import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.DonorRole.DonorAreaJPanel;
+import userinterface.DonorRole.DonorProfilePanel;
+import userinterface.FCAdminRole.FCAdminWorkAreaPanel;
 import userinterface.MainJFrame;
 
 /**
@@ -42,6 +49,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.jp = jp;
         this.jsp = jsp;
       //  this.userAcc = userAcc;
+      logoutlogo();
+      setBG();
+      setLogo();
     }
     
   
@@ -59,14 +69,20 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnMgWH = new javax.swing.JButton();
         btnMgPT = new javax.swing.JButton();
         btnMgUsers = new javax.swing.JButton();
-        lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
         btnMgNGO = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        lbllogout = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        logoImage = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
+        LabelImg = new javax.swing.JLabel();
 
         SplitPaneSysAdmin.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        MenubarPanel.setBackground(new java.awt.Color(255, 255, 255));
+        MenubarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMgWH.setBackground(new java.awt.Color(105, 158, 208));
         btnMgWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgWH.setText("Manage Warehouse");
         btnMgWH.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +90,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnMgWHActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnMgWH, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
+        btnMgPT.setBackground(new java.awt.Color(105, 158, 208));
         btnMgPT.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgPT.setText("Manage Pantry");
         btnMgPT.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +100,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnMgPTActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnMgPT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
+        btnMgUsers.setBackground(new java.awt.Color(105, 158, 208));
         btnMgUsers.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgUsers.setText("Manage Users");
         btnMgUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -90,13 +110,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnMgUsersActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnMgUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
-        lblwelusername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblwelusername.setText("System Admin !");
+        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblWelcomemsg.setForeground(new java.awt.Color(51, 153, 255));
+        lblWelcomemsg.setText("Welcome System Admin !");
+        MenubarPanel.add(lblWelcomemsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
-        lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblWelcomemsg.setText("Welcome,");
-
+        btnMgNGO.setBackground(new java.awt.Color(105, 158, 208));
         btnMgNGO.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMgNGO.setText("Manage NGO");
         btnMgNGO.addActionListener(new java.awt.event.ActionListener() {
@@ -104,59 +125,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnMgNGOActionPerformed(evt);
             }
         });
+        MenubarPanel.add(btnMgNGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
-        btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+        lbllogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lbllogoutMousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout MenubarPanelLayout = new javax.swing.GroupLayout(MenubarPanel);
-        MenubarPanel.setLayout(MenubarPanelLayout);
-        MenubarPanelLayout.setHorizontalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblWelcomemsg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btnMgWH)
-                        .addGap(98, 98, 98)
-                        .addComponent(btnMgPT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)))
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addComponent(lblwelusername)
-                        .addGap(174, 174, 174))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addComponent(btnMgNGO)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnMgUsers)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(btnLogout)
-                        .addGap(20, 20, 20))))
-        );
-        MenubarPanelLayout.setVerticalGroup(
-            MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblwelusername)
-                    .addComponent(lblWelcomemsg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMgUsers)
-                    .addComponent(btnMgWH)
-                    .addComponent(btnMgPT)
-                    .addComponent(btnMgNGO)
-                    .addComponent(btnLogout))
-                .addGap(15, 15, 15))
-        );
+        MenubarPanel.add(lbllogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 40, 40, 30));
+        MenubarPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 60, 120));
+        MenubarPanel.add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 80, 60));
 
         SplitPaneSysAdmin.setLeftComponent(MenubarPanel);
 
@@ -166,11 +144,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         WorkAreaPanel.setLayout(WorkAreaPanelLayout);
         WorkAreaPanelLayout.setHorizontalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 998, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
         );
         WorkAreaPanelLayout.setVerticalGroup(
             WorkAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 563, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
         );
 
         SplitPaneSysAdmin.setRightComponent(WorkAreaPanel);
@@ -179,14 +157,64 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneSysAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
+            .addComponent(SplitPaneSysAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneSysAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addComponent(SplitPaneSysAdmin)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+      public void logoutlogo() {
+
+        try {
+           
+            lbllogout.setMinimumSize(new Dimension(50,60));
+            lbllogout.setPreferredSize(new Dimension(50,60));
+            lbllogout.setMaximumSize(new Dimension(50,60));
+            
+            Image img1 = ImageIO.read(getClass().getResource("/Images/Logout.png"));
+            Image newimg1 = img1.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+
+            lbllogout.setIcon(new ImageIcon(newimg1));
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(DonorAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+      
     private void btnMgWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgWHActionPerformed
         // TODO add your handling code here:
         ManageWarehousePanel objWH = new ManageWarehousePanel(userProcessContainer,ecosystem);
@@ -221,29 +249,30 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
          SplitPaneSysAdmin.setRightComponent(objUSER);
     }//GEN-LAST:event_btnMgUsersActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void lbllogoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogoutMousePressed
+        // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            MainJFrame mf = new MainJFrame();
-            mf.logout(userProcessContainer, jp, jsp);
-            
+            MainJFrame mjf = new MainJFrame();
+            mjf.logout(userProcessContainer, jp, jsp);
         } catch (IOException ex) {
-            Logger.getLogger(SystemAdminWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FCAdminWorkAreaPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_lbllogoutMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneSysAdmin;
     private javax.swing.JPanel WorkAreaPanel;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgNGO;
     private javax.swing.JButton btnMgPT;
     private javax.swing.JButton btnMgUsers;
     private javax.swing.JButton btnMgWH;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblWelcomemsg;
-    private javax.swing.JLabel lblwelusername;
+    private javax.swing.JLabel lbllogout;
+    private javax.swing.JLabel logoImage;
     // End of variables declaration//GEN-END:variables
 }

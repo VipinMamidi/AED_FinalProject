@@ -57,6 +57,7 @@ public class ManageNGOJPanel extends javax.swing.JPanel {
         SysAdminWorkareaPanel = new javax.swing.JPanel();
         lblbgc = new javax.swing.JLabel();
 
+        NGOControlPanel.setBackground(new java.awt.Color(255, 255, 255));
         NGOControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
 
         btnAddNGO.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -82,7 +83,7 @@ public class ManageNGOJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NGOControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(NGOControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewNGO, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                    .addComponent(btnViewNGO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddNGO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );

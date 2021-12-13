@@ -342,6 +342,7 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -371,7 +372,13 @@ public class MainJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new MainJFrame().setVisible(true);
+                   MainJFrame mgf = new MainJFrame();
+                   
+                   Image imglogo = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+                   mgf.setIconImage(imglogo);
+                   mgf.setTitle("Food Cloud");
+                   mgf.setVisible(true);
+                   
                 } catch (IOException ex) {
                     Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -63,6 +63,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         btnDonNow = new javax.swing.JButton();
         lblWelcomemsg = new javax.swing.JLabel();
         lbllogout = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         WorkAreaPanel = new javax.swing.JPanel();
         LabelImg = new javax.swing.JLabel();
 
@@ -100,7 +101,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
+        lblWelcomemsg.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
         lblWelcomemsg.setForeground(new java.awt.Color(0, 204, 204));
         lblWelcomemsg.setText("Welcome Donor !");
 
@@ -115,17 +116,19 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         MenubarPanelLayout.setHorizontalGroup(
             MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(78, 78, 78)
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblWelcomemsg)
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addComponent(btnProfile)
-                        .addGap(26, 26, 26)
+                        .addGap(48, 48, 48)
                         .addComponent(btnViewDon)
-                        .addGap(31, 31, 31)
+                        .addGap(49, 49, 49)
                         .addComponent(btnDonNow)
-                        .addGap(107, 107, 107)))
-                .addGap(207, 207, 207)
+                        .addGap(54, 54, 54)))
+                .addGap(124, 124, 124)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -134,22 +137,17 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
             .addGroup(MenubarPanelLayout.createSequentialGroup()
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnProfile))
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnViewDon)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(MenubarPanelLayout.createSequentialGroup()
-                .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addComponent(lblWelcomemsg)
-                        .addGap(2, 2, 2)
-                        .addComponent(btnDonNow))
+                        .addGap(18, 18, 18)
+                        .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDonNow)
+                            .addComponent(btnViewDon)
+                            .addComponent(btnProfile)))
                     .addGroup(MenubarPanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(lbllogout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         SplitPaneDon.setLeftComponent(MenubarPanel);
@@ -255,6 +253,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDonNow;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnViewDon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblWelcomemsg;
     private javax.swing.JLabel lbllogout;
     // End of variables declaration//GEN-END:variables

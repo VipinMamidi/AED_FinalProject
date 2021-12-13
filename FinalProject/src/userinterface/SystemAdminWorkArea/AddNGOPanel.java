@@ -12,13 +12,17 @@ import Business.NGO.NGODirectory;
 import Business.Role.NgoRole;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -50,6 +54,8 @@ public class AddNGOPanel extends javax.swing.JPanel {
           if(ecosystem.getNgoDir() == null){
               ecosystem.setNgoDir(new NGODirectory());
           }
+          
+          setBG();
          
     }
 
@@ -92,12 +98,19 @@ public class AddNGOPanel extends javax.swing.JPanel {
         lblNGOZip1 = new javax.swing.JLabel();
         lblNGOAdmin1 = new javax.swing.JLabel();
         lblNGOpwd2 = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
+        LabelImage = new javax.swing.JLabel();
 
-        lblAddNGOTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddNGOTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblAddNGOTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblAddNGOTitle.setText("Add NGO");
+        add(lblAddNGOTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
-        lblNGOname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOname.setText("NGO Name*");
+        lblNGOname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOname.setText("NGO Name :");
+        add(lblNGOname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
 
         txtNGOname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -106,9 +119,11 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOnameFocusLost(evt);
             }
         });
+        add(txtNGOname, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 137, -1));
 
-        lblNGOPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOPhno.setText("Phone Number*");
+        lblNGOPhno.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOPhno.setText("Phone Number :");
+        add(lblNGOPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
 
         txtNGOPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOPhno.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -117,9 +132,11 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOPhnoFocusLost(evt);
             }
         });
+        add(txtNGOPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 137, -1));
 
-        lblNGOAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOAdd.setText("Address*");
+        lblNGOAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOAdd.setText("Address :");
+        add(lblNGOAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
 
         txtNGOAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOAdd.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -128,21 +145,27 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOAddActionPerformed(evt);
             }
         });
+        add(txtNGOAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 137, -1));
 
-        lblNGOCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOCity.setText("City*");
+        lblNGOCity.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOCity.setText("City :");
+        add(lblNGOCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
         txtNGOCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOCity.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtNGOCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 137, -1));
 
-        lblNGOState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOState.setText("State*");
+        lblNGOState.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOState.setText("State :");
+        add(lblNGOState, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, -1));
 
         txtNGOState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOState.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtNGOState, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 137, -1));
 
-        lblNGOZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOZip.setText("Zipcode*");
+        lblNGOZip.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOZip.setText("Zipcode :");
+        add(lblNGOZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
         txtNGOZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOZip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -151,9 +174,11 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOZipFocusLost(evt);
             }
         });
+        add(txtNGOZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 137, -1));
 
-        lblNGOAgent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOAgent.setText("NGO Agent*");
+        lblNGOAgent.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOAgent.setText("NGO Agent :");
+        add(lblNGOAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         txtNGOAgent.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOAgent.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -162,21 +187,27 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOAgentFocusLost(evt);
             }
         });
+        add(txtNGOAgent, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 137, -1));
 
-        lblNGOAgentuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOAgentuname.setText("NGO Agent Username*");
+        lblNGOAgentuname.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOAgentuname.setText("NGO Agent Username :");
+        add(lblNGOAgentuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
 
         txtNGOAgentuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOAgentuname.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtNGOAgentuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 137, -1));
 
-        lblNGOpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOpwd.setText("Password*");
+        lblNGOpwd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOpwd.setText("Password :");
+        add(lblNGOpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
 
         txtNGOpwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOpwd.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtNGOpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 137, -1));
 
-        lblNGOcopwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOcopwd1.setText("Confirm Password*");
+        lblNGOcopwd1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOcopwd1.setText("Confirm Password :");
+        add(lblNGOcopwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, -1, -1));
 
         txtNGOcopwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOcopwd1.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -185,6 +216,7 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOcopwd1FocusLost(evt);
             }
         });
+        add(txtNGOcopwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 137, -1));
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -193,9 +225,11 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, -1, -1));
 
-        lblNGOid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblNGOid.setText("NGO Id*");
+        lblNGOid.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNGOid.setText("NGO Id :");
+        add(lblNGOid, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
 
         txtNGOid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtNGOid.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -209,129 +243,54 @@ public class AddNGOPanel extends javax.swing.JPanel {
                 txtNGOidKeyReleased(evt);
             }
         });
+        add(txtNGOid, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 134, -1));
 
         lblNGOid2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
 
         lblNGOname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
         lblNGOPhno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOPhno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
 
         lblNGOZip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOZip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, -1, -1));
 
         lblNGOAdmin1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, -1, -1));
 
         lblNGOpwd2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblNGOpwd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(lblAddNGOTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNGOPhno)
-                            .addComponent(lblNGOAdd)
-                            .addComponent(lblNGOCity)
-                            .addComponent(lblNGOState)
-                            .addComponent(lblNGOZip)
-                            .addComponent(lblNGOAgentuname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNGOpwd)
-                            .addComponent(lblNGOcopwd1)
-                            .addComponent(lblNGOAgent)
-                            .addComponent(lblNGOname)
-                            .addComponent(lblNGOid))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNGOname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOCity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOState, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOZip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOAgentuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOcopwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNGOid, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(btnSubmit)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNGOname1)
-                    .addComponent(lblNGOPhno1)
-                    .addComponent(lblNGOZip1)
-                    .addComponent(lblNGOAdmin1)
-                    .addComponent(lblNGOpwd2)
-                    .addComponent(lblNGOid2))
-                .addContainerGap(201, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAddNGOTitle)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOid)
-                    .addComponent(txtNGOid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOid2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOname)
-                    .addComponent(txtNGOname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOname1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOPhno)
-                    .addComponent(txtNGOPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOPhno1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOAdd)
-                    .addComponent(txtNGOAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNGOCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOCity))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOState)
-                    .addComponent(txtNGOState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOZip)
-                    .addComponent(txtNGOZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOZip1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOAgent)
-                    .addComponent(txtNGOAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOAdmin1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOAgentuname)
-                    .addComponent(txtNGOAgentuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNGOpwd)
-                    .addComponent(txtNGOpwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNGOcopwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNGOcopwd1)
-                    .addComponent(lblNGOpwd2))
-                .addGap(27, 27, 27)
-                .addComponent(btnSubmit)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        btnCancel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, -1, -1));
+        add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 710));
     }// </editor-fold>//GEN-END:initComponents
 
+       public void setBG() {
+        try {
+            LabelImage.setMinimumSize(new Dimension(1500, 1000));
+            LabelImage.setPreferredSize(new Dimension(1500, 1000));
+            LabelImage.setMaximumSize(new Dimension(1500, 1000));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(2000, 1000, java.awt.Image.SCALE_SMOOTH);
+            LabelImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+    
     private void txtNGOnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNGOnameFocusLost
         // TODO add your handling code here:
         if(!(txtNGOname.getText().matches("^[a-zA-Z]*$"))){
@@ -346,6 +305,7 @@ public class AddNGOPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!(txtNGOPhno.getText().matches("^[0-9]*$")) || !(txtNGOPhno.getText().length()==10)) {
             lblNGOPhno1.setText("Please enter a valid phone number");
+          //  lblNGOPhno1.setForeground(Color.red);
         }
         else{
             lblNGOPhno1.setText("");
@@ -357,6 +317,7 @@ public class AddNGOPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if((txtNGOZip.getText().matches("^[a-zA-Z]*$"))){
             lblNGOZip1.setText("Invalid input. Please enter only numbers");
+            
         }
         else{
             lblNGOZip1.setText("");
@@ -443,6 +404,11 @@ public class AddNGOPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNGOAddActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        clearfields();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
     private boolean nullCheck() {
         if(txtNGOid.getText().length()!=0 && txtNGOname.getText().length()!=0 && 
                 txtNGOPhno.getText().length()!=0 && txtNGOAdd.getText().length()!=0 && txtNGOCity.getText().length()!=0 && 
@@ -469,6 +435,8 @@ public class AddNGOPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImage;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblAddNGOTitle;
     private javax.swing.JLabel lblNGOAdd;

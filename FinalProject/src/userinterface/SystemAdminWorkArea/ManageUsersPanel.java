@@ -7,10 +7,21 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -24,11 +35,15 @@ public class ManageUsersPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccountDirectory uad;
-    public ManageUsersPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+
+    public ManageUsersPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
+        setBG();
+        setLogo();
         populateUserTable();
+        makeTableTransparent();
     }
 
     /**
@@ -43,19 +58,17 @@ public class ManageUsersPanel extends javax.swing.JPanel {
         lblMgUsersTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
-        btnView = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        lblUAname = new javax.swing.JLabel();
-        txtUAname = new javax.swing.JTextField();
-        lblUApwd = new javax.swing.JLabel();
-        txtUApwd = new javax.swing.JTextField();
-        lblUArole = new javax.swing.JLabel();
-        txtUArole = new javax.swing.JTextField();
-        lblUAemp = new javax.swing.JLabel();
-        txtUAemp = new javax.swing.JTextField();
+        logoImage = new javax.swing.JLabel();
+        LabelImage = new javax.swing.JLabel();
 
-        lblMgUsersTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(2000, 1100));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMgUsersTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblMgUsersTitle.setForeground(new java.awt.Color(51, 153, 255));
         lblMgUsersTitle.setText("View Users");
+        add(lblMgUsersTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 24, -1, -1));
 
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,15 +80,32 @@ public class ManageUsersPanel extends javax.swing.JPanel {
             new String [] {
                 "Username", "Password", "Role", "Employee"
             }
-        ));
-        jScrollPane1.setViewportView(tblUsers);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        btnView.setText("View");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblUsersMousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsersMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblUsers);
+        if (tblUsers.getColumnModel().getColumnCount() > 0) {
+            tblUsers.getColumnModel().getColumn(0).setResizable(false);
+            tblUsers.getColumnModel().getColumn(1).setResizable(false);
+            tblUsers.getColumnModel().getColumn(2).setResizable(false);
+            tblUsers.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 865, 212));
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -83,162 +113,68 @@ public class ManageUsersPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-
-        lblUAname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblUAname.setText("User Name");
-
-        txtUAname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtUAname.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtUAname.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUAnameFocusLost(evt);
-            }
-        });
-        txtUAname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUAnameKeyReleased(evt);
-            }
-        });
-
-        lblUApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblUApwd.setText("Password");
-
-        txtUApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtUApwd.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtUApwd.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUApwdFocusLost(evt);
-            }
-        });
-        txtUApwd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUApwdKeyReleased(evt);
-            }
-        });
-
-        lblUArole.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblUArole.setText("Role");
-
-        txtUArole.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtUArole.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtUArole.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUAroleFocusLost(evt);
-            }
-        });
-        txtUArole.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUAroleKeyReleased(evt);
-            }
-        });
-
-        lblUAemp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblUAemp.setText("Employee");
-
-        txtUAemp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtUAemp.setPreferredSize(new java.awt.Dimension(150, 25));
-        txtUAemp.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUAempFocusLost(evt);
-            }
-        });
-        txtUAemp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtUAempKeyReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUApwd)
-                            .addComponent(lblUAname)
-                            .addComponent(lblUArole)
-                            .addComponent(lblUAemp))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUAname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUApwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUArole, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUAemp, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(449, 449, 449)
-                        .addComponent(lblMgUsersTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblMgUsersTitle)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelete)
-                    .addComponent(btnView))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUAname)
-                    .addComponent(txtUAname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUApwd)
-                    .addComponent(txtUApwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUArole)
-                    .addComponent(txtUArole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUAemp)
-                    .addComponent(txtUAemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(173, Short.MAX_VALUE))
-        );
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 92, -1));
+        add(logoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 90, 80));
+        add(LabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 1500, 720));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = tblUsers.getSelectedRow();
-        if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a record to Edit");
-            return;
+    public void setBG() {
+        try {
+            LabelImage.setMinimumSize(new Dimension(1500, 1000));
+            LabelImage.setPreferredSize(new Dimension(1500, 1000));
+            LabelImage.setMaximumSize(new Dimension(1500, 1000));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(2500, 1000, java.awt.Image.SCALE_SMOOTH);
+            LabelImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
-        UserAccount selectedUA = (UserAccount)model.getValueAt(selectedRowIndex, 0);
-        txtUAname.setText(selectedUA.getUsername());
-        txtUApwd.setText(selectedUA.getPassword());
-        txtUArole.setText(String.valueOf(selectedUA.getRole()));
-        txtUAemp.setText(String.valueOf(selectedUA.getEmployee()));
-      
-    }//GEN-LAST:event_btnViewActionPerformed
+    }
+
+    public void setLogo() {
+        try {
+            logoImage.setMinimumSize(new Dimension(100, 100));
+            logoImage.setPreferredSize(new Dimension(100, 100));
+            logoImage.setMaximumSize(new Dimension(100, 100));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/cmnlogo.jpeg"));
+
+            Image newimg = img.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            logoImage.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void makeTableTransparent() {
+        tblUsers.setOpaque(false);
+        ((DefaultTableCellRenderer) tblUsers.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblUsers.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+       
+        
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+   //     headerRenderer.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        for (int i = 0; i < tblUsers.getModel().getColumnCount(); i++) {
+            tblUsers.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+        
+    }
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblUsers.getSelectedRow();
-        if(selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a record to delete");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
-        UserAccount selectedUA = (UserAccount)model.getValueAt(selectedRowIndex, 0);
+        UserAccount selectedUA = (UserAccount) model.getValueAt(selectedRowIndex, 0);
         /* // First delete the customer from employee
         this.system.getEmployeeDirectory().deleteEmployee(selectedRest.getResManagerName());
         // And thne delete the userAccount
@@ -248,79 +184,46 @@ public class ManageUsersPanel extends javax.swing.JPanel {
         );
         // finally delete the user from customer directory*/
         //ecosystem.getUserAccountDirectory().deleteUserAccount(selectedUA);
-        uad= ecosystem.getUserAccountDirectory();
+        uad = ecosystem.getUserAccountDirectory();
         uad.deleteUserAccount(selectedUA);
         ecosystem.setUserAccountDirectory(uad);
         JOptionPane.showMessageDialog(this, "User Account deleted Successfully");
         populateUserTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void txtUAnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUAnameFocusLost
+    private void tblUsersMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAnameFocusLost
+        //tblUsers.setSelectionBackground(Color.BLUE );
+        tblUsers.setSelectionForeground(Color.BLUE);
 
-    private void txtUAnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUAnameKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAnameKeyReleased
+    }//GEN-LAST:event_tblUsersMousePressed
 
-    private void txtUApwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUApwdFocusLost
+    private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUApwdFocusLost
-
-    private void txtUApwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUApwdKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUApwdKeyReleased
-
-    private void txtUAroleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUAroleFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAroleFocusLost
-
-    private void txtUAroleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUAroleKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAroleKeyReleased
-
-    private void txtUAempFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUAempFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAempFocusLost
-
-    private void txtUAempKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUAempKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUAempKeyReleased
+        
+    }//GEN-LAST:event_tblUsersMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImage;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMgUsersTitle;
-    private javax.swing.JLabel lblUAemp;
-    private javax.swing.JLabel lblUAname;
-    private javax.swing.JLabel lblUApwd;
-    private javax.swing.JLabel lblUArole;
+    private javax.swing.JLabel logoImage;
     private javax.swing.JTable tblUsers;
-    private javax.swing.JTextField txtUAemp;
-    private javax.swing.JTextField txtUAname;
-    private javax.swing.JTextField txtUApwd;
-    private javax.swing.JTextField txtUArole;
     // End of variables declaration//GEN-END:variables
 
     private void populateUserTable() {
         DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
         model.setRowCount(0);
-        for(UserAccount ua: ecosystem.getUserAccountDirectory().getUserAccountList()){
-           Object[] row = new Object[4];
-           row[0] =ua;
-           row[1] =ua.getPassword();
-           row[2] =ua.getRole();
-           row[3] =ua.getEmployee();
-           model.addRow(row);
-        }  
+        for (UserAccount ua : ecosystem.getUserAccountDirectory().getUserAccountList()) {
+            Object[] row = new Object[4];
+            row[0] = ua;
+            row[1] = ua.getPassword();
+            row[2] = ua.getRole();
+            row[3] = ua.getEmployee();
+            model.addRow(row);
+        }
     }
 
-    private void clearfields() {
-        txtUAname.setText("");
-        txtUApwd.setText("");
-        txtUArole.setText("");
-        txtUAemp.setText("");
-    }
 }

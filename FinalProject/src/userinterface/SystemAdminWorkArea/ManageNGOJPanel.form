@@ -32,6 +32,9 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="NGOControlPanel">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 600]"/>
             </Property>
@@ -48,7 +51,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnViewNGO" pref="141" max="32767" attributes="0"/>
+                          <Component id="btnViewNGO" max="32767" attributes="0"/>
                           <Component id="btnAddNGO" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>

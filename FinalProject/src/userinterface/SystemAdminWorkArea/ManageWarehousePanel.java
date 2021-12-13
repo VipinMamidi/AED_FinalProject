@@ -5,7 +5,15 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -22,6 +30,7 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
         initComponents();
         this.ecosystem = ecosystem;
         this.userProcessContainer = userProcessContainer;
+        setBG();
     }
 
     /**
@@ -38,7 +47,9 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
         btnAddWH = new javax.swing.JButton();
         btnViewWH = new javax.swing.JButton();
         SysAdminWorkareaPanel = new javax.swing.JPanel();
+        LabelImg = new javax.swing.JLabel();
 
+        SysAdminControlPanel.setBackground(new java.awt.Color(255, 255, 255));
         SysAdminControlPanel.setPreferredSize(new java.awt.Dimension(150, 600));
 
         btnAddWH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -86,11 +97,11 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
         SysAdminWorkareaPanel.setLayout(SysAdminWorkareaPanelLayout);
         SysAdminWorkareaPanelLayout.setHorizontalGroup(
             SysAdminWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
         );
         SysAdminWorkareaPanelLayout.setVerticalGroup(
             SysAdminWorkareaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addComponent(LabelImg, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
         );
 
         SplitPaneWH.setRightComponent(SysAdminWorkareaPanel);
@@ -107,6 +118,20 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void btnAddWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWHActionPerformed
         // TODO add your handling code here:
         AddWarehousePanel objAddWH = new AddWarehousePanel(userProcessContainer,ecosystem);
@@ -121,6 +146,7 @@ public class ManageWarehousePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JSplitPane SplitPaneWH;
     private javax.swing.JPanel SysAdminControlPanel;
     private javax.swing.JPanel SysAdminWorkareaPanel;

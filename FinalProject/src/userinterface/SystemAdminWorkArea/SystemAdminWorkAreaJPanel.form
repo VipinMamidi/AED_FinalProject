@@ -16,12 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="SplitPaneSysAdmin" alignment="1" pref="1002" max="32767" attributes="0"/>
+          <Component id="SplitPaneSysAdmin" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="SplitPaneSysAdmin" alignment="0" pref="653" max="32767" attributes="0"/>
+          <Component id="SplitPaneSysAdmin" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -34,71 +34,26 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="MenubarPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lblWelcomemsg" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="btnMgWH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="btnMgPT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblwelusername" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnMgNGO" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="btnMgUsers" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
-                              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblwelusername" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblWelcomemsg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnMgUsers" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMgWH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMgPT" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMgNGO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnMgWH">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -107,9 +62,17 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgWHActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="80" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="btnMgPT">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -118,9 +81,17 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgPTActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="270" y="80" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="btnMgUsers">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -129,25 +100,33 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgUsersActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblwelusername">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="System Admin !"/>
-              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="570" y="80" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lblWelcomemsg">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="0"/>
+                  <Font name="Georgia" size="29" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Welcome,"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Welcome System Admin !"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="310" y="20" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="btnMgNGO">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d0" green="9e" red="69" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -156,17 +135,35 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMgNGOActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="420" y="80" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLogout">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Logout"/>
-              </Properties>
+            <Component class="javax.swing.JLabel" name="lbllogout">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbllogoutMousePressed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="950" y="40" width="40" height="30"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="750" y="10" width="60" height="120"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="logoImage">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="50" y="10" width="80" height="60"/>
+                </Constraint>
+              </Constraints>
             </Component>
           </SubComponents>
         </Container>
@@ -185,15 +182,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="998" max="32767" attributes="0"/>
+                  <Component id="LabelImg" alignment="1" pref="998" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="563" max="32767" attributes="0"/>
+                  <Component id="LabelImg" alignment="0" pref="578" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LabelImg">
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

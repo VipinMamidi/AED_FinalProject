@@ -9,10 +9,20 @@ import Business.Employee.Employee;
 import Business.FCWarehouse.FCWarehouse;
 import Business.FCWarehouse.FCWarehouseDirectory;
 import Business.UserAccount.UserAccount;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import userinterface.DonorRole.DonorProfilePanel;
 
 /**
  *
@@ -32,6 +42,8 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         this.ecosystem = ecosystem;
         populateWHtable();
         txtFCAuname.setEnabled(false);
+        setBG();
+        makeTableTransparent();
     }
 
     /**
@@ -78,9 +90,14 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         lblFCApwd1 = new javax.swing.JLabel();
         lblWHid = new javax.swing.JLabel();
         lblWHid1 = new javax.swing.JLabel();
+        LabelImg = new javax.swing.JLabel();
 
-        lblAddWHTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblAddWHTitle.setText("View/Modify Warehouse");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddWHTitle.setFont(new java.awt.Font("Georgia", 1, 29)); // NOI18N
+        lblAddWHTitle.setForeground(new java.awt.Color(51, 153, 255));
+        lblAddWHTitle.setText("Warehouse Details");
+        add(lblAddWHTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
 
         tblWarehouse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,7 +110,14 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 "Warehouse ID", "Name", "FC Admin", "Phone Number", "Address", "City", "State", "Zipcode"
             }
         ));
+        tblWarehouse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblWarehouseMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblWarehouse);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 46, 840, 153));
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +125,7 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 205, 92, -1));
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -108,9 +133,11 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 btnEditActionPerformed(evt);
             }
         });
+        add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 205, 92, -1));
 
         lblWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHname.setText("Warehouse Name");
+        add(lblWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 244, -1, -1));
 
         txtWHname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHname.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -124,9 +151,11 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 txtWHnameKeyReleased(evt);
             }
         });
+        add(txtWHname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 137, -1));
 
         lblWHPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHPhno.setText("Phone Number");
+        add(lblWHPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 281, -1, -1));
 
         txtWHPhno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHPhno.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -140,27 +169,35 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 txtWHPhnoKeyReleased(evt);
             }
         });
+        add(txtWHPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 277, 137, -1));
 
         lblWHAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHAdd.setText("Address");
+        add(lblWHAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 317, -1, -1));
 
         txtWHAdd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHAdd.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtWHAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 313, 137, -1));
 
         lblWHCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHCity.setText("City");
+        add(lblWHCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 354, -1, -1));
 
         txtWHCity.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHCity.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtWHCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 137, -1));
 
         lblWHState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHState.setText("State");
+        add(lblWHState, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 391, -1, -1));
 
         txtWHState.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHState.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtWHState, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 387, 137, -1));
 
         lblWHZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHZip.setText("Zipcode");
+        add(lblWHZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 428, -1, -1));
 
         txtWHZip.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHZip.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -169,9 +206,11 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 txtWHZipFocusLost(evt);
             }
         });
+        add(txtWHZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 424, 137, -1));
 
         lblWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHFCAdmin.setText("FoodCloudAdmin");
+        add(lblWHFCAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 465, -1, -1));
 
         txtWHFCAdmin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtWHFCAdmin.setPreferredSize(new java.awt.Dimension(150, 25));
@@ -180,19 +219,24 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 txtWHFCAdminFocusLost(evt);
             }
         });
+        add(txtWHFCAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 461, 137, -1));
 
         lblFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFCAuname.setText("FCAdmin Username");
+        add(lblFCAuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 502, -1, -1));
 
         txtFCAuname.setEditable(false);
         txtFCAuname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCAuname.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtFCAuname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 498, 137, -1));
 
         lblFCApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblFCApwd.setText("Password");
+        add(lblFCApwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 535, -1, 25));
 
         txtFCApwd.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtFCApwd.setPreferredSize(new java.awt.Dimension(150, 25));
+        add(txtFCApwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 535, 137, -1));
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -200,161 +244,59 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 578, 92, -1));
 
         lblWHname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 240, -1, -1));
 
         lblWHPhno1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHPhno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 277, -1, -1));
 
         lblWHAdd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 313, -1, -1));
 
         lblWHCity1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 350, -1, -1));
 
         lblWHState1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHState1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 387, -1, -1));
 
         lblWHZip1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHZip1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 424, -1, -1));
 
         lblWHFCAdmin1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblWHFCAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 461, -1, -1));
 
         lblFCAuname1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblFCAuname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 498, -1, -1));
 
         lblFCApwd1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        add(lblFCApwd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 535, -1, 25));
 
         lblWHid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblWHid.setText("Warehouse Id:");
+        add(lblWHid, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 230, -1, -1));
 
         lblWHid1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addComponent(lblAddWHTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblWHid)
-                        .addGap(24, 24, 24)
-                        .addComponent(lblWHid1)
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblWHname)
-                                    .addComponent(lblWHPhno)
-                                    .addComponent(lblWHAdd)
-                                    .addComponent(lblWHCity)
-                                    .addComponent(lblWHState)
-                                    .addComponent(lblWHZip)
-                                    .addComponent(lblWHFCAdmin)
-                                    .addComponent(lblFCAuname)
-                                    .addComponent(lblFCApwd))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHCity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHState, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFCAuname, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFCApwd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWHAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblWHname1)
-                            .addComponent(lblWHZip1)
-                            .addComponent(lblWHPhno1)
-                            .addComponent(lblWHAdd1)
-                            .addComponent(lblWHCity1)
-                            .addComponent(lblWHState1)
-                            .addComponent(lblWHFCAdmin1)
-                            .addComponent(lblFCAuname1)
-                            .addComponent(lblFCApwd1))))
-                .addContainerGap(322, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblAddWHTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDelete)
-                            .addComponent(btnEdit))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHname)
-                            .addComponent(txtWHname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHname1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHPhno)
-                            .addComponent(txtWHPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHPhno1))
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHAdd)
-                            .addComponent(txtWHAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHAdd1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHCity)
-                            .addComponent(txtWHCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHCity1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHState)
-                            .addComponent(txtWHState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHState1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHZip)
-                            .addComponent(txtWHZip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHZip1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHFCAdmin)
-                            .addComponent(txtWHFCAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWHFCAdmin1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFCAuname)
-                            .addComponent(txtFCAuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFCAuname1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFCApwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFCApwd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFCApwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(339, 339, 339))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWHid)
-                            .addComponent(lblWHid1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        add(lblWHid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 230, -1, -1));
+        add(LabelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1450, 730));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setBG() {
+        try {
+            LabelImg.setMinimumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setPreferredSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+            LabelImg.setMaximumSize(new Dimension(userProcessContainer.getWidth(), userProcessContainer.getHeight()));
+
+            Image img = ImageIO.read(getClass().getResource("/Images/blurbg.jpeg"));
+
+            Image newimg = img.getScaledInstance(1500, userProcessContainer.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            LabelImg.setIcon(new ImageIcon(newimg));
+        } catch (IOException ex) {
+            Logger.getLogger(DonorProfilePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void txtWHnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWHnameKeyReleased
         // TODO add your handling code here:
        
@@ -495,8 +437,28 @@ public class ViewModifyWarehousePanel extends javax.swing.JPanel {
         populateWHtable();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void tblWarehouseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWarehouseMousePressed
+        tblWarehouse.setSelectionForeground(Color.BLUE);
+
+    }//GEN-LAST:event_tblWarehouseMousePressed
+
+      public void makeTableTransparent() {
+        tblWarehouse.setOpaque(false);
+        ((DefaultTableCellRenderer) tblWarehouse.getDefaultRenderer(Object.class)).setOpaque(false);
+        tblWarehouse.setShowGrid(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(Color.WHITE);
+
+        for (int i = 0; i < tblWarehouse.getModel().getColumnCount(); i++) {
+            tblWarehouse.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImg;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnUpdate;
