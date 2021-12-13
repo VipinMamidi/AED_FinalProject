@@ -390,6 +390,13 @@ public class RequestFoodPanel extends javax.swing.JPanel {
             rq.setReqOrderType(cbDel.getSelectedItem().toString());
             rq.setReqOrderStatus("Requested");
             rq.setReqPantryName(cbWH.getSelectedItem().toString());
+            UserAccount ua=new UserAccount();
+            ua.setUsername(userAcc.getUsername());
+            ua.setPassword(userAcc.getPassword());
+            rq.setReqRequestorAcc(ua);
+            rq.setReqAdd(txtDadd.getText());
+            rq.setReqCity(txtDcity.getText());
+            rq.setReqZip(txtDzip.getText());
             rqorD = ecosystem.getReqorderDirectory();
             rqorD.addNewReqorder(rq);
             ecosystem.setReqorderDirectory(rqorD);

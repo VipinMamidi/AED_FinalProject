@@ -7,6 +7,7 @@ package userinterface.FCPManagerRole;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -20,11 +21,15 @@ public class FCPManagerWorkAreaPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
      UserAccount account;
      EcoSystem ecosystem;
-    public FCPManagerWorkAreaPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
+     JPanel jp;
+    JSplitPane jsp;
+    public FCPManagerWorkAreaPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account,JPanel jp, JSplitPane jsp) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.ecosystem = ecosystem;
+        this.jp = jp;
+        this.jsp = jsp;
     }
 
     /**

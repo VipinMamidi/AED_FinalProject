@@ -33,7 +33,7 @@ public abstract class Organization {
         Donor("Donor"),
         Requestor("Requestor"),
         NGOAgent("NGOAgent"),
-       // Volunteer("Volunteer"),
+        Volunteer("Volunteer"),
         SysAdmin("Sysadmin");
         
         private String value;

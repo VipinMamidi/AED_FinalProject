@@ -6,7 +6,10 @@ package userinterface.FCAdminRole;
 
 import Business.Donation.Donation;
 import Business.EcoSystem;
+import Business.NGOVolunteer.Volunteer;
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,13 +26,18 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
+    String volname;
     public DonationRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         this.userAcc = userAcc;
         populateTable();
-        
+        ArrayList<String> VolunteerList = new ArrayList();
+        for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
+            VolunteerList.add(vol.getVolName());
+        }
+        cbVol.setModel(new DefaultComboBoxModel<String>(VolunteerList.toArray(new String[0])));
     }
 
     /**
@@ -44,7 +52,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonReq = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         lblDRid = new javax.swing.JLabel();
         txtDRid = new javax.swing.JTextField();
         lblDRid1 = new javax.swing.JLabel();
@@ -68,7 +76,12 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDonReq);
 
-        jButton1.setText("Assign");
+        btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
 
         lblDRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblDRid.setText("Donation Id");
@@ -134,7 +147,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(406, 406, 406)
-                        .addComponent(jButton1))
+                        .addComponent(btnAssign))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(385, 385, 385)
                         .addComponent(lblDonProfileTitle1)))
@@ -160,7 +173,7 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
                     .addComponent(lblDRid1)
                     .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(btnAssign)
                 .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -185,14 +198,33 @@ public class DonationRequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
         Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
         txtDRid.setText(selectedD.getDonatId());
-        //volunteer list
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblDonReq.getSelectedRow();
+        if(selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a request");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblDonReq.getModel();
+        Donation selectedD = (Donation)model.getValueAt(selectedRowIndex, 0);
+        volname= cbVol.getSelectedItem().toString();
+        selectedD.setDonatVol(volname);
+        selectedD.setDonatStatus("Assigned to Volunteer");
+        for(Volunteer v:ecosystem.getVolDir().getVolunteerList()){
+            if(v.getVolName().equals(volname)){
+                v.setVolAvail("No");
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDRid;
     private javax.swing.JLabel lblDRid1;

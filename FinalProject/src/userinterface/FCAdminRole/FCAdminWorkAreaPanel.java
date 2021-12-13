@@ -52,7 +52,6 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         btnMgVol = new javax.swing.JButton();
         lblwelusername = new javax.swing.JLabel();
         lblWelcomemsg = new javax.swing.JLabel();
-        btnCurReq = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         WorkAreaPanel = new javax.swing.JPanel();
 
@@ -89,14 +88,6 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
         lblWelcomemsg.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblWelcomemsg.setText("Welcome,");
 
-        btnCurReq.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnCurReq.setText("extra");
-        btnCurReq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCurReqActionPerformed(evt);
-            }
-        });
-
         btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -112,13 +103,11 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(btnMgPTitems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(88, 88, 88)
                 .addComponent(btnViewDonReq)
-                .addGap(33, 33, 33)
-                .addComponent(btnCurReq)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMgVol)
-                .addGap(18, 18, 18)
+                .addGap(100, 100, 100)
                 .addComponent(btnLogout)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenubarPanelLayout.createSequentialGroup()
@@ -138,7 +127,6 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MenubarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMgPTitems)
-                    .addComponent(btnCurReq)
                     .addComponent(btnMgVol)
                     .addComponent(btnViewDonReq)
                     .addComponent(btnLogout))
@@ -188,12 +176,9 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
 
     private void btnMgVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMgVolActionPerformed
         // TODO add your handling code here:
-        
+        ManageVolunteerPanel objVol =  new ManageVolunteerPanel(userProcessContainer,ecosystem,userAccount);
+        SplitPaneFCAdmin.setRightComponent(objVol);
     }//GEN-LAST:event_btnMgVolActionPerformed
-
-    private void btnCurReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurReqActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCurReqActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         try {
@@ -212,7 +197,6 @@ public class FCAdminWorkAreaPanel extends javax.swing.JPanel {
     private javax.swing.JPanel MenubarPanel;
     private javax.swing.JSplitPane SplitPaneFCAdmin;
     private javax.swing.JPanel WorkAreaPanel;
-    private javax.swing.JButton btnCurReq;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMgPTitems;
     private javax.swing.JButton btnMgVol;

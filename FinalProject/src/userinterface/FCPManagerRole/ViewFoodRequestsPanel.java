@@ -5,8 +5,11 @@
 package userinterface.FCPManagerRole;
 
 import Business.EcoSystem;
+import Business.NGOVolunteer.Volunteer;
 import Business.Reqorder.Reqorder;
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +26,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     UserAccount userAcc;
+    String volname;
     public ViewFoodRequestsPanel(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -43,14 +47,13 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFdReqs = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         lblRid = new javax.swing.JLabel();
         txtDRid = new javax.swing.JTextField();
         lblDRid1 = new javax.swing.JLabel();
         cbVol = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
         lblDonProfileTitle1 = new javax.swing.JLabel();
-        btnProcess = new javax.swing.JButton();
 
         lblDonProfileTitle.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle.setText("Food Requests");
@@ -68,7 +71,12 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblFdReqs);
 
-        jButton1.setText("Assign");
+        btnAssign.setText("Assign");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignActionPerformed(evt);
+            }
+        });
 
         lblRid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblRid.setText("Request ID");
@@ -101,13 +109,6 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         lblDonProfileTitle1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDonProfileTitle1.setText("Assign Volunteer");
 
-        btnProcess.setText("Process Request");
-        btnProcess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcessActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +133,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(406, 406, 406)
-                        .addComponent(jButton1))
+                        .addComponent(btnAssign))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(385, 385, 385)
                         .addComponent(lblDonProfileTitle1))
@@ -142,8 +143,6 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnProcess)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSend)
                 .addGap(44, 44, 44))
         );
@@ -155,9 +154,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSend)
-                    .addComponent(btnProcess))
+                .addComponent(btnSend)
                 .addGap(14, 14, 14)
                 .addComponent(lblDonProfileTitle1)
                 .addGap(39, 39, 39)
@@ -169,7 +166,7 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
                     .addComponent(lblDRid1)
                     .addComponent(cbVol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(btnAssign)
                 .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -193,38 +190,38 @@ public class ViewFoodRequestsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
         Reqorder selectedR = (Reqorder)model.getValueAt(selectedRowIndex, 0);
         txtDRid.setText(selectedR.getReqOrderId());
-        //volunteer list
+        ArrayList<String> VolunteerList = new ArrayList();
+        for (Volunteer vol : ecosystem.getVolDir().getVolunteerList()){
+            VolunteerList.add(vol.getVolName());
+        }
+        cbVol.setModel(new DefaultComboBoxModel<String>(VolunteerList.toArray(new String[0])));
     }//GEN-LAST:event_btnSendActionPerformed
 
-    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblFdReqs.getSelectedRow();
         if(selectedRowIndex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a request to process");
+            JOptionPane.showMessageDialog(this, "Please select a request");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblFdReqs.getModel();
         Reqorder selectedR = (Reqorder)model.getValueAt(selectedRowIndex, 0);
-        if(selectedR.getReqOrderType().equals("Delivery")){
-            JOptionPane.showMessageDialog(this, "Please send the request to volunteer");
+        volname= cbVol.getSelectedItem().toString();
+        selectedR.setReqVol(cbVol.getSelectedItem().toString());
+        selectedR.setReqOrderStatus("Assigned to Volunteer");
+        for(Volunteer v:ecosystem.getVolDir().getVolunteerList()){
+            if(v.getVolName().equals(volname)){
+                v.setVolAvail("No");
+            }
         }
-        if(selectedR.getReqOrderStatus().equals("Requested") && selectedR.getReqOrderType().equals("Take Out")){
-            selectedR.setReqOrderStatus("Accepted");
-        }
-        if(selectedR.getReqOrderStatus().equals("Accepted") && selectedR.getReqOrderType().equals("Take Out")){
-            selectedR.setReqOrderStatus("Complete");
-        }
-        if(selectedR.getReqOrderStatus().equals("Complete")){
-            JOptionPane.showMessageDialog(this, "This request is completed already");
-        }
-    }//GEN-LAST:event_btnProcessActionPerformed
+        JOptionPane.showMessageDialog(this, "Pickup Request Assigned to Volunteer Successfully!");
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnProcess;
+    private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnSend;
     private javax.swing.JComboBox<String> cbVol;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDRid1;
     private javax.swing.JLabel lblDonProfileTitle;

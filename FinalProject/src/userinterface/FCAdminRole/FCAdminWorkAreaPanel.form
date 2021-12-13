@@ -46,13 +46,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="btnMgPTitems" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                       <Component id="btnViewDonReq" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnCurReq" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnMgVol" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -76,7 +74,6 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnMgPTitems" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCurReq" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMgVol" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnViewDonReq" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -138,17 +135,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Welcome,"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCurReq">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="extra"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCurReqActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLogout">
               <Properties>

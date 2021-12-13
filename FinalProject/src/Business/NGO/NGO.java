@@ -92,8 +92,9 @@ public class NGO {
     public void setNgoAccount(UserAccount ngoAccount) {
         this.ngoAccount = ngoAccount;
     }
-
-    
-    
+    @Override
+    public String toString(){
+        return ngoId;
+    }
     
 }

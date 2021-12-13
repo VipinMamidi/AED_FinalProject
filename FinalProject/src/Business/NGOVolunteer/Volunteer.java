@@ -21,6 +21,15 @@ public class Volunteer {
     private String volState;
     private String volZipcode;
     private String volExp;
+    private String volAvail;
+
+    public String getVolAvail() {
+        return volAvail;
+    }
+
+    public void setVolAvail(String volAvail) {
+        this.volAvail = volAvail;
+    }
     //private ArrayList<String> volAvaildays;
     private UserAccount volAccount;
     private String volUserName;

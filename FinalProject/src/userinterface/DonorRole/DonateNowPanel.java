@@ -369,9 +369,16 @@ public class DonateNowPanel extends javax.swing.JPanel {
             dt.setDonatPickuptype("Pick up");
             dt.setDonatStatus("Requested");
             dt.setDonatWHname(cbWH.getSelectedItem().toString());
+            UserAccount ua=new UserAccount();
+            ua.setUsername(userAcc.getUsername());
+            ua.setPassword(userAcc.getPassword());
+            dt.setDonatDonorAcc(ua);
+            dt.setDonatAdd(txtDadd.getText());
+            dt.setDonatCity(txtDcity.getText());
             donatD = ecosystem.getDonatDirectory();
             donatD.addNewDonation(dt);
             ecosystem.setDonatDirectory(donatD);
+            //ecosystem.getDonatDirectory().addNewDonation(dt);
             JOptionPane.showMessageDialog(this, "Your request has been placed. Thank you for your donation!");
             clearfields();
         }
